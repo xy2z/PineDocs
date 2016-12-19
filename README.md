@@ -26,8 +26,9 @@ Coming when v1.0 is done.
 	- Markdown
 	- HTML (both source and rendered)
 	- Code files with syntax highlighting (JS, PHP, JSON, YAML)
-	- 
+	- Images and GIFs
 
 ## Future
 - Create/delete/edit files directly on the site
 - YAML exclude files with filter ("*.git") (set in default config)
+- Videos: both selfhosted mp4 (use HTML for embedding youtube etc)
