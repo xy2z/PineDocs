@@ -1,0 +1,86 @@
+/* Theme: Default */
+
+body {
+	font-family: Tahoma;
+	font-size: 15px;
+	background: #eee;
+}
+
+#main {
+	width: 1200px;
+	margin: 0 auto;
+
+}
+
+
+/*** MENU ***/
+#menu {
+	/*background: #899;*/
+	background: #3a4967;
+	background: #444;
+	color: #fff;
+}
+
+#search {
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.4);
+	border: 0;
+	color: #fff;
+	font-weight: bold;
+	margin: 10px 0 0;
+	/*font-size: 1em;*/
+}
+
+#menu ul {
+	list-style-type: none;
+	width: 100%;
+	/*display: table;*/
+	/*margin: 0;*/
+	padding-left: 14px;
+	/*line-height: 1.5em;*/
+}
+
+#menu > ul {
+	padding-left: 0;
+}
+
+#menu ul li {
+	/*display: table-row;*/
+}
+
+#menu ul li a {
+	color: #ddb;
+	text-decoration: none;
+	display: block;
+	padding: 5px;
+}
+
+#menu ul li a:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: #fff;
+}
+
+
+/*** CONTENT PATH ***/
+#content_path {
+	color: #999;
+	font-size: 0.9em;
+	font-family: monospace;
+	background: #ffe;
+	font-weight: bold;
+}
+
+
+/*** CONTENT ***/
+#content {
+	background: #fff;
+}
+
+
+/* ICONS */
+i.fa {
+	color: #09d;
+	/*opacity: 0.7;*/
+	font-size: 0.9em;
+}
+

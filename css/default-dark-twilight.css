@@ -1,0 +1,46 @@
+/* Twilight colors
+Dark brown: #9B703F
+Orange/brown (keyword): #CDA869
+Green (strings): #8F9D6A
+Blue (variable): #7587A6
+Red (constant): #CF6A4C
+Yellow (storage): #F9EE98
+*/
+
+body {
+	background: #191919;
+	color: #ccc;
+}
+
+
+
+#menu {
+	background: #333;
+}
+
+#menu ul li a {
+	color: #7587A6;
+	color: #CDA869;
+
+}
+
+#menu ul li a:hover {
+	color: #F9EE98;
+}
+
+
+
+#content_path {
+	background: #CDA869;
+	color: #333;
+}
+
+#content {
+	background: #292929;
+}
+
+
+
+i.fa {
+	color: #8F9D6A;
+}

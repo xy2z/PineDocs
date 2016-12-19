@@ -1,0 +1,13 @@
+# The directory that contains all the content
+content_dir: D:\Test\Docs\Dokumenter
+# content_dir: P:\Dokumenter
+theme:
+  - Default
+  - default-dark-twilight
+logo: Logo.png
+title: xyDocs v0.1
+
+binds:
+  search: f
+  # edit: e
+  # save: s

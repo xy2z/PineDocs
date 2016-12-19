@@ -1,0 +1,50 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#main {
+	width: 900px;
+	height: 100%;
+}
+
+#menu {
+	min-height: 100%;
+	padding: 20px;
+	width: 350px;
+	float: left;
+}
+
+#logo {
+	width: 100%;
+}
+
+#search {
+	width: 100%;
+}
+
+#content {
+	float: left;
+	width: 850px;
+	min-height: 100%;
+}
+
+#content_path,
+#file_content {
+	padding: 20px;
+}
+
+footer {
+	clear: both;
+}
+
+
+i.fa {
+	padding-right: 10px;
+}
