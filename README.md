@@ -10,7 +10,7 @@ Coming when v1.0 is done.
 
 ## Setup
 ### Requirements
-- PHP 5.?+
+- PHP 5.?+ _(PHP 7.1 is recommended)_
 - Apache or alike
 
 ### Setup guide
@@ -28,13 +28,13 @@ Coming when v1.0 is done.
 - Easily make your theme in CSS (or extend an existing theme, if you just want to change the colors)
 - YAML configuration
 - Render almost any filetype
-	- Markdown
-	- HTML (both source and rendered)
+	- Markdown ('view raw' button)
+	- HTML ('view raw' button)
 	- Code files with syntax highlighting (JS, PHP, JSON, YAML)
 	- Images and GIFs
 
 ## Future
 - Create/delete/edit files directly on the site
-- YAML exclude files with filter ("*.git") (set in default config)
-- Videos: both selfhosted mp4 (use HTML for embedding youtube etc)
-- Sounds (mp3, wav, wma, ogg, flac)
+- YAML exclude files with filter ("\*.git") (set in default config)
+- Videos: (mp4, ogg, WebM) (Please use HTML files for embedding youtube etc)
+- Sounds (mp3, wav, ogg)
