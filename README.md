@@ -32,3 +32,4 @@ Coming when v1.0 is done.
 - Create/delete/edit files directly on the site
 - YAML exclude files with filter ("*.git") (set in default config)
 - Videos: both selfhosted mp4 (use HTML for embedding youtube etc)
+- Sounds (mp3, wav, wma, ogg, flac)
