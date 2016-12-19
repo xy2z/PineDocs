@@ -20,7 +20,12 @@ Coming when v1.0 is done.
 1. Done
 
 ## Version 1.0 will include (when done)
-- Multiple themes (make your own in CSS)
+- Multiple themes
+	- Light
+	- Dark (twilight)
+	- Grey
+	- Sepia
+- Easily make your theme in CSS (or extend an existing theme, if you just want to change the colors)
 - YAML configuration
 - Render almost any filetype
 	- Markdown
