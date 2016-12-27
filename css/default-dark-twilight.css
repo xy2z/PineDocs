@@ -40,10 +40,20 @@ body {
 }
 
 
+#loading {
+	color: #F9EE98;
+}
 
-i.fa {
+.error {
+	color: #CF6A4C;
+}
+
+
+/*** MENU ***/
+#menu i.fa {
 	color: #8F9D6A;
 }
+
 
 
 /* Text/Markdown */

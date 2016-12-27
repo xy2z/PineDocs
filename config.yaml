@@ -1,11 +1,15 @@
 # The directory that contains all the content
-content_dir: D:\Test\Docs\Dokumenter
-# content_dir: P:\Dokumenter
+# content_dir: D:\Test\Docs\Dokumenter
+content_dir: P:\Dokumenter
 theme:
   - Default
-  - default-dark-twilight
+  # - Default-dark-twilight
+highlight_theme: tomorrow
 logo: Logo.png
-title: xyDocs v0.1
+title: xyDocs
+
+# Show file details in bottom of each file.
+# show_file_details: top|bottom|false.
 
 binds:
   search: f

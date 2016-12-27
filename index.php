@@ -5,6 +5,8 @@
 		require_once 'php/' . $class_name . '.php';
 	});
 
+	error_reporting(E_ALL);
+
 	require_once 'php/toolbox.php';
 
 
@@ -32,8 +34,9 @@
 	// Prepare template.
 	$main = new xyTemplate('main');
 	$main->set_data(array(
-		'title' => $config->title ?? 'xyDocs v0.1',
+		'title' => $config->title ?? 'xyDocs 1.0',
 		'theme' => $theme,
+		'highlight_theme' => $config->highlight_theme ?? 'default',
 		'logo' => $config->logo ?? '../Logo.png',
 		'search_value' => '',
 		'search_placeholder' => 'Search here...',

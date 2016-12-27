@@ -50,21 +50,21 @@ body {
 	padding: 5px;
 }
 
-#menu ul li a.active {
+#menu ul li a:hover {
+	background: rgba(255, 255, 255, 0.1);
 	color: #fff;
 }
 
-#menu ul li a:hover {
-	background: rgba(255, 255, 255, 0.1);
+#menu ul li a.active:hover,
+#menu ul li a.active {
 	color: #fff;
 }
 
 
 
 /* ICONS */
-i.fa {
+#menu i.fa {
 	color: #09d;
-	/*opacity: 0.7;*/
 	font-size: 0.9em;
 }
 
@@ -77,6 +77,7 @@ i.fa {
 	font-family: monospace;
 	background: #ffe;
 	font-weight: bold;
+	opacity: 0.95;
 }
 
 
