@@ -48,3 +48,53 @@ footer {
 i.fa {
 	padding-right: 10px;
 }
+
+
+
+/*** Text/Markdown ***/
+#content p,
+#content ul,
+#content ol {
+	line-height: 1.5em;
+}
+
+h1,
+h2 {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+	font-size: 2.4em;
+}
+
+h2 {
+	font-size: 1.8em;
+}
+
+h3 {
+	font-size: 1.4em;
+}
+
+h4 {
+	font-size: 1.2em;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child {
+	margin-top: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+audio {
+	width: 100%;
+}

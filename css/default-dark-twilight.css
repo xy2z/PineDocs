@@ -44,3 +44,23 @@ body {
 i.fa {
 	color: #8F9D6A;
 }
+
+
+/* Text/Markdown */
+h1,
+h2 {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+code {
+	color: #F9EE98;
+}
+
+code {
+	display: block;
+	padding: 1em;
+	margin: 1em 0.5em;
+}
+
+a {
+	color: #39d;
+}
