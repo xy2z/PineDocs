@@ -15,6 +15,10 @@
 
 
 		public function __construct(string $full_path) {
+			if (strpos($full_path, '../')) {
+				// The client must never have access to anything but the 'content_dir'.
+				exit();
+			}
 			$this->full_path = $full_path;
 			$this->relative_path = str_replace(self::$content_dir, '', $full_path);
 			$this->basename = utf8_encode(basename($full_path));

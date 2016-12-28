@@ -9,6 +9,7 @@ Renders markdown, html, code with highlighting, images, GIF's, audio files and v
 
 **Security in case of links are "../**
 
+
 ## Screenshots
 (Coming when v1.0 is done)
 
@@ -45,13 +46,20 @@ Renders markdown, html, code with highlighting, images, GIF's, audio files and v
 - Link to other files within the wiki.
 
 
+## Todo v1.0
+- Open/close dir icon.
+- Security: Are there other ways to go back in a dir like '../'?
+
+
 ## Known issues
 - Work when browser goes back/forward between pages.
 - Menu must follow content (if menu is smaller than file height)
 - Rendering binary files (images/videos/audio etc) bigger than ~50MB. The browser doesn't like that. (Possible solution: if the file is over XXMB then show a download link instead)
 
 
-## Future
+## Future features
+- Search (filenames, dirs and content)
+- Exclude files/folders in config (glob).
 - More themes (sepia)
 - Markdown: Generate table of contents (config)
 - Show error message if filesize is bigger than PHP memory_limit. (instead of php's fatal error)
@@ -59,8 +67,8 @@ Renders markdown, html, code with highlighting, images, GIF's, audio files and v
 - YAML exclude files with filter ("\*.git") (set in default config)
 - Bind '*' key to open all dirs.
 - File actions
-	- Copy data to clipboard
+	- Copy file content to clipboard
 	- Download file
-	- Switch between raw/rendered (only for html, markdown, etc.) (bind to key 'R')
-	- File details (filesize, created, last edited, etc.) (bind to key 'D' ?)
+	- Switch between raw/rendered (for html, markdown, etc.) (bind to key 'R'?)
+	- File details (filesize, created, edited, etc.) (bind to key 'D'?)
 	- ?

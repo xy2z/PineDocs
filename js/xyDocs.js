@@ -10,15 +10,15 @@ $(function() {
 
 	function format_bytes(bytes,decimals) {
 		if (bytes == 0) {
-			return '0 Byte';
+			return '0 Byte'
 		}
 
-		var k = 1024; // 1024 for binary
-		// var dm = decimals + 1 || 3;
-		var dm = decimals + 1 || 1;
-		var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-		var i = Math.floor(Math.log(bytes) / Math.log(k));
-		return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+		var k = 1024 // 1024 for binary
+		// var dm = decimals + 1 || 3
+		var dm = decimals + 1 || 1
+		var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+		var i = Math.floor(Math.log(bytes) / Math.log(k))
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
 	}
 
 
@@ -78,8 +78,8 @@ $(function() {
 				if (!config.use_highlight_theme_bg) {
 					$(this).addClass('nobg')
 				}
-				hljs.highlightBlock(block);
-			});
+				hljs.highlightBlock(block)
+			})
 
 		} else if (data.type == 'image') {
 			// Image.
@@ -112,15 +112,15 @@ $(function() {
 
 			// Syntax highlighting
 			self.elements.file_content.find('code').each(function(i, block) {
-				hljs.highlightBlock(block);
-			});
+				hljs.highlightBlock(block)
+			})
 		} else {
 			self.elements.file_content.html(nl2br(data.content))
 
 			// Syntax highlighting
 			self.elements.file_content.find('code').each(function(i, block) {
-				hljs.highlightBlock(block);
-			});
+				hljs.highlightBlock(block)
+			})
 		}
 
 		// Set position.
@@ -135,16 +135,15 @@ $(function() {
 		// Event for clicking menu links.
 		$('#menu').on('click', 'a.link_file', function(event) {
 			var link = $(this)
-			var data_path = $(this).attr('data-path')
+			var href = $(this).attr('href').substr(1)
 
 			// Set 'active' class.
 			$('.active').removeClass('active')
 			link.addClass('active')
 
 			// Already loaded before?
-			if (self.loaded[data_path]) {
-				console.log('got it from loaded :)')
-				self.render_file(self.loaded[data_path])
+			if (self.loaded[href]) {
+				self.render_file(self.loaded[href])
 				return
 			}
 
@@ -158,17 +157,17 @@ $(function() {
 				dataType: 'json',
 				data: {
 					action: 'get_file_data',
-					relative_path: data_path
+					relative_path: href
 				},
 			})
 			.done(function(response) {
-				self.loaded[data_path] = response
+				self.loaded[href] = response // testing.
 				self.render_file(response)
 			})
 			.fail(function(response) {
 				// Show error message.
-				self.render_error_message('Error: could not load file: <u>' + data_path + '</u><br />See console for response')
-				console.log('Error in response from ' + data_path)
+				self.render_error_message('Error: could not load file: <u>' + href + '</u><br />See console for response')
+				console.log('Error in response from ' + href)
 				if (response.responseText) {
 					console.log(response.responseText)
 				} else {
@@ -191,10 +190,10 @@ $(function() {
 
 		// Click on folder
 		$('body').on('click', 'a.link_dir', function(event) {
-			event.preventDefault();
+			event.preventDefault()
 			/* Act on the event */
 			$(this).parent().next().toggle('fast')
-		});
+		})
 
 
 		// Click on internal link. (links to other files)
@@ -203,7 +202,7 @@ $(function() {
 				// Find the link in the menu and trigger a click on it.
 				self.elements.menu.find('a[href="' + $(this).attr('href') + '"]').click()
 			}
-		});
+		})
 	}
 
 
@@ -231,7 +230,7 @@ $(function() {
 
 	// Make sure the content always is visible on the screen.
 	xyDocs.prototype.fixed_content_position = function() {
-		var self = this;
+		var self = this
 
 		var top = self.elements.file_content[0].style.top // jquery returns the pixels instead of 'auto' in Chrome.
 		var outerHeight = self.elements.file_content.outerHeight()
@@ -240,7 +239,7 @@ $(function() {
 			// If file_content is smaller than window height, just make the position fixed.
 			self.elements.file_content
 				.css('position', 'fixed')
-				.css('top', 'auto');
+				.css('top', 'auto')
 		} else {
 			// The file content is bigger than window height.
 			// So make sure the content is following when user scrolls up or down.
@@ -270,23 +269,16 @@ $(function() {
 	xyDocs.prototype.pageload_open_dirs = function() {
 		var self = this
 
-		console.log('open_dirs on pageload.')
-		console.log('open_dirs: ' + self.open_dirs)
-
 		if (config.open_dirs == 'all') {
 			// Open all dirs.
 			$('a.link_dir').click()
 		} else if (config.open_dirs > 0) {
-			console.log('>0')
+			// Open all dirs in the selected level.
 			self.elements.menu.find('a.link_dir').each(function(index, el) {
-				console.log('got a dir: ' + $(this).text())
 				if (config.open_dirs >= $(this).parents('ul').length) {
 					$(this).click()
 				}
-			});
-
-			// This works. But only if open_dirs == 1.
-			// $('#menu > ul > li > a.link_dir').click()
+			})
 		}
 	}
 

@@ -27,7 +27,6 @@
 
 
 		public function render() {
-			// var_dump(self::multi_escape(array('hej')));
 			extract(self::multi_escape($this->data));
 			extract($this->html);
 			$template_content = require_once('templates/' . $this->template_name . '.php');

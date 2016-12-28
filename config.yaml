@@ -1,4 +1,6 @@
+
 # The directory that contains all the content
+title: xyDocs
 content_dir: D:\Test\Docs\Dokumenter
 # content_dir: P:\Dokumenter
 
@@ -15,13 +17,12 @@ theme:
 # Highlight themes: default, monokai, tomorrow, sunbust. See all on https://highlightjs.org/static/demo/.
 highlight_theme: Tomorrow-Night
 
-use_highlight_theme_bg: false
+use_highlight_theme_bg: False
 
-open_dirs: 2 # (int or 'all')
+open_dirs: 1 # (int or 'all')
 
 logo: Logo.png
 
-title: xyDocs
 
 
 # Show file details in bottom of each file.
