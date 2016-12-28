@@ -42,7 +42,8 @@
 		'search_value' => '',
 		'search_placeholder' => 'Search here...',
 		'js_vars' => array(
-			'use_highlight_theme_bg' => $config->use_highlight_theme_bg ?? true
+			'use_highlight_theme_bg' => $config->use_highlight_theme_bg ?? true,
+			'open_dirs' => $config->open_dirs ?? 0
 		)
 	));
 

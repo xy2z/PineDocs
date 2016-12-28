@@ -14,9 +14,13 @@ theme:
 
 # Highlight themes: default, monokai, tomorrow, sunbust. See all on https://highlightjs.org/static/demo/.
 highlight_theme: Tomorrow-Night
-use_highlight_theme_bg: true
+
+use_highlight_theme_bg: false
+
+open_dirs: 2 # (int or 'all')
 
 logo: Logo.png
+
 title: xyDocs
 
 
@@ -25,4 +29,4 @@ title: xyDocs
 
 binds:
   search: f
-  switch_raw_rendered: r
+#  switch_raw_rendered: r

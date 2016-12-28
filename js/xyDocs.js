@@ -47,6 +47,9 @@ $(function() {
 
 		// Set file_cocntent position
 		self.fixed_content_position()
+
+		// Open dirs automatically.
+		self.pageload_open_dirs()
 	}
 
 
@@ -186,6 +189,14 @@ $(function() {
 		})
 
 
+		// Click on folder
+		$('body').on('click', 'a.link_dir', function(event) {
+			event.preventDefault();
+			/* Act on the event */
+			$(this).parent().next().toggle('fast')
+		});
+
+
 		// Click on internal link. (links to other files)
 		self.elements.file_content.on('click', 'a', function(event) {
 			if ($(this).attr('href').substr(0,1) == '#') {
@@ -252,6 +263,30 @@ $(function() {
 					self.elements.file_content.css('top', $(window).scrollTop() - outerHeight + 300)
 				}
 			}
+		}
+	}
+
+
+	xyDocs.prototype.pageload_open_dirs = function() {
+		var self = this
+
+		console.log('open_dirs on pageload.')
+		console.log('open_dirs: ' + self.open_dirs)
+
+		if (config.open_dirs == 'all') {
+			// Open all dirs.
+			$('a.link_dir').click()
+		} else if (config.open_dirs > 0) {
+			console.log('>0')
+			self.elements.menu.find('a.link_dir').each(function(index, el) {
+				console.log('got a dir: ' + $(this).text())
+				if (config.open_dirs >= $(this).parents('ul').length) {
+					$(this).click()
+				}
+			});
+
+			// This works. But only if open_dirs == 1.
+			// $('#menu > ul > li > a.link_dir').click()
 		}
 	}
 

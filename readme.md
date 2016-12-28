@@ -32,7 +32,7 @@ Renders markdown, html, code with highlighting, images, GIF's, audio files and v
 	- Dark (twilight)
 	- Wiki
 	- Sepia
-- Easily make your own theme in CSS (or extend an existing theme)
+- Create your own theme in CSS (or extend an existing theme)
 - YAML configuration.
 - Key bind to easily search (press 'F')
 - Render any filetype
@@ -52,10 +52,12 @@ Renders markdown, html, code with highlighting, images, GIF's, audio files and v
 
 
 ## Future
-- Markdown: Generate table of contents? (using marked)
+- More themes (sepia)
+- Markdown: Generate table of contents (config)
 - Show error message if filesize is bigger than PHP memory_limit. (instead of php's fatal error)
-- Create/delete/edit files directly on the site
+- Create/delete/edit files directly on the site?
 - YAML exclude files with filter ("\*.git") (set in default config)
+- Bind '*' key to open all dirs.
 - File actions
 	- Copy data to clipboard
 	- Download file

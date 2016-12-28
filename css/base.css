@@ -22,6 +22,10 @@ body {
 	padding-top: 240px;
 }
 
+#menu ul > ul {
+	display: none;
+}
+
 #menu a {
 	word-break: break-all;
 }
