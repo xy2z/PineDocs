@@ -32,6 +32,7 @@ body {
 	padding: 20px 0;
 	width: 310px;
 	background: inherit;
+	z-index: 9;
 }
 
 #logo,
@@ -52,6 +53,11 @@ body {
 	position: fixed;
 	top: 0;
 	z-index: 9;
+}
+
+#content_path .filesize {
+	padding-left: 1em;
+	font-size: 0.8em;
 }
 
 #content_path,
@@ -132,12 +138,22 @@ img {
 	max-width: 100%;
 }
 
-audio {
+audio,
+video {
 	width: 100%;
 }
 
 #content code {
+	display: block;
 	width: 100%;
 	white-space: pre-wrap;
+	padding: 1em;
+}
+
+#content code.file {
+	padding: 0;
+}
+
+#content code.nobg {
 	background: none;
 }

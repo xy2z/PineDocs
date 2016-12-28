@@ -15,18 +15,16 @@
 		<script src="js/xyDocs.js"></script>
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/<?= $highlight_theme ?>.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-		<style>
-			body {
-				font-family: Tahoma;
-			}
-		</style>
+		<script>
+			var config = <?= json_encode($js_vars) ?>
+		</script>
 	</head>
 
 	<body>
 		<div id="main">
 			<div id="menu">
 				<div id="menu_top">
-					<a href="?"><img id="logo" src="<?= $logo ?>" /></a>
+					<a href="."><img id="logo" src="<?= $logo ?>" /></a>
 					<input type="text" id="search" name="search" value="<?= $search_value ?>" placeholder="<?= $search_placeholder ?>" autofocus>
 				</div>
 				<?= $menu ?>

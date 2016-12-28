@@ -8,6 +8,20 @@ $(function() {
 	}
 
 
+	function format_bytes(bytes,decimals) {
+		if (bytes == 0) {
+			return '0 Byte';
+		}
+
+		var k = 1024; // 1024 for binary
+		// var dm = decimals + 1 || 3;
+		var dm = decimals + 1 || 1;
+		var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+		var i = Math.floor(Math.log(bytes) / Math.log(k));
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+	}
+
+
 	// xyDocs class
 	var xyDocs = function() {
 		var self = this
@@ -28,9 +42,8 @@ $(function() {
 		self.set_events()
 
 		// Autoload file from URL anchor tag?
-		var hash = window.location.hash.substr(1)
 		// Click on the link, if it exists.
-		$('a.link_file[data-path="' + hash + '"]').click()
+		$('a.link_file[href="' + window.location.hash + '"]').click()
 
 		// Set file_cocntent position
 		self.fixed_content_position()
@@ -47,11 +60,24 @@ $(function() {
 
 		// Set content path
 		self.elements.content_path.text(data.relative_path)
+		var filesize = $('<span>').addClass('filesize')
+		filesize.text(format_bytes(data.filesize))
+		self.elements.content_path.append(filesize)
+
 
 		// Render content
-		if (data.pathinfo.extension == 'md' || data.pathinfo.extension == 'markdown') {
+		if (data.extension == 'md' || data.extension == 'markdown') {
 			// Markdown
 			self.elements.file_content.html(marked(data.content))
+
+			// Syntax highlighting
+			self.elements.file_content.find('code').each(function(i, block) {
+				if (!config.use_highlight_theme_bg) {
+					$(this).addClass('nobg')
+				}
+				hljs.highlightBlock(block);
+			});
+
 		} else if (data.type == 'image') {
 			// Image.
 			var img = $('<img>').attr('src', 'data:image/gif;base64,' + data.content)
@@ -60,8 +86,25 @@ $(function() {
 			// Audio.
 			var audio = $('<audio>').prop('controls', true).attr('src', 'data:audio/mp3;base64,' + data.content)
 			self.elements.file_content.append(audio)
+		} else if (data.type == 'video') {
+			// Video.
+			/*
+			<video width="320" height="240" controls>
+				<source src="movie.mp4" type="video/mp4">
+				<source src="movie.ogg" type="video/ogg">
+				Your browser does not support the video tag.
+			</video>
+			 */
+			var video = $('<video>').prop('controls', true)
+			var source = $('<source>').attr('src', 'data:video/mp4;base64,' + data.content)
+			source.attr('type', 'video/mp4')
+			video.append(source)
+			self.elements.file_content.append(video)
 		} else if (data.type == 'code') {
-			var code = $('<code>').text(data.content)
+			var code = $('<code>').text(data.content).addClass('file')
+			if (!config.use_highlight_theme_bg) {
+				code.addClass('nobg')
+			}
 			self.elements.file_content.append(code)
 
 			// Syntax highlighting
@@ -70,6 +113,11 @@ $(function() {
 			});
 		} else {
 			self.elements.file_content.html(nl2br(data.content))
+
+			// Syntax highlighting
+			self.elements.file_content.find('code').each(function(i, block) {
+				hljs.highlightBlock(block);
+			});
 		}
 
 		// Set position.
@@ -111,7 +159,6 @@ $(function() {
 				},
 			})
 			.done(function(response) {
-				console.log('success', response)
 				self.loaded[data_path] = response
 				self.render_file(response)
 			})
@@ -137,6 +184,15 @@ $(function() {
 		$(window).scroll(function(e) {
 			self.fixed_content_position()
 		})
+
+
+		// Click on internal link. (links to other files)
+		self.elements.file_content.on('click', 'a', function(event) {
+			if ($(this).attr('href').substr(0,1) == '#') {
+				// Find the link in the menu and trigger a click on it.
+				self.elements.menu.find('a[href="' + $(this).attr('href') + '"]').click()
+			}
+		});
 	}
 
 
@@ -148,7 +204,6 @@ $(function() {
 			self.elements.file_content.html('')
 			self.elements.content_path.text('Loading...')
 			self.elements.loading.html(message).show()
-			console.log(self.elements.loading.html())
 		} else {
 			self.elements.loading.hide()
 		}
@@ -157,6 +212,7 @@ $(function() {
 
 	xyDocs.prototype.render_error_message = function(message) {
 		var self = this
+		self.elements.content_path.text('Error')
 		var error_element = $('<div>').addClass('error').html(message)
 		self.elements.file_content.html(error_element)
 	}

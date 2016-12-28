@@ -16,6 +16,7 @@
 
 	if (isset($_GET['action']) && $_GET['action'] == 'get_file_data' && isset($_GET['relative_path'])) {
 		// TODO: Must validate the path is in the content_dir!
+		header('Content-Type: application/json');
 		$xyDocsFile = new xyDocsFile(xy_format_path($config->content_dir) . xy_urldecode($_GET['relative_path']));
 		echo $xyDocsFile->get_json_data();
 		exit;
@@ -36,10 +37,13 @@
 	$main->set_data(array(
 		'title' => $config->title ?? 'xyDocs 1.0',
 		'theme' => $theme,
-		'highlight_theme' => $config->highlight_theme ?? 'default',
+		'highlight_theme' => strtolower(str_replace(' ', '_', $config->highlight_theme)) ?? 'default',
 		'logo' => $config->logo ?? '../Logo.png',
 		'search_value' => '',
 		'search_placeholder' => 'Search here...',
+		'js_vars' => array(
+			'use_highlight_theme_bg' => $config->use_highlight_theme_bg ?? true
+		)
 	));
 
 	if (isset($_GET['file'])) {

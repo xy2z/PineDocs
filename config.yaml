@@ -1,17 +1,28 @@
 # The directory that contains all the content
-# content_dir: D:\Test\Docs\Dokumenter
-content_dir: P:\Dokumenter
+content_dir: D:\Test\Docs\Dokumenter
+# content_dir: P:\Dokumenter
+
+
+#################
+# Optional settings:
+
 theme:
-  - Default
+  - Wiki
+  - Wiki-Dark
+  # - Default
   # - Default-dark-twilight
-highlight_theme: tomorrow
+
+# Highlight themes: default, monokai, tomorrow, sunbust. See all on https://highlightjs.org/static/demo/.
+highlight_theme: Tomorrow-Night
+use_highlight_theme_bg: true
+
 logo: Logo.png
 title: xyDocs
+
 
 # Show file details in bottom of each file.
 # show_file_details: top|bottom|false.
 
 binds:
   search: f
-  # edit: e
-  # save: s
+  switch_raw_rendered: r
