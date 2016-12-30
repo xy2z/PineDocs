@@ -18,10 +18,10 @@ logo: Logo.png
 
 # Theme to use.
 theme:
-  # - Wiki
+  - Wiki
   # - Wiki-Dark
-  - Default
-  - Default-twilight
+  # - Default
+  # - Default-twilight
 
 # Highlight themes: default, monokai, tomorrow, sunbust. See all on https://highlightjs.org/static/demo/.
 highlight_theme: Tomorrow-Night
