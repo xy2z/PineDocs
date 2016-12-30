@@ -27,7 +27,7 @@ theme:
 highlight_theme: Tomorrow-Night
 
 # Use transparent bacground on code?
-code_transparent_bg: True
+code_transparent_bg: False
 
 open_dirs: 1 # (int or 'all')
 

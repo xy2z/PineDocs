@@ -45,9 +45,6 @@ $(function() {
 		// Click on the link, if it exists.
 		$('a.link_file[href="' + window.location.hash + '"]').click()
 
-		// Set file_cocntent position
-		// self.fixed_content_position()
-
 		// Open dirs automatically.
 		self.pageload_open_dirs()
 	}
@@ -131,7 +128,7 @@ $(function() {
 	}
 
 
-	// Set events like 'click', 'scroll' etc.
+	// Set events
 	xyDocs.prototype.set_events = function() {
 		var self = this
 
@@ -185,12 +182,6 @@ $(function() {
 		})
 
 
-		// Scroll
-		$(window).scroll(function(e) {
-			// self.fixed_content_position()
-		})
-
-
 		// Click on folder
 		$('body').on('click', 'a.link_dir', function(event) {
 			event.preventDefault()
@@ -232,49 +223,6 @@ $(function() {
 		var error_element = $('<div>').addClass('error').html(message)
 		self.elements.file_content.html(error_element)
 	}
-
-
-	// Make sure the content always is visible on the screen.
-	// Replaced by 'overflow' css... Let's see if it's better.
-	/*
-	xyDocs.prototype.fixed_content_position = function() {
-		var self = this
-
-		var top = self.elements.file_content[0].style.top // jquery returns the pixels instead of 'auto' in Chrome.
-		var outerHeight = self.elements.file_content.outerHeight()
-
-		if (outerHeight <= $(window).height()) {
-			// If file_content is smaller than window height, just make the position fixed.
-			self.elements.file_content
-				.css('position', 'fixed')
-				.css('top', 'auto')
-		} else {
-			// The file content is bigger than window height.
-			// So make sure the content is following when user scrolls up or down.
-			self.elements.file_content.css('position', 'absolute')
-
-			if (top == 'auto') {
-				self.elements.file_content.css('top', $(window).scrollTop() + 60 + 'px')
-			} else {
-				// User scrolled
-				top = parseInt(top) - 60
-				var bottom = top + outerHeight
-
-				if ($(window).scrollTop() <= top) {
-					// User scrolled up, over last top position.
-					// So set the top positon up to the scroll position.
-					self.elements.file_content.css('top', $(window).scrollTop() + 60 + 'px')
-				} else if ($(window).scrollTop() >= (bottom - 240)) {
-					// User scrolled down below the bottom content.
-					// So make sure the bottom content follows, so it's fast to scroll up again.
-					self.elements.file_content.css('top', $(window).scrollTop() - outerHeight + 300)
-				}
-			}
-		}
-
-		// Always make sure 'footer' is at bottom.
-		$('footer').css('bottom', 0)
-	}*/
 
 
 	xyDocs.prototype.pageload_open_dirs = function() {
