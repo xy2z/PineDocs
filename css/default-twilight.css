@@ -13,7 +13,7 @@ body {
 }
 
 
-
+/*** MENU ***/
 #menu {
 	background: #333;
 }
@@ -25,19 +25,49 @@ body {
 }
 
 #menu ul li a:hover {
+	background: rgba(249, 238, 152, 0.1);
 	color: #F9EE98;
+}
+
+#menu ul li a.active:hover,
+#menu ul li a.active,
+#menu ul li a.active i.fa {
+	color: #fff;
+	color: #f70;
+	/*color: #CF6A4C;*/
 }
 
 
 
+/*** MENU ICONS ***/
+#menu i.fa {
+	color: #8F9D6A;
+}
+
+#menu a.link_dir_open i.fa {
+	color: #F9EE98;
+	/*color: #CDA869;*/
+
+}
+
+
+
+
+/*** CONTENT PATH ***/
 #content_path {
 	background: #CDA869;
 	color: #333;
 }
 
+
+
+/*** CONTENT ***/
 #content {
 	background: #292929;
+	/*overflow-y: hidden;*/
+
 }
+
 
 
 #loading {
@@ -46,12 +76,6 @@ body {
 
 .error {
 	color: #CF6A4C;
-}
-
-
-/*** MENU ***/
-#menu i.fa {
-	color: #8F9D6A;
 }
 
 
@@ -68,7 +92,6 @@ code {
 code {
 	display: block;
 	padding: 1em;
-	margin: 1em 0.5em;
 }
 
 a {

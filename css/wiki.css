@@ -55,7 +55,6 @@ body {
 }
 
 #menu ul li a:hover {
-	/*background: rgba(0, 0, 0, 0.1);*/
 	text-decoration: underline;
 }
 
@@ -64,6 +63,20 @@ body {
 #menu ul li a.active i.fa {
 	color: #fff;
 	color: #f70;
+}
+
+
+
+/*** MENU FOOTER ***/
+#menu footer {
+	border-top: 1px solid #ddd;
+	margin-top: 2em;
+	padding-top: 1em;
+	font-size: 0.9em;
+}
+#menu footer,
+#menu footer a {
+	color: #999;
 }
 
 

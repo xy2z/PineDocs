@@ -46,7 +46,7 @@ $(function() {
 		$('a.link_file[href="' + window.location.hash + '"]').click()
 
 		// Set file_cocntent position
-		self.fixed_content_position()
+		// self.fixed_content_position()
 
 		// Open dirs automatically.
 		self.pageload_open_dirs()
@@ -75,7 +75,7 @@ $(function() {
 
 			// Syntax highlighting
 			self.elements.file_content.find('code').each(function(i, block) {
-				if (!config.use_highlight_theme_bg) {
+				if (config.code_transparent_bg) {
 					$(this).addClass('nobg')
 				}
 				hljs.highlightBlock(block)
@@ -105,7 +105,7 @@ $(function() {
 			self.elements.file_content.append(video)
 		} else if (data.type == 'code') {
 			var code = $('<code>').text(data.content).addClass('file')
-			if (!config.use_highlight_theme_bg) {
+			if (config.code_transparent_bg) {
 				code.addClass('nobg')
 			}
 			self.elements.file_content.append(code)
@@ -123,8 +123,11 @@ $(function() {
 			})
 		}
 
+		// Set title
+		$('title').text(config.title + ' | ' + data.basename)
+
 		// Set position.
-		self.fixed_content_position()
+		// self.fixed_content_position()
 	}
 
 
@@ -184,7 +187,7 @@ $(function() {
 
 		// Scroll
 		$(window).scroll(function(e) {
-			self.fixed_content_position()
+			// self.fixed_content_position()
 		})
 
 
@@ -193,6 +196,8 @@ $(function() {
 			event.preventDefault()
 			/* Act on the event */
 			$(this).parent().next().toggle('fast')
+			$(this).toggleClass('link_dir_open')
+			$(this).find('i.fa').toggleClass('fa-folder-open')
 		})
 
 
@@ -211,11 +216,12 @@ $(function() {
 		var self = this
 
 		if (state) {
-			self.elements.file_content.html('')
+			self.elements.file_content.html('').hide()
 			self.elements.content_path.text('Loading...')
 			self.elements.loading.html(message).show()
 		} else {
 			self.elements.loading.hide()
+			self.elements.file_content.show()
 		}
 	}
 
@@ -229,6 +235,8 @@ $(function() {
 
 
 	// Make sure the content always is visible on the screen.
+	// Replaced by 'overflow' css... Let's see if it's better.
+	/*
 	xyDocs.prototype.fixed_content_position = function() {
 		var self = this
 
@@ -263,7 +271,10 @@ $(function() {
 				}
 			}
 		}
-	}
+
+		// Always make sure 'footer' is at bottom.
+		$('footer').css('bottom', 0)
+	}*/
 
 
 	xyDocs.prototype.pageload_open_dirs = function() {

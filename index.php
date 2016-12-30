@@ -1,5 +1,8 @@
 <?php
 
+	// Constants
+	define('xyDocs_version', '1.0.0-beta.1');
+
 	// Autoloader
 	spl_autoload_register(function ($class_name) {
 		require_once 'php/' . $class_name . '.php';
@@ -15,7 +18,6 @@
 	xyDocsFile::$content_dir = xy_format_path($config->content_dir);
 
 	if (isset($_GET['action']) && $_GET['action'] == 'get_file_data' && isset($_GET['relative_path'])) {
-		// TODO: Must validate the path is in the content_dir!
 		header('Content-Type: application/json');
 		$xyDocsFile = new xyDocsFile(xy_format_path($config->content_dir) . xy_urldecode($_GET['relative_path']));
 		echo $xyDocsFile->get_json_data();
@@ -39,10 +41,13 @@
 		'theme' => $theme,
 		'highlight_theme' => strtolower(str_replace(' ', '_', $config->highlight_theme)) ?? 'default',
 		'logo' => $config->logo ?? '../Logo.png',
+		'render_footer' => $config->render_footer ?? true,
 		'search_value' => '',
 		'search_placeholder' => 'Search here...',
+		'xyDocs_version' => xyDocs_version,
 		'js_vars' => array(
-			'use_highlight_theme_bg' => $config->use_highlight_theme_bg ?? true,
+			'title' => $config->title ?? 'xyDocs',
+			'code_transparent_bg' => $config->code_transparent_bg ?? false,
 			'open_dirs' => $config->open_dirs ?? 0
 		)
 	));

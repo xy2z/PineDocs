@@ -22,13 +22,22 @@
 
 	<body>
 		<div id="main">
-			<div id="menu">
-				<div id="menu_top">
-					<a href="."><img id="logo" src="<?= $logo ?>" /></a>
-					<input type="text" id="search" name="search" value="<?= $search_value ?>" placeholder="<?= $search_placeholder ?>" autofocus>
+
+			<div id="menu_wrapper">
+				<div id="menu">
+					<div id="menu_top">
+						<a href="."><img id="logo" src="<?= $logo ?>" /></a>
+						<!-- <input type="text" id="search" name="search" value="<?= $search_value ?>" placeholder="<?= $search_placeholder ?>" autofocus> -->
+					</div>
+					<?= $menu ?>
+					<?php if ($render_footer): ?>
+						<footer>
+							xyDocs <?= $xyDocs_version ?> (<a target="_blank" href="https://github.com/xy2z/xyDocs/releases">Check for updates</a>)
+						</footer>
+					<?php endif ?>
 				</div>
-				<?= $menu ?>
 			</div>
+
 			<div id="content">
 				<div id="content_path"><?= $content_path ?></div>
 				<div id="loading"></div>
@@ -36,6 +45,7 @@
 					<?= $content ?>
 				</div>
 			</div>
+
 		</div>
 	</body>
 

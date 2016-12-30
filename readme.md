@@ -2,12 +2,8 @@
 
 **THIS PROJECT IS STILL UNDER DEVELOPMENT.**
 
-
-## About
-xyDocs is a lightweight tool for viewing your wiki/notes/documentation. Simple yet powerfull.
-Renders markdown, html, code with highlighting, images, GIF's, audio files and videos.
-
-**Security in case of links are "../**
+xyDocs is a lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
+Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos.
 
 
 ## Screenshots
@@ -16,49 +12,61 @@ Renders markdown, html, code with highlighting, images, GIF's, audio files and v
 
 ## Setup
 ### Requirements
-- PHP 5.?+ _(PHP 7.1 is recommended)_ (need test php 5.6)
+- PHP 7.0 or above
 - Apache or alike
 
 
 ### Setup guide
-1. git clone
-1. Edit YAML config (link to example)
-1. Apache config (link to example) or use 'php -S localhost:89' for testing.
-1. Enjoy!
+1. [Download the latest release](https://github.com/xy2z/xyDocs/releases) or `git clone`.
+1. Edit the `config.yaml` file
+1. Setup Apache config (link to example) or use `php -S localhost:89` for testing.
 
 
-## Version 1.0 will include (when done)
-- Multiple RESPONSIVE themes
-	- Default (grey)
-	- Dark (twilight)
-	- Wiki
-	- Sepia
-- Create your own theme in CSS (or extend an existing theme)
-- YAML configuration.
-- Key bind to easily search (press 'F')
-- Render any filetype
-	- Markdown ('view raw' button)
-	- HTML ('view raw' button)
-	- Code files with syntax highlighting (JS, PHP, JSON, YAML)
-	- Images and GIFs
-	- Videos
-	- Audio files
-- Link to other files within the wiki.
+## Configuration
+Feel free to edit the `config.yaml` file to fit your needs.
+
+
+#### Required settings
+- **`title`**  (string) The title of the site, used in tabs and bookmarks.
+
+- **`content_dir`** (string) Path to the dir you want to use.
+
+#### Optional settings
+- **`theme`** (string) Available themes: `default`, `default-dark`, `wiki`, `wiki-dark`.
+
+- **`logo`** (string) Path to the logo. If nothing is set, the `xyDocs` logo will be used.
+
+- **`code_transparent_bg`** (bool) If `true`, all  will use the highlight theme. If `false`, the background will be transparent.
+
+- **`open_dirs`** (int|string) The number of levels of dirs that should be opnened on page load. Use `all` to open all dirs.
 
 
 ## Todo v1.0
-- Open/close dir icon.
+- Responsive themes: default + wiki
+- Themes should only be in 1 file? (so you can't fuck up) ('theme_structure' and 'theme_color'?)
+- Theme template (in 'themes' dir)
 - Security: Are there other ways to go back in a dir like '../'?
+- Custom dir for custom themes? (so it won't be lost when upgrading?)
+- Config should be ignored? How to keep it from being overwritten.
+- Test:
+	- Test on ubuntu with content_dir? :) (testpingu01)
+	- Test images: jpg, png, gif + more?
+	- Test videos: ogg, etc.
+	- Test audio files: avi?
+	- Test in all browser + mobile browsers.
 
 
 ## Known issues
 - Work when browser goes back/forward between pages.
-- Menu must follow content (if menu is smaller than file height)
-- Rendering binary files (images/videos/audio etc) bigger than ~50MB. The browser doesn't like that. (Possible solution: if the file is over XXMB then show a download link instead)
+- Can't load files with special chars path (maybe encoding?)
+- Rendering (binary) files (images/videos/audio etc) bigger than ~50MB. (Possible solution: if the file is over XXMB then show a download link instead)
 
 
 ## Future features
-- Search (filenames, dirs and content)
+- htaccess
+- File icons should match file types.
+- Remember scroll position when browsing between files (should also work when using the browsers back/forward)
+- Search (filenames, dirs and content) (with keypress 'F' to focus, config for binding key)
 - Exclude files/folders in config (glob).
 - More themes (sepia)
 - Markdown: Generate table of contents (config)
@@ -66,9 +74,12 @@ Renders markdown, html, code with highlighting, images, GIF's, audio files and v
 - Create/delete/edit files directly on the site?
 - YAML exclude files with filter ("\*.git") (set in default config)
 - Bind '*' key to open all dirs.
-- File actions
+- Support for more markup languages (https://en.wikipedia.org/wiki/Lightweight_markup_language)
+- Config: show_file_extensions,
+- Make all content links open in new tab (setting)
+- File actions (in content_path)
+	- Fullscreen file-content
 	- Copy file content to clipboard
 	- Download file
 	- Switch between raw/rendered (for html, markdown, etc.) (bind to key 'R'?)
 	- File details (filesize, created, edited, etc.) (bind to key 'D'?)
-	- ?

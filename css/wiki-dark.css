@@ -48,6 +48,20 @@ body {
 
 
 
+/*** MENU FOOTER ***/
+#menu footer {
+	border-top: 1px solid #333;
+	margin-top: 2em;
+	padding-top: 1em;
+	font-size: 0.9em;
+}
+#menu footer,
+#menu footer a {
+	color: #777;
+}
+
+
+
 /* ICONS */
 #menu i.fa {
 	opacity: 1;

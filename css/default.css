@@ -64,10 +64,22 @@ body {
 
 
 
-/* ICONS */
+/*** MENU FOOTER ***/
+#menu footer,
+#menu footer a {
+	color: #999;
+}
+
+
+
+/* MENU ICONS */
 #menu i.fa {
 	color: #09d;
 	font-size: 0.9em;
+}
+
+#menu a.link_dir_open i.fa {
+	/*color: #fff;*/
 }
 
 

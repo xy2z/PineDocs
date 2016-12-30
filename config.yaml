@@ -1,33 +1,39 @@
+#
+# See a detailed list of all settings here:
+# https://github.com/xy2z/xyDocs/tree/master##configuration
+#
+
+# The title of the
+title: xyDocs
 
 # The directory that contains all the content
-title: xyDocs
 content_dir: D:\Test\Docs\Dokumenter
 # content_dir: P:\Dokumenter
 
+# What logo to show in the top of the menu?
+logo: Logo.png
 
 #################
 # Optional settings:
 
+# Theme to use.
 theme:
-  - Wiki
-  - Wiki-Dark
-  # - Default
-  # - Default-dark-twilight
+  # - Wiki
+  # - Wiki-Dark
+  - Default
+  - Default-twilight
 
 # Highlight themes: default, monokai, tomorrow, sunbust. See all on https://highlightjs.org/static/demo/.
 highlight_theme: Tomorrow-Night
 
-use_highlight_theme_bg: False
+# Use transparent bacground on code?
+code_transparent_bg: True
 
 open_dirs: 1 # (int or 'all')
 
-logo: Logo.png
+# render_footer: true
 
 
-
-# Show file details in bottom of each file.
-# show_file_details: top|bottom|false.
-
-binds:
-  search: f
+#binds:
+#  search: f
 #  switch_raw_rendered: r
