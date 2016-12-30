@@ -19,7 +19,7 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos
 ### Setup guide
 1. [Download the latest release](https://github.com/xy2z/xyDocs/releases) or `git clone`.
 1. Edit the `config.yaml` file
-1. Setup Apache config (link to example) or use `php -S localhost:89` for testing.
+1. Setup web server: Apache/Nginx/etc - or use `php -S localhost:89` for testing.
 
 
 ## Configuration
