@@ -62,7 +62,7 @@
 			}
 
 			foreach ($tree->files as $file) {
-				$return .= '<li><a href="#' . xy_format_path($file->relative_path) . '" class="link_file" data-path="' . xy_format_path($file->relative_path) . '" ><i class="fa fa-file-o" aria-hidden="true"></i>' . $file->basename . '</a></li>';
+				$return .= '<li><a href="#' . xy_format_path($file->relative_path) . '" class="link_file"><i class="fa fa-file-o" aria-hidden="true"></i>' . $file->basename . '</a></li>';
 			}
 
 			$return .= '</ul>';
