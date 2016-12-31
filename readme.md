@@ -2,7 +2,7 @@
 
 **THIS PROJECT IS STILL UNDER DEVELOPMENT.**
 
-xyDocs is a lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
+xyDocs is a simple, lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
 
 Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos.
 
@@ -14,13 +14,25 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos
 ## Setup
 ### Requirements
 - PHP 7.0 or above
-- Apache or alike
+- Web server (Nginx/Apache/etc)
 
 
 ### Setup guide
 1. [Download the latest release](https://github.com/xy2z/xyDocs/releases) or `git clone`.
 1. Edit the `config.yaml` file
-1. Setup web server: Apache/Nginx/etc - or use `php -S localhost:89` for testing.
+1. Setup the web server (link to examples) - or use `php -S localhost:89` for testing.
+
+
+## Features
+- Cross-platform (currently tested on Ubuntu and Windows)
+- Supports unlimited folders (and files of course)
+- Supports Markdown and HTML files
+- Supports images and GIFs
+- Supports audio and video files
+- Support text files (regardless of the extension)
+- Syntax highlighting for over 169 languages with over 77 themes
+- Multiple responsive themes. You can easily create your own theme in CSS
+- A simple YAML config file to change the settings
 
 
 ## Configuration
@@ -42,13 +54,16 @@ Feel free to edit the `config.yaml` file to fit your needs.
 - **`open_dirs`** (int|string) The number of levels of dirs that should be opnened on page load. Use `all` to open all dirs.
 
 
+
 ## Todo v1.0
 - Responsive themes: default + wiki
-- Themes should only be in 1 file? (so you can't fuck up) ('theme_structure' and 'theme_color'?)
+- Themes should only be in 1 theme (not array)? (so you can't fuck up) ('theme_structure' and 'theme_color'?)
 - Theme template (in 'themes' dir)
 - Security: Are there other ways to go back in a dir like '../'?
 - Custom dir for custom themes? (so it won't be lost when upgrading?)
 - Config should be ignored? How to keep it from being overwritten.
+- "Start" page should start at 'index.*'.
+- Apache config example file (for github wiki)
 - Test:
 	- Test on ubuntu with content_dir? :) (testpingu01)
 	- Test images: jpg, png, gif + more?
@@ -59,13 +74,13 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 ## Known issues
 - Can't load files with special chars path (maybe encoding?)
-- Rendering (binary) files (images/videos/audio etc) bigger than ~50MB. (Possible solution: if the file is over XXMB then show a download link instead)
-- Should work offline.
+
 
 ## Future features
 - htaccess
 - File icons should match file types.
 - Remember scroll position when browsing between files (should also work when using the browsers back/forward)
+- Bug: Can't render (binary) files (images/videos/audio etc) bigger than ~50MB. (Possible solution: if the file is over XXMB then show a download link instead)
 - Search (filenames, dirs and content) (with keypress 'F' to focus, config for binding key)
 - Exclude files/folders in config (glob).
 - More themes (sepia)

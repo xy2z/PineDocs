@@ -15,13 +15,13 @@
 
 
 		public function set_data(array $data) {
-			// All $data will be htmlspecialchars().
+			// All $data will be formatted using htmlspecialchars().
 			$this->data = $data;
 		}
 
 
 		public function set_html(array $html) {
-			// HTML Data that won't be htmlspecialchars()
+			// HTML Data that won't be formatted using htmlspecialchars()
 			$this->html = $html;
 		}
 
@@ -46,20 +46,3 @@
 		}
 
 	}
-
-	/*
-	$xytemplate = new xyTemplate('test-template');
-
-	$xytemplate->render_template('test-template', array(
-		'description' => 'This is php native template',
-		'users' => array(
-			'dude',
-			'al',
-			'xyzz',
-			'ap',
-		),
-		'bye' => 'see you later :)'
-	), array(
-		'h1' => 'PHP <strong>Template</strong>',
-	));
-	*/
