@@ -88,13 +88,6 @@ $(function() {
 			self.elements.file_content.append(audio)
 		} else if (data.type == 'video') {
 			// Video.
-			/*
-			<video width="320" height="240" controls>
-				<source src="movie.mp4" type="video/mp4">
-				<source src="movie.ogg" type="video/ogg">
-				Your browser does not support the video tag.
-			</video>
-			 */
 			var video = $('<video>').prop('controls', true)
 			var source = $('<source>').attr('src', 'data:video/mp4;base64,' + data.content)
 			source.attr('type', 'video/mp4')
@@ -123,8 +116,8 @@ $(function() {
 		// Set title
 		$('title').text(config.title + ' | ' + data.basename)
 
-		// Set position.
-		// self.fixed_content_position()
+		// Scroll to top.
+		self.elements.file_content.scrollTop(0)
 	}
 
 
@@ -199,6 +192,17 @@ $(function() {
 				self.elements.menu.find('a[href="' + $(this).attr('href') + '"]').click()
 			}
 		})
+
+		// URL Hashtag change (user probably went back or forward in browser history)
+		$(window).bind('hashchange', function(e) {
+			console.log('hashchange')
+			var anchor = document.location.hash;
+
+			// Click on the menu link if it exists.
+			self.elements.menu.find('a[href="' + anchor + '"]').click()
+
+			console.log(anchor)
+		});
 	}
 
 

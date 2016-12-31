@@ -3,6 +3,7 @@
 **THIS PROJECT IS STILL UNDER DEVELOPMENT.**
 
 xyDocs is a lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
+
 Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos.
 
 
@@ -57,10 +58,9 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 
 ## Known issues
-- Work when browser goes back/forward between pages.
 - Can't load files with special chars path (maybe encoding?)
 - Rendering (binary) files (images/videos/audio etc) bigger than ~50MB. (Possible solution: if the file is over XXMB then show a download link instead)
-
+- Should work offline.
 
 ## Future features
 - htaccess
