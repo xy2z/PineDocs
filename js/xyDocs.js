@@ -41,6 +41,10 @@ $(function() {
 		// Init
 		self.set_events()
 
+		// Load index file.
+		self.render_file(config.index_data)
+		window.location.hash = config.index_data.relative_path;
+
 		// Autoload file from URL anchor tag?
 		// Click on the link, if it exists.
 		$('a.link_file[href="' + window.location.hash + '"]').click()
@@ -55,6 +59,7 @@ $(function() {
 		var self = this
 
 		// Reset
+		self.set_loading(false)
 		self.elements.file_content.html('')
 		self.elements.file_content.css('white-space', 'normal')
 
@@ -195,14 +200,9 @@ $(function() {
 
 		// URL Hashtag change (user probably went back or forward in browser history)
 		$(window).bind('hashchange', function(e) {
-			console.log('hashchange')
-			var anchor = document.location.hash;
-
 			// Click on the menu link if it exists.
-			self.elements.menu.find('a[href="' + anchor + '"]').click()
-
-			console.log(anchor)
-		});
+			self.elements.menu.find('a[href="' + document.location.hash + '"]').click()
+		})
 	}
 
 
@@ -243,6 +243,11 @@ $(function() {
 				}
 			})
 		}
+
+		// Open all dirs the current file is in. (Reveal in side bar)
+		$('a.link_file.active').parents('ul').prev().find('a.link_dir').not('.link_dir_open').each(function() {
+			$(this).click()
+		})
 	}
 
 

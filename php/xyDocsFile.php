@@ -33,7 +33,7 @@
 		}
 
 
-		public function get_json_data() {
+		public function get_data() {
 			$data = array(
 				'relative_path' => $this->relative_path,
 				'basename' => $this->basename,
@@ -49,7 +49,7 @@
 				$data['content'] = file_get_contents($this->full_path);
 			}
 
-			return json_encode($data);
+			return $data;
 		}
 
 

@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<?php if (is_array($theme)): ?>
 			<?php foreach ($theme as $theme_file): ?>
-				<link rel="stylesheet" type="text/css" href="css/<?= strtolower($theme_file) ?>.css">
+				<link rel="stylesheet" type="text/css" href="themes/<?= strtolower($theme_file) ?>.css">
 			<?php endforeach ?>
 		<?php endif ?>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -39,11 +39,9 @@
 			</div>
 
 			<div id="content">
-				<div id="content_path"><?= $content_path ?></div>
+				<div id="content_path"></div>
 				<div id="loading"></div>
-				<div id="file_content">
-					<?= $content ?>
-				</div>
+				<div id="file_content"></div>
 			</div>
 
 		</div>

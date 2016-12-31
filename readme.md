@@ -45,14 +45,19 @@ Feel free to edit the `config.yaml` file to fit your needs.
 - **`content_dir`** (string) Path to the dir you want to use.
 
 #### Optional settings
+- **`logo`** (string) Path to the logo. If nothing is set, the `xyDocs` logo will be used.
+
+- **`index`** (string) Relative path to the index file. Default is array of `index.md`, `index.html`, `index.txt`, `index`.
+
 - **`theme`** (string) Available themes: `default`, `default-dark`, `wiki`, `wiki-dark`.
 
-- **`logo`** (string) Path to the logo. If nothing is set, the `xyDocs` logo will be used.
+- **`highlight_theme`** (string) The theme to use for code. See a list at https://highlightjs.org/static/demo/
 
 - **`code_transparent_bg`** (bool) If `true`, all  will use the highlight theme. If `false`, the background will be transparent.
 
 - **`open_dirs`** (int|string) The number of levels of dirs that should be opnened on page load. Use `all` to open all dirs.
 
+- **`render_footer`** (bool) Render the menu footer?
 
 
 ## Todo v1.0
@@ -60,7 +65,6 @@ Feel free to edit the `config.yaml` file to fit your needs.
 - Themes should only be in 1 theme (not array)? (so you can't fuck up) ('theme_structure' and 'theme_color'?)
 - Theme template (in 'themes' dir)
 - Security: Are there other ways to go back in a dir like '../'?
-- Custom dir for custom themes? (so it won't be lost when upgrading?)
 - Config should be ignored? How to keep it from being overwritten.
 - "Start" page should start at 'index.*'.
 - Apache config example file (for github wiki)

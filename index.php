@@ -1,26 +1,26 @@
 <?php
 
 	// Constants
-	define('xyDocs_version', '1.0.0-beta.1');
+	define('xyDocs_version', '1.0.0-beta.2');
 
 	// Autoloader
 	spl_autoload_register(function ($class_name) {
 		require_once 'php/' . $class_name . '.php';
 	});
 
-	error_reporting(E_ALL);
-
 	require_once 'php/toolbox.php';
 
 
 	// Load config.
 	$config = (object) yaml_parse_file('config.yaml');
-	xyDocsFile::$content_dir = xy_format_path($config->content_dir);
+	// Make sure the 'content_dir' is ending on a '/' for security.
+	$config->content_dir = xy_format_path($config->content_dir, true);
+	xyDocsFile::$content_dir = $config->content_dir;
 
 	if (isset($_GET['action']) && $_GET['action'] == 'get_file_data' && isset($_GET['relative_path'])) {
 		header('Content-Type: application/json');
-		$xyDocsFile = new xyDocsFile(xy_format_path($config->content_dir) . $_GET['relative_path']);
-		echo $xyDocsFile->get_json_data();
+		$xyDocsFile = new xyDocsFile(xy_format_path($config->content_dir . $_GET['relative_path']));
+		echo json_encode($xyDocsFile->get_data());
 		exit;
 	}
 
@@ -34,6 +34,33 @@
 		$theme = array($theme);
 	}
 
+
+	// Get index file
+	if (isset($config->index)) {
+		$indexes = [$config->index];
+	} else {
+		$indexes = ['index.md', 'index.html', 'index.txt', 'index'];
+	}
+
+	$index_found = false;
+	foreach ($indexes as $index) {
+		$path = $config->content_dir . $index;
+		if (file_exists($path)) {
+			// $content = nl2br(file_get_contents($index));
+			// $content_path = $index;
+			$xyDocsFile = new xyDocsFile($path);
+			$index_data = $xyDocsFile->get_data();
+		}
+	}
+
+	if (!$index_found) {
+		// No index file added.
+		// Use the first file found?
+		$content = 'No index file found. Create a file called index.md in the content_dir.';
+		$content_path = '';
+	}
+
+
 	// Prepare template.
 	$main = new xyTemplate('main');
 	$main->set_data(array(
@@ -45,28 +72,20 @@
 		'search_value' => '',
 		'search_placeholder' => 'Search here...',
 		'xyDocs_version' => xyDocs_version,
-		'js_vars' => array(
-			'title' => $config->title ?? 'xyDocs',
-			'code_transparent_bg' => $config->code_transparent_bg ?? false,
-			'open_dirs' => $config->open_dirs ?? 0
-		)
 	));
 
-	if (isset($_GET['file'])) {
-		$content = nl2br(file_get_contents($tree->all_files[$_GET['file']]->full_path));
-		$content_path = $tree->all_files[$_GET['file']]->full_path;
-		$tree->active_hash = $_GET['file'];
-	} else {
-		$content = nl2br(file_get_contents('default-welcome.md'));
-		$content_path = 'default-welcome.md';
-	}
 
 	// Set HTML variables
 	$main->set_html(array(
 		'menu' => $tree->render_tree_return(),
-		'content_path' => $content_path,
-		'content' => $content
+		'js_vars' => array(
+			'title' => $config->title ?? 'xyDocs',
+			'code_transparent_bg' => $config->code_transparent_bg ?? false,
+			'open_dirs' => $config->open_dirs ?? 0,
+			'index_data' => $index_data
+		)
 	));
+
 
 	// Render main template.
 	$main->render();
