@@ -19,7 +19,7 @@
 
 	if (isset($_GET['action']) && $_GET['action'] == 'get_file_data' && isset($_GET['relative_path'])) {
 		header('Content-Type: application/json');
-		$xyDocsFile = new xyDocsFile(xy_format_path($config->content_dir) . xy_urldecode($_GET['relative_path']));
+		$xyDocsFile = new xyDocsFile(xy_format_path($config->content_dir) . $_GET['relative_path']);
 		echo $xyDocsFile->get_json_data();
 		exit;
 	}
