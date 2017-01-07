@@ -38,7 +38,7 @@
 				</div>
 			</div>
 
-			<div id="content">
+			<div id="content_wrapper">
 				<div id="content_path"></div>
 				<div id="loading"></div>
 				<div id="file_content"></div>

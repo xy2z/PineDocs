@@ -65,20 +65,20 @@ body {
 
 
 /*** CONTENT ***/
-#content {
+#content_wrapper {
 }
 
-#content #loading {
+#content_wrapper #loading {
 }
 
-#content .error {
+#content_wrapper .error {
 }
 
 
 
 /*** CONTENT ELEMENTS ***/
-#content code {
+#content_wrapper code {
 }
 
-#content a {
+#content_wrapper a {
 }

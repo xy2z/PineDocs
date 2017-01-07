@@ -106,7 +106,7 @@ body {
 
 
 /*** CONTENT ***/
-#content {
+#content_wrapper {
 	width: 80%;
 	background: #fff;
 	font-size: 14px;

@@ -30,7 +30,6 @@ $(function() {
 		self.elements = {
 			menu: $('#menu'),
 			content_path: $('#content_path'),
-			content: $('#content'),
 			file_content: $('#file_content'),
 			loading: $('#loading')
 		}

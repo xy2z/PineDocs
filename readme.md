@@ -14,7 +14,8 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos
 ## Setup
 ### Requirements
 - PHP 7.0 or above
-- Web server (Nginx/Apache/etc)
+- YAML extension for PHP (https://pecl.php.net/package/yaml)
+- Web server: Nginx/Apache/etc
 
 
 ### Setup guide
@@ -63,11 +64,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 ## Todo v1.0
 - Responsive themes: default + wiki
 - Themes should only be in 1 theme (not array)? (so you can't fuck up) ('theme_structure' and 'theme_color'?)
-- Theme template (in 'themes' dir)
-- Security: Are there other ways to go back in a dir like '../'?
 - Config should be ignored? How to keep it from being overwritten.
-- "Start" page should start at 'index.*'.
-- Apache config example file (for github wiki)
 - Test:
 	- Test on ubuntu with content_dir? :) (testpingu01)
 	- Test images: jpg, png, gif + more?
@@ -82,6 +79,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 ## Future features
 - htaccess
+- Apache config example file (for github wiki)
 - File icons should match file types.
 - Remember scroll position when browsing between files (should also work when using the browsers back/forward)
 - Bug: Can't render (binary) files (images/videos/audio etc) bigger than ~50MB. (Possible solution: if the file is over XXMB then show a download link instead)
