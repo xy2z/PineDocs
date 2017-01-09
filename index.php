@@ -1,72 +1,76 @@
 <?php
 
-	// Constants
-	define('xyDocs_version', '1.0.0-beta.1');
-
 	// Autoloader
 	spl_autoload_register(function ($class_name) {
 		require_once 'php/' . $class_name . '.php';
 	});
 
-	error_reporting(E_ALL);
-
 	require_once 'php/toolbox.php';
 
 
 	// Load config.
-	$config = (object) yaml_parse_file('config.yaml');
-	xyDocsFile::$content_dir = xy_format_path($config->content_dir);
+	PineDocs::load_config();
 
+
+	// Get file from ajax call.
 	if (isset($_GET['action']) && $_GET['action'] == 'get_file_data' && isset($_GET['relative_path'])) {
 		header('Content-Type: application/json');
-		$xyDocsFile = new xyDocsFile(xy_format_path($config->content_dir) . xy_urldecode($_GET['relative_path']));
-		echo $xyDocsFile->get_json_data();
+		$PineDocsFile = new PineDocsFile(xy_format_path(PineDocs::$config->content_dir . $_GET['relative_path']));
+		echo json_encode($PineDocsFile->get_data());
 		exit;
 	}
 
+
 	// Get tree
 	require_once 'php/xyTree.php';
-	$tree = new xyTree($config->content_dir);
+	$tree = new xyTree();
 
-	// Make sure $theme is array.
-	$theme = $config->theme ?? array('default');
-	if (!is_array($theme)) {
-		$theme = array($theme);
+
+	// Get index file
+	if (isset(PineDocs::$config->index)) {
+		$indexes = [PineDocs::$config->index];
+	} else {
+		$indexes = ['index.md', 'index.html', 'index.txt', 'index'];
 	}
+
+	$index_found = false;
+	foreach ($indexes as $index) {
+		$path = PineDocs::$config->content_dir . $index;
+		if (file_exists($path)) {
+			// $content = nl2br(file_get_contents($index));
+			// $content_path = $index;
+			$PineDocsFile = new PineDocsFile($path);
+			$index_data = $PineDocsFile->get_data();
+		}
+	}
+
+	if (!$index_found) {
+		// No index file added.
+		// Use the first file found?
+		$content = 'No index file found. Create a file called index.md in the content_dir.';
+		$content_path = '';
+	}
+
 
 	// Prepare template.
 	$main = new xyTemplate('main');
 	$main->set_data(array(
-		'title' => $config->title ?? 'xyDocs 1.0',
-		'theme' => $theme,
-		'highlight_theme' => strtolower(str_replace(' ', '_', $config->highlight_theme)) ?? 'default',
-		'logo' => $config->logo ?? '../Logo.png',
-		'render_footer' => $config->render_footer ?? true,
-		'search_value' => '',
-		'search_placeholder' => 'Search here...',
-		'xyDocs_version' => xyDocs_version,
-		'js_vars' => array(
-			'title' => $config->title ?? 'xyDocs',
-			'code_transparent_bg' => $config->code_transparent_bg ?? false,
-			'open_dirs' => $config->open_dirs ?? 0
-		)
+		// 'search_value' => '',
+		// 'search_placeholder' => 'Search here...',
 	));
 
-	if (isset($_GET['file'])) {
-		$content = nl2br(file_get_contents($tree->all_files[$_GET['file']]->full_path));
-		$content_path = $tree->all_files[$_GET['file']]->full_path;
-		$tree->active_hash = $_GET['file'];
-	} else {
-		$content = nl2br(file_get_contents('default-welcome.md'));
-		$content_path = 'default-welcome.md';
-	}
 
 	// Set HTML variables
 	$main->set_html(array(
 		'menu' => $tree->render_tree_return(),
-		'content_path' => $content_path,
-		'content' => $content
+		'js_vars' => array(
+			'title' => PineDocs::$config->title,
+			'code_transparent_bg' => PineDocs::$config->code_transparent_bg,
+			'open_dirs' => PineDocs::$config->open_dirs,
+			'index_data' => $index_data
+		)
 	));
+
 
 	// Render main template.
 	$main->render();

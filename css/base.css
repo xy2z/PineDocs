@@ -78,7 +78,7 @@ body {
 
 
 /*** CONTENT ***/
-#content {
+#content_wrapper {
 	float: left;
 	width: 850px;
 	height: 100%;
@@ -123,10 +123,10 @@ body {
 
 
 /*** Text/Markdown ***/
-#content p,
-#content ul,
-#content ol,
-#content code {
+#content_wrapper p,
+#content_wrapper ul,
+#content_wrapper ol,
+#content_wrapper code {
 	line-height: 1.5em;
 }
 
@@ -172,17 +172,17 @@ video {
 	width: 100%;
 }
 
-#content code {
+#content_wrapper code {
 	display: block;
 	width: 100%;
 	white-space: pre-wrap;
 	padding: 1em;
 }
 
-#content code.file {
+#content_wrapper code.file {
 }
 
-#content code.nobg {
+#content_wrapper code.nobg {
 	background: none;
 }
 

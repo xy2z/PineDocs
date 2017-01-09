@@ -22,15 +22,14 @@ $(function() {
 	}
 
 
-	// xyDocs class
-	var xyDocs = function() {
+	// PineDocs class
+	var PineDocs = function() {
 		var self = this
 
 		// Elements
 		self.elements = {
 			menu: $('#menu'),
 			content_path: $('#content_path'),
-			content: $('#content'),
 			file_content: $('#file_content'),
 			loading: $('#loading')
 		}
@@ -41,9 +40,15 @@ $(function() {
 		// Init
 		self.set_events()
 
-		// Autoload file from URL anchor tag?
-		// Click on the link, if it exists.
-		$('a.link_file[href="' + window.location.hash + '"]').click()
+		// Autoload file from URL anchor tag.
+		if (window.location.hash.length >= 2) {
+			// Click on the link, if it exists.
+			$('a.link_file[href="' + window.location.hash + '"]').click()
+		} else {
+			// Load index file.
+			self.render_file(config.index_data)
+			window.location.hash = config.index_data.relative_path;
+		}
 
 		// Open dirs automatically.
 		self.pageload_open_dirs()
@@ -51,10 +56,11 @@ $(function() {
 
 
 	// Render file content
-	xyDocs.prototype.render_file = function(data) {
+	PineDocs.prototype.render_file = function(data) {
 		var self = this
 
 		// Reset
+		self.set_loading(false)
 		self.elements.file_content.html('')
 		self.elements.file_content.css('white-space', 'normal')
 
@@ -88,13 +94,6 @@ $(function() {
 			self.elements.file_content.append(audio)
 		} else if (data.type == 'video') {
 			// Video.
-			/*
-			<video width="320" height="240" controls>
-				<source src="movie.mp4" type="video/mp4">
-				<source src="movie.ogg" type="video/ogg">
-				Your browser does not support the video tag.
-			</video>
-			 */
 			var video = $('<video>').prop('controls', true)
 			var source = $('<source>').attr('src', 'data:video/mp4;base64,' + data.content)
 			source.attr('type', 'video/mp4')
@@ -123,13 +122,13 @@ $(function() {
 		// Set title
 		$('title').text(config.title + ' | ' + data.basename)
 
-		// Set position.
-		// self.fixed_content_position()
+		// Scroll to top.
+		self.elements.file_content.scrollTop(0)
 	}
 
 
 	// Set events
-	xyDocs.prototype.set_events = function() {
+	PineDocs.prototype.set_events = function() {
 		var self = this
 
 		// Event for clicking menu links.
@@ -199,11 +198,17 @@ $(function() {
 				self.elements.menu.find('a[href="' + $(this).attr('href') + '"]').click()
 			}
 		})
+
+		// URL Hashtag change (user probably went back or forward in browser history)
+		$(window).bind('hashchange', function(e) {
+			// Click on the menu link if it exists.
+			self.elements.menu.find('a[href="' + document.location.hash + '"]').click()
+		})
 	}
 
 
 	// Show or hide loading.
-	xyDocs.prototype.set_loading = function(state, message) {
+	PineDocs.prototype.set_loading = function(state, message) {
 		var self = this
 
 		if (state) {
@@ -217,7 +222,7 @@ $(function() {
 	}
 
 
-	xyDocs.prototype.render_error_message = function(message) {
+	PineDocs.prototype.render_error_message = function(message) {
 		var self = this
 		self.elements.content_path.text('Error')
 		var error_element = $('<div>').addClass('error').html(message)
@@ -225,7 +230,7 @@ $(function() {
 	}
 
 
-	xyDocs.prototype.pageload_open_dirs = function() {
+	PineDocs.prototype.pageload_open_dirs = function() {
 		var self = this
 
 		if (config.open_dirs == 'all') {
@@ -239,10 +244,15 @@ $(function() {
 				}
 			})
 		}
+
+		// Open all dirs the current file is in. (Reveal in side bar)
+		$('a.link_file.active').parents('ul').prev().find('a.link_dir').not('.link_dir_open').each(function() {
+			$(this).click()
+		})
 	}
 
 
 	// Init
-	new xyDocs()
+	new PineDocs()
 
 })

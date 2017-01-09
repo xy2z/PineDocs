@@ -32,9 +32,7 @@ body {
 #menu ul li a.active:hover,
 #menu ul li a.active,
 #menu ul li a.active i.fa {
-	color: #fff;
 	color: #f70;
-	/*color: #CF6A4C;*/
 }
 
 
@@ -46,7 +44,6 @@ body {
 
 #menu a.link_dir_open i.fa {
 	color: #F9EE98;
-	/*color: #CDA869;*/
 
 }
 
@@ -62,10 +59,8 @@ body {
 
 
 /*** CONTENT ***/
-#content {
+#content_wrapper {
 	background: #292929;
-	/*overflow-y: hidden;*/
-
 }
 
 

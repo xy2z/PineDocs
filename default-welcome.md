@@ -1,3 +1,3 @@
-# Welcome to xyDocs
+# Welcome to PineDocs
 
-https://github.com/xy2z/xyDocs
+You haven't set the `content_dir` in the `config.yaml` file.
