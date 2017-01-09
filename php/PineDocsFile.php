@@ -1,10 +1,9 @@
 <?php
 
 
-	class xyDocsFile {
+	class PineDocsFile {
 
 
-		static public $content_dir;
 		public $full_path; // Full system path.
 		public $relative_path; // Relative path to content_dir.
 		public $basename;
@@ -15,15 +14,17 @@
 
 
 		public function __construct(string $full_path) {
-			if (strpos($full_path, '../')) {
+			if (strpos($full_path, '../') || PineDocs::exclude_file($full_path)) {
 				// The client must never have access to anything but the 'content_dir'.
-				exit();
+				exit;
 			}
-			$this->full_path = $full_path;
-			$this->relative_path = str_replace(self::$content_dir, '', $full_path);
-			$this->basename = utf8_encode(basename($full_path));
-			$this->pathinfo = pathinfo($full_path);
-			$this->filesize = filesize($full_path);
+
+			$this->full_path = mb_convert_encoding($full_path, 'UTF-8', 'ISO-8859-1');
+
+			$this->relative_path = str_replace(PineDocs::$config->content_dir, '', $this->full_path);
+			$this->basename = utf8_encode(basename($this->full_path));
+			$this->pathinfo = pathinfo($this->full_path);
+			$this->filesize = filesize($this->full_path);
 
 			if (isset($this->pathinfo['extension'])) {
 				$this->pathinfo['extension'] = strtolower($this->pathinfo['extension']);

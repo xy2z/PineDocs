@@ -3,15 +3,11 @@
 
 	class xyTree {
 
-		private $content_dir;
-		private $tree; // files are duplicate in $tree and $all_files...
+		private $tree;
 		private $files;
-		public $all_files;
-		public $active_hash;
 
 
-		public function __construct(string $dir) {
-			$this->content_dir = $dir;
+		public function __construct() {
 			$this->tree = $this->get_tree();
 		}
 
@@ -23,8 +19,8 @@
 			);
 
 			if (is_null($dir)) {
-				// Start from $this->content_dir.
-				$dir = $this->content_dir;
+				// Start from content_dir.
+				$dir = PineDocs::$config->content_dir;
 			}
 
 			foreach (scandir($dir) as $item) {
@@ -38,8 +34,12 @@
 				if (is_dir($full_path)) {
 					$tree->dirs[$item] = $this->get_tree($full_path);
 				} else {
-					$sha1 = sha1($full_path);
-					$this->all_files[$sha1] = $tree->files[$sha1] = new xyDocsFile($full_path);
+					// Exclude item?
+					if (PineDocs::exclude_file($full_path)) {
+						continue;
+					}
+
+					$tree->files[] = new PineDocsFile($full_path);
 
 				}
 			}
@@ -68,5 +68,6 @@
 			$return .= '</ul>';
 			return $return;
 		}
+
 
 	}

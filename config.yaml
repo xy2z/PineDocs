@@ -1,10 +1,10 @@
 #
 # See a detailed list of all settings here:
-# https://github.com/xy2z/xyDocs/tree/master##configuration
+# https://github.com/xy2z/PineDocs/tree/master#configuration
 #
 
 # The title of the
-title: xyDocs
+title: PineDocs
 
 # The directory that contains all the content
 content_dir: D:\Test\Docs\Dokumenter
@@ -35,4 +35,8 @@ code_transparent_bg: False
 open_dirs: 1 # (int or 'all')
 
 # Render the menu footer
-# render_footer: true
+render_footer: true
+
+exclude_files:
+  - 'index'
+  - '/\.yaml/'

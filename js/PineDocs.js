@@ -22,8 +22,8 @@ $(function() {
 	}
 
 
-	// xyDocs class
-	var xyDocs = function() {
+	// PineDocs class
+	var PineDocs = function() {
 		var self = this
 
 		// Elements
@@ -40,13 +40,15 @@ $(function() {
 		// Init
 		self.set_events()
 
-		// Load index file.
-		self.render_file(config.index_data)
-		window.location.hash = config.index_data.relative_path;
-
-		// Autoload file from URL anchor tag?
-		// Click on the link, if it exists.
-		$('a.link_file[href="' + window.location.hash + '"]').click()
+		// Autoload file from URL anchor tag.
+		if (window.location.hash.length >= 2) {
+			// Click on the link, if it exists.
+			$('a.link_file[href="' + window.location.hash + '"]').click()
+		} else {
+			// Load index file.
+			self.render_file(config.index_data)
+			window.location.hash = config.index_data.relative_path;
+		}
 
 		// Open dirs automatically.
 		self.pageload_open_dirs()
@@ -54,7 +56,7 @@ $(function() {
 
 
 	// Render file content
-	xyDocs.prototype.render_file = function(data) {
+	PineDocs.prototype.render_file = function(data) {
 		var self = this
 
 		// Reset
@@ -126,7 +128,7 @@ $(function() {
 
 
 	// Set events
-	xyDocs.prototype.set_events = function() {
+	PineDocs.prototype.set_events = function() {
 		var self = this
 
 		// Event for clicking menu links.
@@ -206,7 +208,7 @@ $(function() {
 
 
 	// Show or hide loading.
-	xyDocs.prototype.set_loading = function(state, message) {
+	PineDocs.prototype.set_loading = function(state, message) {
 		var self = this
 
 		if (state) {
@@ -220,7 +222,7 @@ $(function() {
 	}
 
 
-	xyDocs.prototype.render_error_message = function(message) {
+	PineDocs.prototype.render_error_message = function(message) {
 		var self = this
 		self.elements.content_path.text('Error')
 		var error_element = $('<div>').addClass('error').html(message)
@@ -228,7 +230,7 @@ $(function() {
 	}
 
 
-	xyDocs.prototype.pageload_open_dirs = function() {
+	PineDocs.prototype.pageload_open_dirs = function() {
 		var self = this
 
 		if (config.open_dirs == 'all') {
@@ -251,6 +253,6 @@ $(function() {
 
 
 	// Init
-	new xyDocs()
+	new PineDocs()
 
 })
