@@ -60,7 +60,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 - **`render_footer`** (bool) Render the menu footer?
 
-- **`exclude_files`** (array) List of files to exclude.
+- **`exclude_files`** (array) List of files to exclude. Supports regex if the format is /regex/i.
 
 
 ## Todo v1.0
