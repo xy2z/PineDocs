@@ -61,7 +61,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 ## Todo v1.0
 - Responsive themes: default + wiki
-- Themes should only be in 1 theme (not array)? (so you can't fuck up) ('theme_structure' and 'theme_color'?)
+- Themes should only be in 1 theme (not array)? (so users can't fuck up) ('theme_structure' and 'theme_color'?)
 - Config should be git ignored? (To keep it from being overwritten on upgrade)
 - Test:
 	- Test on Ubuntu with content_dir
@@ -69,7 +69,6 @@ Feel free to edit the `config.yaml` file to fit your needs.
 	- Test videos: ogg, etc.
 	- Test audio files: avi?
 	- Test in all browsers + mobile browsers.
-- Exclude files/folders in config (glob).
 
 
 ## Known issues
@@ -92,11 +91,9 @@ Feel free to edit the `config.yaml` file to fit your needs.
 - Markdown: Generate table of contents (config)
 - Show error message if filesize is bigger than PHP memory_limit. (instead of php's fatal error)
 - Create/delete/edit files directly on the site?
-- YAML exclude files with filter ("\*.git") (set in default config)
 - Bind '*' key to open all dirs.
 - Support for more markup languages (https://en.wikipedia.org/wiki/Lightweight_markup_language)
-- Config: show_file_extensions,
-- Make all content links open in new tab (setting)
+- Make all content links open in new tab (setting, default true unless it's internal links)
 - Work on shared network drives (need test)
 - File actions (in content_path)
 	- Fullscreen file-content

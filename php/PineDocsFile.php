@@ -21,7 +21,7 @@
 
 			$this->full_path = $full_path;
 			$this->relative_path = utf8_encode(str_replace(PineDocs::$config->content_dir, '', $this->full_path));
-			$this->basename = utf8_encode(basename($this->full_path));
+			$this->basename = $this->get_basename();
 			$this->pathinfo = pathinfo($this->full_path);
 			$this->filesize = filesize($this->full_path);
 
@@ -74,6 +74,18 @@
 				// Code.
 				$this->type = 'code';
 			}
+		}
+
+
+		private function get_basename() {
+
+			if (PineDocs::$config->show_file_extension) {
+				return utf8_encode(basename($this->full_path));
+			} else {
+				$basename = utf8_encode(pathinfo($this->full_path, PATHINFO_FILENAME));
+			}
+
+			return $basename;
 		}
 
 	}

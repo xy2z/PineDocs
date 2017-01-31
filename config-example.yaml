@@ -1,3 +1,4 @@
+# PineDocs config file.
 #
 # See a detailed list of all settings here:
 # https://github.com/xy2z/PineDocs/tree/master#configuration
@@ -11,7 +12,7 @@ content_dir: content
 # content_dir: P:\Dokumenter
 
 # What logo to show in the top of the menu?
-logo: PineDocs--.png
+# logo: my-logo.png
 
 #################
 # Optional settings:

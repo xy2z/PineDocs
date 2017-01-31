@@ -29,7 +29,7 @@
 		public function render() {
 			extract(self::multi_escape($this->data));
 			extract($this->html);
-			$template_content = require_once('templates/' . $this->template_name . '.php');
+			$template_content = require_once('../templates/' . $this->template_name . '.php');
 		}
 
 

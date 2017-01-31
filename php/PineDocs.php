@@ -7,7 +7,7 @@
 		static public $config;
 
 		static public function load_config() {
-			$config = yaml_parse_file('config.yaml');
+			$config = yaml_parse_file('../config.yaml');
 
 			if (!$config) {
 				exit('Error: Could not parse config.yaml');
@@ -35,14 +35,12 @@
 				// Todo: Must also work on Windows, where it may start with 'D:/dir/logo.png';
 				if (substr(self::$config->logo, 0, 1) != '/') {
 					// Add content dir before path, because the logo is a relative path.
-					self::$config->logo = self::$config->content_dir . 'PineDocs.png';
+					self::$config->logo = self::$config->content_dir . self::$config->logo;
 				}
 			} else {
 				// Default logo.
-				self::$config->logo = '../PineDocs.png';
+				self::$config->logo = 'PineDocs.png';
 			}
-
-			var_dump(self::$config->logo);
 
 			if (!isset(self::$config->highlight_theme) || (empty(self::$config->highlight_theme))) {
 				self::$config->highlight_theme = 'default';
@@ -54,6 +52,11 @@
 
 			if (!isset(self::$config->open_dirs)) {
 				self::$config->open_dirs = 0;
+			}
+
+			if (!isset(self::$config->show_file_extension)) {
+				# Set default value.
+				self::$config->show_file_extension = true;
 			}
 		}
 
