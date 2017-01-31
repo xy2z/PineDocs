@@ -17,7 +17,7 @@ body {
 /*** MENU ***/
 #menu {
 	background: #3a4967;
-	background: #444;
+	background: #555;
 	color: #fff;
 }
 
@@ -60,6 +60,7 @@ body {
 #menu ul li a.active i.fa {
 	color: #fff;
 	color: #f70;
+	color: #fff;
 }
 
 
@@ -85,16 +86,15 @@ body {
 
 
 /*** CONTENT PATH ***/
-#content_path {
+#content_top {
 	color: #999;
 	font-size: 0.9em;
 	font-family: monospace;
-	background: #ffe;
+	background: #ffd;
 	font-weight: bold;
-	opacity: 0.95;
 }
 
-#content_path .filesize {
+#content_top .filesize {
 	opacity: 0.5;
 }
 

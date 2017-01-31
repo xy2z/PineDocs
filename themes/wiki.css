@@ -89,7 +89,7 @@ body {
 
 
 /*** CONTENT PATH ***/
-#content_path {
+#content_top {
 	color: #000;
 	/*font-family: monospace;*/
 	background: #f6f6f6;
@@ -99,7 +99,7 @@ body {
 	border-bottom: 1px solid #a7d7f9;
 }
 
-#content_path .filesize {
+#content_top .filesize {
 	color: #999;
 }
 

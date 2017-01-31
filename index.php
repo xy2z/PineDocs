@@ -1,5 +1,16 @@
 <?php
 
+	// Validate PHP version
+	$phpversion = explode('.', phpversion());
+	if ($phpversion[0] < 7) {
+		exit('Error: This PHP version (' . phpversion() . ') is not supported. Please use PHP 7+');
+	}
+
+	// Check if yaml extension is installed
+	if (!extension_loaded('yaml')) {
+		exit('Error: Missing PHP YAML extension. https://pecl.php.net/package/yaml');
+	}
+
 	// Autoloader
 	spl_autoload_register(function ($class_name) {
 		require_once 'php/' . $class_name . '.php';
@@ -15,15 +26,16 @@
 	// Get file from ajax call.
 	if (isset($_GET['action']) && $_GET['action'] == 'get_file_data' && isset($_GET['relative_path'])) {
 		header('Content-Type: application/json');
-		$PineDocsFile = new PineDocsFile(xy_format_path(PineDocs::$config->content_dir . $_GET['relative_path']));
+		$relative_path = utf8_decode($_GET['relative_path']);
+		$PineDocsFile = new PineDocsFile(xy_format_path(PineDocs::$config->content_dir . $relative_path));
 		echo json_encode($PineDocsFile->get_data());
 		exit;
 	}
 
 
 	// Get tree
-	require_once 'php/xyTree.php';
-	$tree = new xyTree();
+	require_once 'php/PineDocsTree.php';
+	$tree = new PineDocsTree();
 
 
 	// Get index file
@@ -33,12 +45,11 @@
 		$indexes = ['index.md', 'index.html', 'index.txt', 'index'];
 	}
 
+	$index_data = 'Hello. No index file found.';
 	$index_found = false;
 	foreach ($indexes as $index) {
 		$path = PineDocs::$config->content_dir . $index;
 		if (file_exists($path)) {
-			// $content = nl2br(file_get_contents($index));
-			// $content_path = $index;
 			$PineDocsFile = new PineDocsFile($path);
 			$index_data = $PineDocsFile->get_data();
 		}

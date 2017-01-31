@@ -11,12 +11,12 @@ content_dir: content
 # content_dir: P:\Dokumenter
 
 # What logo to show in the top of the menu?
-logo: PineDocs.png
+logo: PineDocs--.png
 
 #################
 # Optional settings:
 
-index: index.md
+index: hey.txt
 
 # Theme to use.
 theme:
@@ -39,5 +39,5 @@ open_dirs: 0
 render_footer: true
 
 exclude_files:
-  - 'test-string'
+  - 'index'
   - '/\.yaml/'

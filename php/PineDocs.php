@@ -31,6 +31,19 @@
 				// }
 			}
 
+			if (isset(self::$config->logo) && !empty(self::$config->logo)) {
+				// Todo: Must also work on Windows, where it may start with 'D:/dir/logo.png';
+				if (substr(self::$config->logo, 0, 1) != '/') {
+					// Add content dir before path, because the logo is a relative path.
+					self::$config->logo = self::$config->content_dir . 'PineDocs.png';
+				}
+			} else {
+				// Default logo.
+				self::$config->logo = '../PineDocs.png';
+			}
+
+			var_dump(self::$config->logo);
+
 			if (!isset(self::$config->highlight_theme) || (empty(self::$config->highlight_theme))) {
 				self::$config->highlight_theme = 'default';
 			}

@@ -28,10 +28,13 @@ $(function() {
 
 		// Elements
 		self.elements = {
+			menu_wrapper: $('#menu_wrapper'),
+			menu_close: $('#menu_close'),
 			menu: $('#menu'),
 			content_path: $('#content_path'),
 			file_content: $('#file_content'),
-			loading: $('#loading')
+			loading: $('#loading'),
+			mobile_nav_icon: $('#mobile_nav_icon')
 		}
 
 		// Loaded responses.
@@ -47,7 +50,9 @@ $(function() {
 		} else {
 			// Load index file.
 			self.render_file(config.index_data)
-			window.location.hash = config.index_data.relative_path;
+			if (config.index_data.relative_path) {
+				window.location.hash = config.index_data.relative_path;
+			}
 		}
 
 		// Open dirs automatically.
@@ -111,12 +116,14 @@ $(function() {
 				hljs.highlightBlock(block)
 			})
 		} else {
-			self.elements.file_content.html(nl2br(data.content))
+			if (typeof data.content == 'string') {
+				self.elements.file_content.html(nl2br(data.content))
 
-			// Syntax highlighting
-			self.elements.file_content.find('code').each(function(i, block) {
-				hljs.highlightBlock(block)
-			})
+				// Syntax highlighting
+				self.elements.file_content.find('code').each(function(i, block) {
+					hljs.highlightBlock(block)
+				})
+			}
 		}
 
 		// Set title
@@ -124,6 +131,11 @@ $(function() {
 
 		// Scroll to top.
 		self.elements.file_content.scrollTop(0)
+
+		// Hide menu on mobile.
+		if (self.elements.menu_close.is(':visible')) {
+			self.hide_mobile_menu()
+		}
 	}
 
 
@@ -157,6 +169,7 @@ $(function() {
 				data: {
 					action: 'get_file_data',
 					relative_path: href
+					// relative_path: encodeURIComponent(href)
 				},
 			})
 			.done(function(response) {
@@ -204,6 +217,23 @@ $(function() {
 			// Click on the menu link if it exists.
 			self.elements.menu.find('a[href="' + document.location.hash + '"]').click()
 		})
+
+
+		// Show Mobile menu
+		self.elements.mobile_nav_icon.click(function() {
+			self.show_mobile_menu()
+		})
+
+
+		// Hide mobile menu
+		self.elements.file_content.click(function() {
+			self.hide_mobile_menu()
+		})
+
+		self.elements.menu_close.click(function() {
+			// self.elements.menu_wrapper.hide()
+			self.hide_mobile_menu()
+		})
 	}
 
 
@@ -233,6 +263,8 @@ $(function() {
 	PineDocs.prototype.pageload_open_dirs = function() {
 		var self = this
 
+		console.log(config.open_dirs)
+
 		if (config.open_dirs == 'all') {
 			// Open all dirs.
 			$('a.link_dir').click()
@@ -249,6 +281,19 @@ $(function() {
 		$('a.link_file.active').parents('ul').prev().find('a.link_dir').not('.link_dir_open').each(function() {
 			$(this).click()
 		})
+
+	}
+
+
+	PineDocs.prototype.show_mobile_menu = function() {
+		var self = this
+		self.elements.menu_wrapper.hide().removeClass('hidden').slideDown('fast')
+	}
+
+
+	PineDocs.prototype.hide_mobile_menu = function() {
+		var self = this
+		self.elements.menu_wrapper.addClass('hidden')
 	}
 
 

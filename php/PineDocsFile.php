@@ -19,9 +19,8 @@
 				exit;
 			}
 
-			$this->full_path = mb_convert_encoding($full_path, 'UTF-8', 'ISO-8859-1');
-
-			$this->relative_path = str_replace(PineDocs::$config->content_dir, '', $this->full_path);
+			$this->full_path = $full_path;
+			$this->relative_path = utf8_encode(str_replace(PineDocs::$config->content_dir, '', $this->full_path));
 			$this->basename = utf8_encode(basename($this->full_path));
 			$this->pathinfo = pathinfo($this->full_path);
 			$this->filesize = filesize($this->full_path);
@@ -46,7 +45,6 @@
 			if ($this->is_binary) {
 				$data['content'] = base64_encode(file_get_contents($this->full_path));
 			} else {
-				// $data['content'] = utf8_encode(file_get_contents($this->full_path));
 				$data['content'] = file_get_contents($this->full_path);
 			}
 

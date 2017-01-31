@@ -71,13 +71,13 @@ body {
 
 
 /*** CONTENT PATH ***/
-#content_path {
+#content_top {
 	background: #333;
 	border-color: #666;
 	color: #f70;
 }
 
-#content_path .filesize {
+#content_top .filesize {
 }
 
 

@@ -1,7 +1,7 @@
 <?php
 
 
-	class xyTree {
+	class PineDocsTree {
 
 		private $tree;
 		private $files;
@@ -57,12 +57,12 @@
 			}
 
 			foreach ($tree->dirs as $dir => $content) {
-				$return .= '<li><a href="#" class="link_dir"><i class="fa fa-folder" aria-hidden="true"></i>' . $dir . '</a></li>';
+				$return .= '<li><a href="#" class="link_dir alert"><i class="fa fa-folder" aria-hidden="true"></i>' . $dir . '</a></li>';
 				$return .= $this->render_tree_return($content);
 			}
 
 			foreach ($tree->files as $file) {
-				$return .= '<li><a href="#' . xy_format_path($file->relative_path) . '" class="link_file"><i class="fa fa-file-o" aria-hidden="true"></i>' . $file->basename . '</a></li>';
+				$return .= '<li><a href="#' . xy_format_path($file->relative_path) . '" class="link_file"><i class="fa fa-file-o alert" aria-hidden="true"></i>' . $file->basename . '</a></li>';
 			}
 
 			$return .= '</ul>';

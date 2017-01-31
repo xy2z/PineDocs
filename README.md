@@ -3,7 +3,6 @@
 **THIS PROJECT IS STILL UNDER DEVELOPMENT.**
 
 PineDocs is a simple, lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
-
 Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos.
 
 
@@ -27,10 +26,7 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos
 ## Features
 - Cross-platform (currently tested on Ubuntu and Windows)
 - Supports unlimited folders (and files of course)
-- Supports Markdown and HTML files
-- Supports images and GIFs
-- Supports audio and video files
-- Support text files (regardless of the extension)
+- Supports Markdown, text, HTML, images, GIFs, audio and videos.
 - Syntax highlighting for over 169 languages with over 77 themes
 - Multiple responsive themes. You can easily create your own theme in CSS
 - A simple YAML config file to change the settings
@@ -75,11 +71,17 @@ Feel free to edit the `config.yaml` file to fit your needs.
 	- Test in all browsers + mobile browsers.
 - Exclude files/folders in config (glob).
 
+
 ## Known issues
 - Can't load files with special chars path (encoding)
+- Logo should be in the public-www dir, but keep it ignored from git... Make a public dir with index.php, and gitignore everything except that file. http://stackoverflow.com/questions/987142/make-gitignore-ignore-everything-except-a-few-files
 
 
 ## Future features
+- Support filetypes:
+	- Audi FLAC for (Firefox 51)
+	- WebM
+	https://www.reddit.com/r/linux/comments/5pood2/firefox_51_released_with_flac_audio_support_webgl/
 - htaccess
 - Apache config example file (for github wiki)
 - File icons should match file types.
