@@ -16,7 +16,7 @@
 			self::$config = (object) $config;
 
 			// Make sure the 'content_dir' is ending on a '/' for security.
-			self::$config->content_dir = xy_format_path(self::$config->content_dir, true);
+			self::set_content_dir();
 
 			// Set defaults
 			if (!isset(self::$config->title) || (empty(self::$config->title))) {
@@ -78,6 +78,15 @@
 				}
 			}
 			return false;
+		}
+
+
+		static private function set_content_dir() {
+			if (empty(self::$config->content_dir)) {
+				exit("Error: 'content_dir' must be specified in the config.yaml file");
+			}
+
+			self::$config->content_dir = xy_format_path(self::$config->content_dir, true);
 		}
 
 

@@ -13,10 +13,10 @@
 
 	// Autoloader
 	spl_autoload_register(function ($class_name) {
-		require_once '../php/' . $class_name . '.php';
+		require_once '../src/' . $class_name . '.php';
 	});
 
-	require_once '../php/toolbox.php';
+	require_once '../src/toolbox.php';
 
 
 	// Load config.
@@ -34,7 +34,6 @@
 
 
 	// Get tree
-	// require_once 'php/PineDocsTree.php';
 	$tree = new PineDocsTree();
 
 

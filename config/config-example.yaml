@@ -7,9 +7,8 @@
 # The title of the
 title: PineDocs
 
-# The directory that contains all the content
-content_dir: content
-# content_dir: P:\Dokumenter
+# The full path of the directory that contains all the content files.
+# content_dir: content
 
 # What logo to show in the top of the menu?
 # logo: my-logo.png

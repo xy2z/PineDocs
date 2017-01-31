@@ -13,14 +13,17 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos
 ## Setup
 ### Requirements
 - PHP 7.0 or above
-- YAML extension for PHP (https://pecl.php.net/package/yaml)
-- Web server: Nginx/Apache/etc
+	- YAML extension for PHP (https://pecl.php.net/package/yaml)
+- Web server: Apache, nginx, etc.
 
 
 ### Setup guide
 1. [Download the latest release](https://github.com/xy2z/PineDocs/releases) or `git clone`.
-1. Edit the `config.yaml` file
-1. Setup the web server (link to examples) - or use `php -S localhost:89` for testing.
+1. Copy `config/config-example.yaml` to `config/config.yaml`.
+1. Edit the `config/config.yaml` file to fit your needs.
+1. Setup the web server (or use `php -S localhost:89` for testing).
+	- [Recommended Apache conf file](#)
+	- [Recommended nginx conf file](#)
 
 
 ## Features
@@ -72,8 +75,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 
 ## Known issues
-- Can't load files with special chars path (encoding)
-- Logo should be in the public-www dir, but keep it ignored from git... Make a public dir with index.php, and gitignore everything except that file. http://stackoverflow.com/questions/987142/make-gitignore-ignore-everything-except-a-few-files
+
 
 
 ## Future features
@@ -104,4 +106,4 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 
 ## License
-GNU GPLv3
+GNU GPLv3. See LICENSE.txt
