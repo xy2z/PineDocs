@@ -7,7 +7,7 @@
 		static public $config;
 
 		static public function load_config() {
-			$config = yaml_parse_file('../config.yaml');
+			$config = yaml_parse_file('../config/config.yaml');
 
 			if (!$config) {
 				exit('Error: Could not parse config.yaml');
