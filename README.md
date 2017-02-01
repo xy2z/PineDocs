@@ -10,6 +10,15 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos
 (Coming when v1.0 is done)
 
 
+## Features
+- Cross-platform (currently tested on Ubuntu and Windows)
+- Supports unlimited folders (and files of course)
+- Supports Markdown, text, HTML, images, GIFs, audio and videos.
+- Syntax highlighting for over 169 languages with over 77 themes
+- Multiple responsive themes and color schemes. You can easily make your own color scheme in CSS.
+- A simple YAML config file to change the settings
+
+
 ## Setup
 ### Requirements
 - PHP 7.0 or above
@@ -23,16 +32,6 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos
 1. Edit the `config/config.yaml` file to fit your needs.
 1. Setup the web server (or use `php -S localhost:89` for testing).
 	- [Recommended Apache conf file](#)
-	- [Recommended nginx conf file](#)
-
-
-## Features
-- Cross-platform (currently tested on Ubuntu and Windows)
-- Supports unlimited folders (and files of course)
-- Supports Markdown, text, HTML, images, GIFs, audio and videos.
-- Syntax highlighting for over 169 languages with over 77 themes
-- Multiple responsive themes. You can easily create your own theme in CSS
-- A simple YAML config file to change the settings
 
 
 ## Configuration
@@ -64,8 +63,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 ## Todo v1.0
 - Responsive themes: default + wiki
-- Themes should only be in 1 theme (not array)? (so users can't fuck up) ('theme_structure' and 'theme_color'?)
-- Config should be git ignored? (To keep it from being overwritten on upgrade)
+- - Apache config example file (for github wiki)
 - Test:
 	- Test on Ubuntu with content_dir
 	- Test images: jpg, png, gif + more?
@@ -74,18 +72,14 @@ Feel free to edit the `config.yaml` file to fit your needs.
 	- Test in all browsers + mobile browsers.
 
 
-## Known issues
-
-
-
 ## Future features
 - Support filetypes:
 	- Audi FLAC for (Firefox 51)
 	- WebM
 	https://www.reddit.com/r/linux/comments/5pood2/firefox_51_released_with_flac_audio_support_webgl/
-- htaccess
-- Apache config example file (for github wiki)
+- htaccess (Apache)
 - File icons should match file types.
+- Make a Recommended nginx conf
 - Remember scroll position when browsing between files (should also work when using the browsers back/forward)
 - Bug: Can't render (binary) files (images/videos/audio etc) bigger than ~50MB. (Possible solution: if the file is over XXMB then show a download link instead)
 - Search (filenames, dirs and content) (with keypress 'F' to focus, config for binding key)
