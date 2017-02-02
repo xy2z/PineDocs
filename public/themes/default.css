@@ -3,7 +3,6 @@
 body {
 	font-family: Tahoma;
 	font-size: 15px;
-	background: #eee;
 }
 
 #main {
@@ -16,16 +15,11 @@ body {
 
 /*** MENU ***/
 #menu {
-	background: #3a4967;
-	background: #555;
-	color: #fff;
 }
 
 #search {
 	padding: 10px;
-	background: rgba(0, 0, 0, 0.4);
 	border: 0;
-	color: #fff;
 	font-weight: bold;
 	margin: 10px 0 0;
 }
@@ -44,23 +38,17 @@ body {
 }
 
 #menu ul li a {
-	color: #ddb;
 	text-decoration: none;
 	display: block;
 	padding: 5px;
 }
 
 #menu ul li a:hover {
-	background: rgba(255, 255, 255, 0.1);
-	color: #fff;
 }
 
 #menu ul li a.active:hover,
 #menu ul li a.active,
 #menu ul li a.active i.fa {
-	color: #fff;
-	color: #f70;
-	color: #fff;
 }
 
 
@@ -68,52 +56,39 @@ body {
 /*** MENU FOOTER ***/
 #menu footer,
 #menu footer a {
-	color: #999;
 }
 
 
 
 /* MENU ICONS */
 #menu i.fa {
-	color: #09d;
 	font-size: 0.9em;
 }
 
 #menu a.link_dir_open i.fa {
-	/*color: #fff;*/
 }
 
 
 
 /*** CONTENT PATH ***/
 #content_top {
-	color: #999;
 	font-size: 0.9em;
 	font-family: monospace;
-	background: #ffd;
 	font-weight: bold;
 }
 
 #content_top .filesize {
-	opacity: 0.5;
 }
 
 
 
 /*** CONTENT ***/
 #content_wrapper {
-	background: #fff;
 }
 
-
-
 code {
-	background: rgba(255, 255, 200, 0.1);
-	background: rgba(100, 100, 0, 0.1);
-	color: #080;
 	font-family: "Consolas", monospace;
 }
 
 a {
-	color: #09f;
 }

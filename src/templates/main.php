@@ -7,11 +7,8 @@
 		<title><?= PineDocs::$config->title ?></title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<?php  if (is_array(PineDocs::$config->theme)): ?>
-			<?php foreach (PineDocs::$config->theme as $theme_file): ?>
-				<link rel="stylesheet" type="text/css" href="themes/<?= strtolower($theme_file) ?>.css">
-			<?php endforeach ?>
-		<?php endif   ?>
+		<link rel="stylesheet" type="text/css" href="themes/<?= strtolower(PineDocs::$config->theme) ?>.css">
+		<link rel="stylesheet" type="text/css" href="themes/color-schemes/<?= strtolower(PineDocs::$config->color_scheme) ?>.css">
 	</head>
 
 	<body>

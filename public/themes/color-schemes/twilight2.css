@@ -1,5 +1,3 @@
-/* Color Scheme: Twilight */
-
 /* Twilight colors
 Dark brown: #9B703F
 Orange/brown (keyword): #CDA869
@@ -10,62 +8,45 @@ Yellow (storage): #F9EE98
 */
 
 body {
-	background: #000;
-	color: #eee;
+	background: #191919;
+	color: #ccc;
 }
-
-#main {
-
-}
-
 
 
 /*** MENU ***/
 #menu {
-	background: #292929;
-}
-
-#menu ul {
-}
-
-#menu > ul {
-}
-
-#menu ul li {
+	background: #333;
 }
 
 #menu ul li a {
-	color: #8295b5;
+	color: #7587A6;
+	color: #CDA869;
+
 }
 
 #menu ul li a:hover {
-	background: rgba(0, 0, 0, 0.3);
-	color: #fff;
+	background: rgba(249, 238, 152, 0.1);
+	color: #F9EE98;
 }
 
 #menu ul li a.active:hover,
 #menu ul li a.active,
 #menu ul li a.active i.fa {
-	color: #F9EE98;
+	color: #f70;
 }
 
 
 
-/*** MENU FOOTER ***/
-#menu footer,
-#menu footer a {
-	color: #999;
-}
-
-
-
-/* MENU ICONS */
+/*** MENU ICONS ***/
 #menu i.fa {
-	color: #9B703F;
+	color: #8F9D6A;
 }
 
 #menu a.link_dir_open i.fa {
+	color: #F9EE98;
+
 }
+
 
 
 
@@ -75,26 +56,39 @@ body {
 	color: #333;
 }
 
-#content_top .filesize {
-	color: rgba(0, 0, 0, 0.5);
-}
-
 
 
 /*** CONTENT ***/
 #content_wrapper {
-	background: #222;
+	background: #292929;
+}
+
+
+
+#loading {
+	color: #F9EE98;
+}
+
+.error {
+	color: #CF6A4C;
+}
+
+
+
+/* Text/Markdown */
+h1,
+h2 {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+code {
+	color: #F9EE98;
 }
 
 code {
-	background: rgba(100, 100, 0, 0.1);
-	color: #080;
-}
-
-h1 {
-	border-color: #444;
+	display: block;
+	padding: 1em;
 }
 
 a {
-	color: #09f;
+	color: #39d;
 }

@@ -1,6 +1,7 @@
-/* Color Scheme: simplistic-white */
+/* Color Scheme: Default */
 
 body {
+	background: #333;
 }
 
 #main {
@@ -10,10 +11,8 @@ body {
 
 
 /*** MENU ***/
-#menu_wrapper {
-	border-right: 1px solid #ddd;
-}
 #menu {
+	background: #456;
 }
 
 #menu ul {
@@ -26,17 +25,18 @@ body {
 }
 
 #menu ul li a {
-	color: #07f;
+	color: #dd9;
 }
 
 #menu ul li a:hover {
-	background: rgba(0, 0, 0, 0.1);
+	background: rgba(255, 255, 255, 0.1);
+	color: #fff;
 }
 
 #menu ul li a.active:hover,
 #menu ul li a.active,
 #menu ul li a.active i.fa {
-	color: #000;
+	color: #fff;
 }
 
 
@@ -44,13 +44,16 @@ body {
 /*** MENU FOOTER ***/
 #menu footer,
 #menu footer a {
+	color: #999;
 }
 
 
 
 /* MENU ICONS */
 #menu i.fa {
-	color: rgba(0, 0, 0, 0.2);
+	color: #09d;
+	color: #fff;
+	color: rgba(255, 255, 255, 0.5);
 }
 
 #menu a.link_dir_open i.fa {
@@ -60,23 +63,25 @@ body {
 
 /*** CONTENT PATH ***/
 #content_top {
-	background: #eee;
+	color: #999;
+	background: #ffd;
 }
 
 #content_top .filesize {
-	color: #999;
 }
 
 
 
 /*** CONTENT ***/
 #content_wrapper {
+	background: #fff;
 }
 
 code {
 	background: rgba(100, 100, 0, 0.1);
+	color: #080;
 }
 
 a {
-	color: #07f;
+	color: #09f;
 }

@@ -23,12 +23,18 @@
 				self::$config->title = 'PineDocs';
 			}
 
-			// Make sure $theme is array.
+			// Make sure $theme is set.
 			if (!isset(self::$config->theme) || (empty(self::$config->theme))) {
+				self::$config->theme = 'default';
 				// $theme = $config->theme ?? array('default');
 				// if (!is_array($theme)) {
 					// $theme = array($theme);
 				// }
+			}
+
+			// Make sure $color_theme is set.
+			if (!isset(self::$config->color_theme) || (empty(self::$config->color_theme))) {
+				self::$config->color_theme = 'default';
 			}
 
 			if (isset(self::$config->logo) && !empty(self::$config->logo)) {

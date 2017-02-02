@@ -62,14 +62,15 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 
 ## Todo v1.0
+- 404 File not found on direct links
 - Responsive themes: default + wiki
-- - Apache config example file (for github wiki)
+- Apache config example file (/examples dir)
 - Test:
 	- Test on Ubuntu with content_dir
 	- Test images: jpg, png, gif + more?
 	- Test videos: ogg, etc.
 	- Test audio files: avi?
-	- Test in all browsers + mobile browsers.
+	- Test in all desktop + mobile browsers.
 
 
 ## Future features

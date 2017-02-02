@@ -19,11 +19,9 @@ title: PineDocs
 index: hey.txt
 
 # Theme to use.
-theme:
-  # - Wiki
-  # - Wiki-Dark
-  - Default
-  # - Default-twilight
+theme: Default
+
+color_scheme: PineDocs
 
 # Code highlighting themes: default, monokai, tomorrow, sunbust, darcula.
 # See all on https://highlightjs.org/static/demo/.
@@ -39,5 +37,4 @@ open_dirs: 0
 render_footer: true
 
 exclude_files:
-  - 'index'
-  - '/\.yaml/'
+  - .gits
