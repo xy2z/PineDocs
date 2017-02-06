@@ -8,7 +8,8 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos
 
 ## Screenshots
 (Coming when v1.0 is done)
-See more at [http://imgur.com/a/B4Lrx](http://imgur.com/a/B4Lrx)
+
+See more at [http://imgur.com/a/B4Lrx](http://imgur.com/a/B4Lrx){:target="_blank"}
 
 ## Features
 - Cross-platform (currently tested on Ubuntu and Windows)
