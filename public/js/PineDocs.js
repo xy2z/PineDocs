@@ -144,7 +144,7 @@ $(function() {
 		var self = this
 
 		// Event for clicking menu links.
-		$('#menu').on('click', 'a.link_file', function(event) {
+		$('#menu').on('mouseup', 'a.link_file', function(event) {
 			var link = $(this)
 			var href = $(this).attr('href').substr(1)
 
@@ -262,8 +262,6 @@ $(function() {
 
 	PineDocs.prototype.pageload_open_dirs = function() {
 		var self = this
-
-		console.log(config.open_dirs)
 
 		if (config.open_dirs == 'all') {
 			// Open all dirs.
