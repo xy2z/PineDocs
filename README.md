@@ -11,12 +11,12 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos
 
 
 ## Features
-- Cross-platform (currently tested on Ubuntu and Windows)
-- Supports unlimited folders (and files of course)
+- Cross-platform (currently tested on Ubuntu and Windows).
+- No database needed.
 - Supports Markdown, text, HTML, images, GIFs, audio and videos.
-- Syntax highlighting for over 169 languages with over 77 themes
-- Multiple responsive themes and color schemes. You can easily make your own color scheme in CSS.
-- A simple YAML config file to change the settings
+- Syntax highlighting for over 169 languages with over 77 themes.
+- Multiple responsive themes and color schemes.
+- YAML Config file to change the settings.
 
 
 ## Setup
