@@ -4,8 +4,6 @@ PineDocs is a simple, lightweight tool for viewing files in a browser. Great for
 
 Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and small videos.
 
-See more at [http://imgur.com/a/B4Lrx](http://imgur.com/a/B4Lrx)
-
 ## Features
 - Cross-platform (currently tested on Ubuntu and Windows).
 - No database needed.
