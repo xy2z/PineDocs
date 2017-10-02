@@ -10,7 +10,7 @@
 		public $pathinfo;
 		public $filesize;
 		private $type;
-		private $is_binary = false;
+		private $base64_encode = false;
 
 
 		public function __construct(string $full_path) {
@@ -42,7 +42,7 @@
 				'type' => $this->type
 			);
 
-			if ($this->is_binary) {
+			if ($this->base64_encode) {
 				$data['content'] = base64_encode(file_get_contents($this->full_path));
 			} else {
 				$data['content'] = file_get_contents($this->full_path);
@@ -63,13 +63,16 @@
 			} else if (in_array($this->pathinfo['extension'], array('jpg', 'jpeg', 'png', 'gif'))) {
 				// Image.
 				$this->type = 'image';
-				$this->is_binary = true;
+				$this->base64_encode = true;
+			} else if (in_array($this->pathinfo['extension'], array('svg'))) {
+				$this->type = 'svg';
+				$this->base64_encode = true;
 			} else if (in_array($this->pathinfo['extension'], array('mp3', 'ogg'))) {
 				$this->type = 'audio';
-				$this->is_binary = true;
+				$this->base64_encode = true;
 			} else if (in_array($this->pathinfo['extension'], array('mp4'))) {
 				$this->type = 'video';
-				$this->is_binary = true;
+				$this->base64_encode = true;
 			} else if (in_array($this->pathinfo['extension'], array('css', 'php', 'js', 'xml', 'c', 'cpp', 'h', 'bat', 'sh', 'bash', 'scss', 'sql', 'yaml', 'yml', 'conf', 'ini', 'cf', 'pre'))) {
 				// Code.
 				$this->type = 'code';
