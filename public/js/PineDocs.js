@@ -37,7 +37,8 @@ $(function() {
 			mobile_nav_icon: $('#mobile_nav_icon')
 		}
 
-		// Loaded responses.
+		// Properties
+		self.click_hashchange = false
 		self.loaded = {}
 
 		// Init
@@ -45,13 +46,20 @@ $(function() {
 
 		// Autoload file from URL anchor tag.
 		if (window.location.hash.length >= 2) {
-			// Click on the link, if it exists.
-			$('a.link_file[href="' + window.location.hash + '"]').click()
+			// Check if file exists.
+			var file = $('a.link_file[href="' + window.location.hash + '"]')
+			if (file.length) {
+				// File exists
+				$('a.link_file[href="' + window.location.hash + '"]').click()
+			} else {
+				// File does not exist.
+				self.render_error_message('404: File not found.')
+			}
 		} else {
 			// Load index file.
 			self.render_file(config.index_data)
 			if (config.index_data.relative_path) {
-				window.location.hash = config.index_data.relative_path;
+				window.location.hash = config.index_data.relative_path
 			}
 		}
 
@@ -144,7 +152,11 @@ $(function() {
 		var self = this
 
 		// Event for clicking menu links.
-		$('#menu').on('mouseup', 'a.link_file', function(event) {
+		$('#menu').on('click', 'a.link_file', function(event) {
+			if (event.originalEvent !== undefined) {
+				// User clicked this, so don't trigger this click event twice.
+				self.click_hashchange = true
+			}
 			var link = $(this)
 			var href = $(this).attr('href').substr(1)
 
@@ -214,6 +226,11 @@ $(function() {
 
 		// URL Hashtag change (user probably went back or forward in browser history)
 		$(window).bind('hashchange', function(e) {
+			if (self.click_hashchange) {
+				// The hash changed because of the user clicked a new item, so don't click it twice.
+				self.click_hashchange = false
+				return
+			}
 			// Click on the menu link if it exists.
 			self.elements.menu.find('a[href="' + document.location.hash + '"]').click()
 		})
