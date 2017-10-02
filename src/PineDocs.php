@@ -7,10 +7,16 @@
 		static public $config;
 
 		static public function load_config() {
-			$config = yaml_parse_file('../config/config.yaml');
+			$config_path = '../config/config.yaml';
+			if (!file_exists($config_path)) {
+				exit('Error: Could not find config.yaml. Copy config/config-example.yaml to config/config.yaml');
+			}
+
+			// Load config
+			$config = yaml_parse_file($config_path);
 
 			if (!$config) {
-				exit('Error: Could not parse config.yaml');
+				exit('Error: Could not parse/read config.yaml.');
 			}
 
 			self::$config = (object) $config;
@@ -82,8 +88,13 @@
 
 
 		static private function set_content_dir() {
+			if (!empty(self::$config->content_dir) && !is_dir(self::$config->content_dir)) {
+				exit("Error: 'content_dir' doesn't exist or isn't readable");
+			}
+
 			if (empty(self::$config->content_dir)) {
-				exit("Error: 'content_dir' must be specified in the config.yaml file");
+				// Set default content dir.
+				self::$config->content_dir = preg_replace('/public$/', 'content', getcwd());
 			}
 
 			self::$config->content_dir = xy_format_path(self::$config->content_dir, true);

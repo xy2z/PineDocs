@@ -15,7 +15,7 @@ title: PineDocs
 content_dir: /data/pinedocs/content
 
 # [string] Path to the logo inside the public/ dir.
-logo: my-logo.png
+logo: PineDocs.png
 
 
 ###########################################################
