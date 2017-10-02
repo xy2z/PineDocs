@@ -61,18 +61,6 @@ Feel free to edit the `config.yaml` file to fit your needs.
 - **`exclude_files`** (array) List of files to exclude. Supports regex if the format is /regex/i.
 
 
-## Todo v1.0
-- 404 File not found on direct links
-- Responsive themes: default + wiki
-- Apache config example file (/examples dir)
-- Test:
-	- Test on Ubuntu with content_dir
-	- Test images: jpg, png, gif + more?
-	- Test videos: ogg, etc.
-	- Test audio files: avi?
-	- Test in all desktop + mobile browsers.
-
-
 ## Future features
 - Support filetypes:
 	- Audi FLAC for (Firefox 51)
@@ -93,7 +81,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 - Make all content links open in new tab (setting, default true unless it's internal links)
 - Work on shared network drives (need test)
 - File actions (in content_path)
-	- Fullscreen file-content
+	- Fullscreen file-content (and/or raw file)
 	- Copy file content to clipboard
 	- Download file
 	- Switch between raw/rendered (for html, markdown, etc.) (bind to key 'R'?)
