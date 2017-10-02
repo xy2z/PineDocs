@@ -1,13 +1,8 @@
-# PineDocs
-
-**THIS PROJECT IS STILL UNDER DEVELOPMENT.**
+![PineDocs](https://i.imgur.com/sNOMpuK.png)
 
 PineDocs is a simple, lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
-Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and videos.
 
-
-## Screenshots
-(Coming when v1.0 is done)
+Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and small videos.
 
 
 ## Features

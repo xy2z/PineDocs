@@ -2,39 +2,53 @@
 #
 # See a detailed list of all settings here:
 # https://github.com/xy2z/PineDocs/tree/master#configuration
-#
 
-# The title of the
+
+###########################################################
+# Required settings:
+###########################################################
+
+# [string] The title.
 title: PineDocs
 
-# The full path of the directory that contains all the content files.
-# content_dir: content
+# [string] The full path of the content directory to show.
+content_dir: content
 
-# What logo to show in the top of the menu?
-# logo: my-logo.png
+# [string] Path to the logo inside the content_dir.
+logo: my-logo.png
 
-#################
+
+###########################################################
 # Optional settings:
+###########################################################
 
-index: hey.txt
+# [string] Filename of the index file inside content_dir.
+index: index.md
 
-# Theme to use.
+# [string] Theme to use.
+# See a list of themes in the public/themes/ dir.
 theme: Default
 
+# [string] The color-scheme to use.
+# See available color schemes in the public/themes/color-schems/ dir.
 color_scheme: PineDocs
 
-# Code highlighting themes: default, monokai, tomorrow, sunbust, darcula.
-# See all on https://highlightjs.org/static/demo/.
-highlight_theme: darcula # Tomorrow-Night
+# [string] Code highlighting themes: default, monokai, tomorrow, sunbust, darcula.
+# See available themes on https://highlightjs.org/static/demo/
+highlight_theme: darcula
 
-# Use transparent bacground on code?
+# [bool] Use transparent bacground on code blocks?
+# True: The background will be transparent.
+# False: The background from the highlight_theme will be used.
 code_transparent_bg: False
 
-# (int or 'all')
+# [int|string] How many dirs to open on pageload.
+# Use 'all' to open all dirs, or use a number to specify the levels of dir to open.
 open_dirs: 0
 
-# Render the menu footer
+# [bool] Render the menu footer.
 render_footer: true
 
+# [array] Exclude files. To use regex start and end with '/', like this: /regex/
 exclude_files:
-  - .gits
+  - .sql
