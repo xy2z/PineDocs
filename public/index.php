@@ -8,7 +8,7 @@
 
 	// Check if yaml extension is installed
 	if (!extension_loaded('yaml')) {
-		exit('Error: Missing PHP YAML extension. https://pecl.php.net/package/yaml');
+		exit('Error: Missing PHP YAML extension. Get it at https://pecl.php.net/package/yaml and https://github.com/xy2z/PineDocs/wiki/Install-YAML-extension-for-PHP-7.0-(Windows---Ubuntu)');
 	}
 
 	// Autoloader
@@ -65,8 +65,8 @@
 	// Prepare template.
 	$main = new xyTemplate('main');
 	$main->set_data(array(
-		// 'search_value' => '',
-		// 'search_placeholder' => 'Search here...',
+		'search_value' => '',
+		'search_placeholder' => 'Search here...',
 	));
 
 

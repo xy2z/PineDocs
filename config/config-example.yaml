@@ -12,9 +12,9 @@
 title: PineDocs
 
 # [string] The full path of the content directory to show.
-content_dir: content
+content_dir: /data/pinedocs/content
 
-# [string] Path to the logo inside the content_dir.
+# [string] Path to the logo inside the public/ dir.
 logo: my-logo.png
 
 
@@ -51,4 +51,5 @@ render_footer: true
 
 # [array] Exclude files. To use regex start and end with '/', like this: /regex/
 exclude_files:
-  - .sql
+  - .git
+  - .db

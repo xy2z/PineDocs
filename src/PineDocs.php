@@ -37,14 +37,8 @@
 				self::$config->color_theme = 'default';
 			}
 
-			if (isset(self::$config->logo) && !empty(self::$config->logo)) {
-				// Todo: Must also work on Windows, where it may start with 'D:/dir/logo.png';
-				if (substr(self::$config->logo, 0, 1) != '/') {
-					// Add content dir before path, because the logo is a relative path.
-					self::$config->logo = self::$config->content_dir . self::$config->logo;
-				}
-			} else {
-				// Default logo.
+			if (!isset(self::$config->logo) || empty(self::$config->logo)) {
+				// Use default logo.
 				self::$config->logo = 'PineDocs.png';
 			}
 
