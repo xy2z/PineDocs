@@ -35,9 +35,11 @@ Feel free to edit the `config.yaml` file to fit your needs.
 #### Required settings
 - **`title`**  (string) The title of the site, used in tabs and bookmarks.
 
-- **`content_dir`** (string) Path to the dir you want to use.
+- **`content_dir`** (string) Path to the dir you want to use. Default is the PineDocs/content/ dir.
+
 
 #### Optional settings
+
 - **`logo`** (string) Path to the logo. If nothing is set, the PineDocs logo will be used.
 
 - **`index`** (string) Relative path to the index file. Default is array of `index.md`, `index.html`, `index.txt`, `index`.
@@ -60,9 +62,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 	- Audi FLAC for (Firefox 51)
 	- WebM
 	https://www.reddit.com/r/linux/comments/5pood2/firefox_51_released_with_flac_audio_support_webgl/
-- htaccess (Apache)
 - File icons should match file types.
-- Make a Recommended nginx conf
 - Remember scroll position when browsing between files (should also work when using the browsers back/forward)
 - Bug: Can't render (binary) files (images/videos/audio etc) bigger than ~50MB. (Possible solution: if the file is over XXMB then show a download link instead)
 - Search (filenames, dirs and content) (with keypress 'F' to focus, config for binding key)
@@ -74,8 +74,8 @@ Feel free to edit the `config.yaml` file to fit your needs.
 - Support for more markup languages (https://en.wikipedia.org/wiki/Lightweight_markup_language)
 - Make all content links open in new tab (setting, default true unless it's internal links)
 - Work on shared network drives (need test)
-- File actions (in content_path)
-	- Fullscreen file-content (and/or raw file)
+- File actions (in top of page (content_path))
+	- Fullscreen file-content
 	- Copy file content to clipboard
 	- Download file
 	- Switch between raw/rendered (for html, markdown, etc.) (bind to key 'R'?)
