@@ -67,7 +67,7 @@
 			} else if (in_array($this->pathinfo['extension'], array('svg'))) {
 				$this->type = 'svg';
 				$this->base64_encode = true;
-			} else if (in_array($this->pathinfo['extension'], array('mp3', 'ogg'))) {
+			} else if (in_array($this->pathinfo['extension'], array('mp3', 'ogg', 'flac', 'wav'))) {
 				$this->type = 'audio';
 				$this->base64_encode = true;
 			} else if (in_array($this->pathinfo['extension'], array('mp4'))) {
