@@ -1,6 +1,6 @@
 ![PineDocs](https://i.imgur.com/sNOMpuK.png)
 
-PineDocs is a simple, lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
+PineDocs is a simple, fast, lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
 
 Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and small videos.
 
@@ -57,22 +57,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 
 ## Future features
-- Support filetypes:
-	- Audi FLAC for (Firefox 51)
-	- WebM
-	https://www.reddit.com/r/linux/comments/5pood2/firefox_51_released_with_flac_audio_support_webgl/
-- File icons should match file types.
-- Remember scroll position when browsing between files (should also work when using the browsers back/forward)
-- Bug: Can't render (binary) files (images/videos/audio etc) bigger than ~50MB. (Possible solution: if the file is over XXMB then show a download link instead)
-- Search (filenames, dirs and content) (with keypress 'F' to focus, config for binding key)
-- More themes (sepia)
 - Markdown: Generate table of contents (config)
-- Show error message if filesize is bigger than PHP memory_limit. (instead of php's fatal error)
-- Create/delete/edit files directly on the site?
-- Bind '*' key to open all dirs.
-- Support for more markup languages (https://en.wikipedia.org/wiki/Lightweight_markup_language)
-- Make all content links open in new tab (setting, default true unless it's internal links)
-- Work on shared network drives (need test)
 - File actions (in top of page (content_path))
 	- Fullscreen file-content
 	- Copy file content to clipboard
