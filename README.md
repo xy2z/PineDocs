@@ -17,15 +17,14 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and small 
 ### Requirements
 - PHP 7.0 or above
 	- YAML extension for PHP (https://pecl.php.net/package/yaml)
-- Web server: Apache, nginx, etc.
+- Web server: Apache2, nginx, etc.
 
 
 ### Setup guide
 1. [Download the latest release](https://github.com/xy2z/PineDocs/releases) or `git clone`.
 1. Copy `config/config-example.yaml` to `config/config.yaml`.
 1. Edit the `config/config.yaml` file to fit your needs.
-1. Setup the web server (or use `php -S localhost:89` for testing).
-	- [Recommended Apache conf file](#)
+1. Setup the web server (use `php -S localhost:89` for testing).
 
 
 ## Configuration
