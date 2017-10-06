@@ -20,8 +20,9 @@
 					<div id="menu" class="navbar-default">
 						<div id="menu_top">
 							<a href="."><img id="logo" src="<?= PineDocs::$config->logo ?>" /></a>
-							<!-- <input type="text" id="search" name="search" value="<?= $search_value ?>" placeholder="<?= $search_placeholder ?>" autofocus> -->
+							<input type="text" id="search" name="search" value="<?= $search_value ?>" placeholder="<?= $search_placeholder ?>" autofocus>
 						</div>
+
 						<?= $menu ?>
 						<?php if (PineDocs::$config->render_footer): ?>
 							<footer>
