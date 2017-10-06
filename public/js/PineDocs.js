@@ -171,8 +171,6 @@ $(function() {
 				self.click_hashchange = true
 			}
 
-			console.trace()
-
 			var link = $(this)
 			var href = $(this).attr('href').substr(1)
 
@@ -244,7 +242,6 @@ $(function() {
 
 		// URL Hashtag change (user probably went back or forward in browser history)
 		$(window).bind('hashchange', function(e) {
-			console.log('hashchange')
 			if (self.click_hashchange) {
 				// The hash changed because of the user clicked a new item, so don't click it twice.
 				self.click_hashchange = false
