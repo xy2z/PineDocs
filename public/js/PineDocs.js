@@ -260,15 +260,15 @@ $(function() {
             if (e.keyCode == 70) {
                 self.elements.search.focus()
             }
-		})
+        })
 
         self.elements.search.on('keyup', function(e) {
             if (e.keyCode == 27) {
                 $(this).val('')
             }
 
-        	self.filter_items($(this))
-		})
+            self.filter_items($(this))
+        })
 	}
 
 
@@ -329,28 +329,28 @@ $(function() {
 		self.elements.menu_wrapper.addClass('hidden')
 	}
 
-	
-	PineDocs.prototype.filter_items = function(input) {
+
+    PineDocs.prototype.filter_items = function(input) {
         var self = this
-			filter = input.val().toUpperCase(),
-        	li = self.elements.menu.find('li')
+        filter = input.val().toUpperCase(),
+            li = self.elements.menu.find('li')
 
         li.css('display', 'none')
 
         for (var i = 0; i < li.length; i++) {
-        	var list = $(li[i]),
-            	item = list.find("a")
+            var list = $(li[i]),
+                item = list.find("a")
 
             if (!list.hasClass('folder') && item.text().toUpperCase().indexOf(filter) > -1) {
                 list.css('display', 'block')
                 list.parents('ul').css('display', 'block')
 
-				var folderLi = list.siblings('li.folder')
+                var folderLi = list.siblings('li.folder')
                 folderLi.css('display', 'block')
                 folderLi.find('i').addClass('fa-folder-open')
             }
         }
-	}
+    }
 
 	// Init
 	new PineDocs()
