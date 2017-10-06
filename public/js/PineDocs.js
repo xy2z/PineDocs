@@ -172,8 +172,6 @@ $(function() {
 				self.click_hashchange = true
 			}
 
-			console.trace()
-
 			var link = $(this)
 			var href = $(this).attr('href').substr(1)
 
@@ -245,7 +243,6 @@ $(function() {
 
 		// URL Hashtag change (user probably went back or forward in browser history)
 		$(window).bind('hashchange', function(e) {
-			console.log('hashchange')
 			if (self.click_hashchange) {
 				// The hash changed because of the user clicked a new item, so don't click it twice.
 				self.click_hashchange = false
@@ -272,19 +269,19 @@ $(function() {
 			self.hide_mobile_menu()
 		})
 
-        window.addEventListener("keyup", function(e) {
-            if (e.keyCode == 70) {
-                self.elements.search.focus()
-            }
-        })
+		window.addEventListener("keyup", function(e) {
+			if (e.keyCode == 70) {
+				self.elements.search.focus()
+			}
+		})
 
-        self.elements.search.on('keyup', function(e) {
-            if (e.keyCode == 27) {
-                $(this).val('')
-            }
+		self.elements.search.on('keyup', function(e) {
+			if (e.keyCode == 27) {
+				$(this).val('')
+			}
 
-            self.filter_items($(this))
-        })
+			self.filter_items($(this))
+		})
 	}
 
 
@@ -346,27 +343,32 @@ $(function() {
 	}
 
 
-    PineDocs.prototype.filter_items = function(input) {
-        var self = this
-        filter = input.val().toUpperCase(),
-            li = self.elements.menu.find('li')
+	PineDocs.prototype.filter_items = function(input) {
+		var self = this
+			filter = input.val().toUpperCase(),
+			li = self.elements.menu.find('li')
 
-        li.css('display', 'none')
+		if (filter == '') {
+			li.show()
+			return
+		}
 
-        for (var i = 0; i < li.length; i++) {
-            var list = $(li[i]),
-                item = list.find("a")
+		li.css('display', 'none')
 
-            if (!list.hasClass('folder') && item.text().toUpperCase().indexOf(filter) > -1) {
-                list.css('display', 'block')
-                list.parents('ul').css('display', 'block')
+		for (var i = 0; i < li.length; i++) {
+			var list = $(li[i]),
+				item = list.find("a")
 
-                var folderLi = list.siblings('li.folder')
-                folderLi.css('display', 'block')
-                folderLi.find('i').addClass('fa-folder-open')
-            }
-        }
-    }
+			if (!list.hasClass('folder') && item.text().toUpperCase().indexOf(filter) > -1) {
+				list.css('display', 'block')
+				list.parents('ul').css('display', 'block')
+
+				var folderLi = list.siblings('li.folder')
+				folderLi.css('display', 'block')
+				folderLi.find('i').addClass('fa-folder-open')
+			}
+		}
+	}
 
 	// Init
 	new PineDocs()

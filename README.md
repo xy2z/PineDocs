@@ -11,6 +11,7 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and small 
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Multiple responsive themes and color schemes.
 - YAML Config file to change the settings.
+- Quick filtering in files
 
 
 ## Setup
