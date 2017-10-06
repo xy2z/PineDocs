@@ -156,13 +156,13 @@ $(function() {
 
 		// Event for any external link, open in new window
 		$('body').on('click', 'a', function(event) {
-			var a = new RegExp('/' + window.location.host + '/');
+			var a = new RegExp('/' + window.location.host + '/')
 			if (!a.test(this.href)) {
-				event.preventDefault();
-				event.stopPropagation();
-				window.open(this.href, '_blank');
+				event.preventDefault()
+				event.stopPropagation()
+				window.open(this.href, '_blank')
 			}
-		});
+		})
 
 		// Event for clicking menu links.
 		$('#menu').on('click', 'a.link_file', function(event) {
@@ -170,6 +170,9 @@ $(function() {
 				// User clicked this, so don't trigger this click event twice.
 				self.click_hashchange = true
 			}
+
+			console.trace()
+
 			var link = $(this)
 			var href = $(this).attr('href').substr(1)
 
@@ -231,6 +234,8 @@ $(function() {
 
 		// Click on internal link. (links to other files)
 		self.elements.file_content.on('click', 'a', function(event) {
+			self.click_hashchange = true
+
 			if ($(this).attr('href').substr(0,1) == '#') {
 				// Find the link in the menu and trigger a click on it.
 				self.elements.menu.find('a[href="' + $(this).attr('href') + '"]').click()
@@ -239,6 +244,7 @@ $(function() {
 
 		// URL Hashtag change (user probably went back or forward in browser history)
 		$(window).bind('hashchange', function(e) {
+			console.log('hashchange')
 			if (self.click_hashchange) {
 				// The hash changed because of the user clicked a new item, so don't click it twice.
 				self.click_hashchange = false
