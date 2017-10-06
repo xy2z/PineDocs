@@ -154,16 +154,14 @@ $(function() {
 	PineDocs.prototype.set_events = function() {
 		var self = this
 
-		// Event for any external link, open to new window
-		$('body').on('click', 'a', function() {
-		   var a = new RegExp('/' + window.location.host + '/');
-		   if (!a.test(this.href)) {
-		       $(this).click(function(event) {
-		           event.preventDefault();
-		           event.stopPropagation();
-		           window.open(this.href, '_blank');
-		       });
-		   }
+		// Event for any external link, open in new window
+		$('body').on('click', 'a', function(event) {
+			var a = new RegExp('/' + window.location.host + '/');
+			if (!a.test(this.href)) {
+				event.preventDefault();
+				event.stopPropagation();
+				window.open(this.href, '_blank');
+			}
 		});
 
 		// Event for clicking menu links.
