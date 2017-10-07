@@ -32,13 +32,10 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and small 
 Feel free to edit the `config.yaml` file to fit your needs.
 
 
-#### Required settings
+#### Settings
 - **`title`**  (string) The title of the site, used in tabs and bookmarks.
 
 - **`content_dir`** (string) Path to the dir you want to use. Default is the PineDocs/content/ dir.
-
-
-#### Optional settings
 
 - **`logo`** (string) Path to the logo. If nothing is set, the PineDocs logo will be used.
 
@@ -56,15 +53,7 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 - **`exclude_files`** (array) List of files to exclude. Supports regex if the format is /regex/i.
 
-
-## Future features
-- Markdown: Generate table of contents (config)
-- File actions (in top of page (content_path))
-	- Fullscreen file-content
-	- Copy file content to clipboard
-	- Download file
-	- Switch between raw/rendered (for html, markdown, etc.) (bind to key 'R'?)
-	- File details (filesize, created, edited, etc.) (bind to key 'D'?)
+- **`show_file_extension`** (bool) Show file extensions. Default is true.
 
 
 ## License
