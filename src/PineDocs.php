@@ -6,6 +6,8 @@
 
 		static public $config;
 
+		static public $errors = array();
+
 		static public function load_config() {
 			$config_path = '../config/config.yaml';
 			if (!file_exists($config_path)) {
@@ -32,15 +34,18 @@
 			// Make sure $theme is set.
 			if (!isset(self::$config->theme) || (empty(self::$config->theme))) {
 				self::$config->theme = 'default';
-				// $theme = $config->theme ?? array('default');
-				// if (!is_array($theme)) {
-					// $theme = array($theme);
-				// }
+			} else if (!file_exists('../public/themes/' . basename(self::$config->theme) . '.css')) {
+				self::$errors[] = 'Theme not found: "' . self::$config->theme . '". Using default.';
+				self::$config->theme = 'default';
 			}
 
-			// Make sure $color_theme is set.
-			if (!isset(self::$config->color_theme) || (empty(self::$config->color_theme))) {
-				self::$config->color_theme = 'default';
+			// Make sure $color_scheme is set.
+			if (!isset(self::$config->color_scheme) || (empty(self::$config->color_scheme))) {
+				self::$config->color_scheme = 'PineDocs';
+			} else if (!file_exists('../public/themes/color-schemes/' . basename(self::$config->color_scheme) . '.css')) {
+				// Validate color_scheme exists.
+				self::$errors[] = 'Color-scheme not found: "' . self::$config->color_scheme . '". Using default.';
+				self::$config->color_scheme = 'PineDocs';
 			}
 
 			if (!isset(self::$config->logo) || empty(self::$config->logo)) {

@@ -73,12 +73,13 @@
 	// Set HTML variables
 	$main->set_html(array(
 		'menu' => $tree->render_tree_return(),
-		'js_vars' => array(
+		'config' => array(
 			'title' => PineDocs::$config->title,
 			'code_transparent_bg' => PineDocs::$config->code_transparent_bg,
 			'open_dirs' => PineDocs::$config->open_dirs,
-			'index_data' => $index_data
-		)
+			'index_data' => $index_data,
+		),
+		'errors' => PineDocs::$errors,
 	));
 
 

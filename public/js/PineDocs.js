@@ -45,6 +45,8 @@ $(function() {
 		// Init
 		self.set_events()
 
+		self.render_errors()
+
 		// Autoload file from URL anchor tag.
 		if (window.location.hash.length >= 2) {
 			// Check if file exists.
@@ -158,7 +160,7 @@ $(function() {
 		// Event for any external link, open in new window
 		$('body').on('click', 'a', function(event) {
 			var a = new RegExp('/' + window.location.host + '/')
-			if (!a.test(this.href)) {
+			if (this.href != '' && !a.test(this.href)) {
 				event.preventDefault()
 				event.stopPropagation()
 				window.open(this.href, '_blank')
@@ -368,6 +370,17 @@ $(function() {
 				folderLi.find('i').addClass('fa-folder-open')
 			}
 		}
+	}
+
+
+	PineDocs.prototype.render_errors = function() {
+		var self = this
+
+		alertify.set('notifier','position', 'top-right');
+
+		$.each(errors, function(key, error_message) {
+			alertify.error(error_message);
+		})
 	}
 
 	// Init

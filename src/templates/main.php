@@ -7,8 +7,12 @@
 		<title><?= PineDocs::$config->title ?></title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="themes/<?= strtolower(PineDocs::$config->theme) ?>.css">
-		<link rel="stylesheet" type="text/css" href="themes/color-schemes/<?= strtolower(PineDocs::$config->color_scheme) ?>.css">
+		<link rel="stylesheet" type="text/css" href="themes/<?= strtolower(basename(PineDocs::$config->theme)) ?>.css">
+		<link rel="stylesheet" type="text/css" href="themes/color-schemes/<?= strtolower(basename(PineDocs::$config->color_scheme)) ?>.css">
+
+		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css"/>
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css"/>
 	</head>
 
 	<body>
@@ -49,7 +53,8 @@
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/<?= PineDocs::$config->highlight_theme ?>.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 		<script>
-			var config = <?= json_encode($js_vars) ?>
+			var config = <?= json_encode($config) ?>;
+			var errors = <?= json_encode($errors) ?>;
 		</script>
 	</body>
 
