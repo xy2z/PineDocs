@@ -85,3 +85,11 @@ code {
 a {
 	color: #09f;
 }
+
+
+
+/*** SEARCH ***/
+#search {
+	background: rgba(255, 255, 255, 0.2);
+	border: 0;
+}

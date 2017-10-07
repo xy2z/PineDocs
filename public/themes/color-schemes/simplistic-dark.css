@@ -86,3 +86,10 @@ h1 {
 a {
 	color: #f83;
 }
+
+
+
+/*** SEARCH ***/
+#search {
+	background: rgba(255, 255, 255, 0.6);
+}

@@ -1,4 +1,4 @@
-/* Color Scheme: simplistic-white */
+/* Color Scheme: Simplistic (white) */
 
 body {
 }
@@ -80,4 +80,11 @@ code {
 
 a {
 	color: #07f;
+}
+
+
+
+/*** SEARCH ***/
+#search {
+	background: #eee;
 }
