@@ -1,46 +1,42 @@
 /* Theme: Default */
 
 body {
-	font-family: Tahoma;
-	font-size: 15px;
+    font-family: Tahoma;
+    font-size: 15px;
 }
 
 #main {
-	width: 1200px;
-	margin: 0 auto;
-
+    margin: 0 auto;
 }
-
-
 
 /*** MENU ***/
 #menu {
 }
 
 #search {
-	padding: 10px;
-	border: 0;
-	font-weight: bold;
-	margin: 10px 0 0;
+    padding: 10px;
+    border: 0;
+    font-weight: bold;
+    margin: 10px 0 0;
 }
 
 #menu ul {
-	list-style-type: none;
-	width: 100%;
-	padding-left: 14px;
+    list-style-type: none;
+    width: 100%;
+    padding-left: 14px;
 }
 
 #menu > ul {
-	padding-left: 0;
+    padding-left: 0;
 }
 
 #menu ul li {
 }
 
 #menu ul li a {
-	text-decoration: none;
-	display: block;
-	padding: 5px;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
 }
 
 #menu ul li a:hover {
@@ -51,43 +47,35 @@ body {
 #menu ul li a.active i.fa {
 }
 
-
-
 /*** MENU FOOTER ***/
 #menu footer,
 #menu footer a {
 }
 
-
-
 /* MENU ICONS */
 #menu i.fa {
-	font-size: 0.9em;
+    font-size: 0.9em;
 }
 
 #menu a.link_dir_open i.fa {
 }
 
-
-
 /*** CONTENT PATH ***/
 #content_top {
-	font-size: 0.9em;
-	font-family: monospace;
-	font-weight: bold;
+    font-size: 0.9em;
+    font-family: monospace;
+    font-weight: bold;
 }
 
 #content_top .filesize {
 }
-
-
 
 /*** CONTENT ***/
 #content_wrapper {
 }
 
 code {
-	font-family: "Consolas", monospace;
+    font-family: "Consolas", monospace;
 }
 
 a {
