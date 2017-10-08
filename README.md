@@ -2,7 +2,7 @@
 
 PineDocs is a simple, fast, lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
 
-Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and small videos.
+Renders Markdown, HTML, syntax highlighting code, images, GIFs, SVG, audio and small videos.
 
 ## Features
 - Cross-platform (currently tested on Ubuntu and Windows).
@@ -22,10 +22,8 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, audio and small 
 
 
 ### Setup guide
-1. [Download the latest release](https://github.com/xy2z/PineDocs/releases) or `git clone`.
-1. Copy `config/config-example.yaml` to `config/config.yaml`.
-1. Edit the `config/config.yaml` file to fit your needs.
-1. Setup the web server (use `php -S localhost:89` for testing).
+1. [Download the latest release](https://github.com/xy2z/PineDocs/releases) or `git clone`
+1. Setup the web server to the /public dir (use `php -S localhost:89` for testing)
 
 
 ## Configuration

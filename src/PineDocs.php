@@ -11,7 +11,11 @@
 		static public function load_config() {
 			$config_path = '../config/config.yaml';
 			if (!file_exists($config_path)) {
-				exit('Error: Could not find config.yaml. Copy config/config-example.yaml to config/config.yaml');
+				// Create config.yaml by copying config-example.yaml.
+				$create = copy('../config/config-example.yaml', '../config/config.yaml');
+				if (!$create) {
+					exit('Error: Could not automatically create config/config.yaml. You can manually copy config/config-example.yaml to config/config.yaml');
+				}
 			}
 
 			// Load config
@@ -42,7 +46,7 @@
 			// Make sure $color_scheme is set.
 			if (!isset(self::$config->color_scheme) || (empty(self::$config->color_scheme))) {
 				self::$config->color_scheme = 'PineDocs';
-			} else if (!file_exists('../public/themes/color-schemes/' . basename(self::$config->color_scheme) . '.css')) {
+			} else if (!file_exists('../public/color-schemes/' . basename(self::$config->color_scheme) . '.css')) {
 				// Validate color_scheme exists.
 				self::$errors[] = 'Color-scheme not found: "' . self::$config->color_scheme . '". Using default.';
 				self::$config->color_scheme = 'PineDocs';

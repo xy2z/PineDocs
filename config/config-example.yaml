@@ -22,7 +22,7 @@ index: index.md
 theme: Default
 
 # [string] The color-scheme to use.
-# See available color schemes in public/themes/color-schems/
+# See available color schemes in public/color-schems/
 color_scheme: PineDocs
 
 # [string] Code highlighting themes: default, monokai, tomorrow, sunbust, darcula.

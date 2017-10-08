@@ -197,10 +197,16 @@ video {
 }
 
 #content_wrapper code {
+	display: inline;
+	padding: 2px 4px;
+	border-radius: 2px;
+}
+
+#content_wrapper pre code {
 	display: block;
-	width: 100%;
 	white-space: pre-wrap;
 	padding: 1em;
+	border-radius: 2px;
 }
 
 #content_wrapper code.file {
