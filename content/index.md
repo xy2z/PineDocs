@@ -1,6 +1,6 @@
 # Welcome to PineDocs
 
-<img src="https://i.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.webp">
+![welcome](https://i.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif)
 
 PineDocs is a simple, fast, customizable and lightweight site for browsing files.
 
