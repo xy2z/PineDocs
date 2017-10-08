@@ -12,7 +12,8 @@ If you already have a content directory you want to use, change the `content_dir
 
 
 ## Tips
-- Use `F` on your keyboard to focus on the search bar.
+- Press `F` on your keyboard to focus on the search bar.
+- Press `*` on your keyboard to open all directories recursively.
 - You can easily create your own color-scheme, just copy-paste an existing color-scheme in `public/color-schemes`, and then edit `config/config.yaml`.
 
 

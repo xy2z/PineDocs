@@ -273,12 +273,19 @@ $(function() {
 
 		window.addEventListener("keyup", function(e) {
 			if (e.keyCode == 70) {
+				// Focus on search bar.
 				self.elements.search.focus()
+			}
+
+			if (e.keyCode == 106) {
+				// * = Show all directories.
+				self.elements.menu_wrapper.find('.link_dir').not('.link_dir_open').click()
 			}
 		})
 
 		self.elements.search.on('keyup', function(e) {
 			if (e.keyCode == 27) {
+				// ESC on search bar.
 				$(this).val('')
 			}
 
