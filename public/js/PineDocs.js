@@ -335,12 +335,14 @@ $(function() {
 
 	PineDocs.prototype.show_mobile_menu = function() {
 		var self = this
+		self.elements.mobile_nav_icon.attr('aria-expanded', 'true');
 		self.elements.menu_wrapper.hide().removeClass('hidden').slideDown('fast')
 	}
 
 
 	PineDocs.prototype.hide_mobile_menu = function() {
 		var self = this
+        self.elements.mobile_nav_icon.attr('aria-expanded', 'false');
 		self.elements.menu_wrapper.addClass('hidden')
 	}
 

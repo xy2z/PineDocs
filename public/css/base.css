@@ -20,7 +20,6 @@ body {
 
 /*** MAIN ***/
 #main {
-	width: 900px;
 	width: 1200px;
 	height: 100%;
 }
@@ -54,6 +53,7 @@ body {
 	padding: 10px 16px;
 	background: rgba(255, 255, 255, 0.6);
 	font-weight: bold;
+	border: none;
 }
 
 #menu ul > ul {
@@ -241,5 +241,7 @@ video {
 
 	#content_top #mobile_nav_icon {
 		display: inline;
+		font-size: 1.2em;
+		color: #0645ad;
 	}
 }
