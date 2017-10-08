@@ -342,7 +342,7 @@ $(function() {
 
 	PineDocs.prototype.hide_mobile_menu = function() {
 		var self = this
-        self.elements.mobile_nav_icon.attr('aria-expanded', 'false');
+		self.elements.mobile_nav_icon.attr('aria-expanded', 'false');
 		self.elements.menu_wrapper.addClass('hidden')
 	}
 

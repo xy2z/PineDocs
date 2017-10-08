@@ -32,8 +32,8 @@
 							</footer>
 						<?php endif ?>
 					</div>
-                    <button aria-label="Close navigation" type="button" id="menu_close">X</button>
-                </div>
+					<button aria-label="Close navigation" type="button" id="menu_close">X</button>
+				</div>
 
 				<div id="content_wrapper">
 					<div id="content_top">
