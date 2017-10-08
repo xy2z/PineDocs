@@ -15,8 +15,6 @@
 		<div id="main" class="container">
 
 				<div id="menu_wrapper" class="">
-					<div id="menu_close">X</div>
-
 					<div id="menu" class="navbar-default">
 						<div id="menu_top">
 							<a href="."><img id="logo" src="<?= PineDocs::$config->logo ?>" /></a>
@@ -30,11 +28,12 @@
 							</footer>
 						<?php endif ?>
 					</div>
-				</div>
+                    <button aria-label="Close navigation" type="button" id="menu_close">X</button>
+                </div>
 
 				<div id="content_wrapper">
 					<div id="content_top">
-						<a id="mobile_nav_icon"><i class="fa fa-bars" aria-hidden="true"></i></a>
+						<button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menu_wrapper" aria-label="Navigation" id="mobile_nav_icon"><i class="fa fa-bars" aria-hidden="true"></i></button>
 						<span id="content_path"></span>
 					</div>
 					<div id="loading"></div>
