@@ -216,6 +216,22 @@ video {
 	background: none;
 }
 
+/** download file **/
+.download {
+	text-align: center;
+	margin: 20% 0 0 0;
+}
+.download > p {
+	font-size: 1.2em;
+}
+
+.download > .download__link {
+	font-size: 1.2em;
+	background: #456;
+	color: #fff;
+	padding: 0.5em 1em;
+	text-decoration: none;
+}
 
 /*** RESPONSIVE ***/
 @media (max-width: 1200px) {

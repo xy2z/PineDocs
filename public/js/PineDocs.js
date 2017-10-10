@@ -130,13 +130,16 @@ $(function() {
 				hljs.highlightBlock(block)
 			})
 		} else {
-			if (typeof data.content == 'string') {
-				self.elements.file_content.html(nl2br(data.content))
+            if (typeof data.content == 'string') {
+                self.elements.file_content.html(nl2br(data.content))
 
-				// Syntax highlighting
-				self.elements.file_content.find('code').each(function(i, block) {
-					hljs.highlightBlock(block)
-				})
+                // Syntax highlighting
+                self.elements.file_content.find('code').each(function(i, block) {
+                    hljs.highlightBlock(block)
+                })
+            }
+			if (data.content === null) {
+				console.log(self.render_download_link(data));
 			}
 		}
 
@@ -380,6 +383,30 @@ $(function() {
 			}
 		}
 	}
+
+	/** @arg file json object with response */
+	PineDocs.prototype.render_download_link = function (file) {
+		var self = this,
+			div = document.createElement('div'),
+			link = document.createElement('a'),
+			p = document.createElement('p')
+
+		div.classList.add('download');
+
+		link.setAttribute('href', '/?action=download&relative_path='+ file.relative_path);
+		link.classList.add('download__link');
+        link.innerText = 'Download file';
+        link.setAttribute('target', '_blank');
+
+		p.innerText = 'Unable to render requested file.';
+
+		div.appendChild(p);
+		div.appendChild(link);
+
+		self.elements.file_content.append(div);
+
+		return div.length;
+    }
 
 
 	PineDocs.prototype.render_errors = function() {

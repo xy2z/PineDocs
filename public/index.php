@@ -21,16 +21,38 @@
 
 	// Load config.
 	PineDocs::load_config();
+	$param_action = isset($_GET['action']) ? $_GET['action'] : null;
+	$param_relative_path = isset($_GET['relative_path']) ? $_GET['relative_path'] : null;
 
 
 	// Get file from ajax call.
-	if (isset($_GET['action']) && $_GET['action'] == 'get_file_data' && isset($_GET['relative_path'])) {
+	if (isset($param_action) && $param_action === 'get_file_data' && isset($param_relative_path)) {
 		header('Content-Type: application/json');
-		$relative_path = utf8_decode($_GET['relative_path']);
+		$relative_path = utf8_decode($param_relative_path);
 		$PineDocsFile = new PineDocsFile(xy_format_path(PineDocs::$config->content_dir . $relative_path));
-		echo json_encode($PineDocsFile->get_data());
+		echo json_encode($PineDocsFile->get_data(), JSON_PRETTY_PRINT);
 		exit;
 	}
+
+    if (isset($param_action) && $param_action === 'download' && isset($param_relative_path)) {
+        $relative_path = utf8_decode($param_relative_path);
+
+        $PineDocsFile = new PineDocsFile(xy_format_path(PineDocs::$config->content_dir . $relative_path));
+        $quoted_name = sprintf('"%s"', addcslashes($PineDocsFile->basename, '"\\'));
+        $size   = $PineDocsFile->filesize;
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename=' . $quoted_name);
+        header('Content-Transfer-Encoding: binary');
+        header('Connection: Keep-Alive');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: ' . $size);
+        readfile(xy_format_path(PineDocs::$config->content_dir . $relative_path));
+        exit;
+    }
 
 
 	// Get tree
