@@ -9,6 +9,8 @@
 		public $basename;
 		public $pathinfo;
 		public $filesize;
+		public $mimetype;
+		private $content;
 		private $type;
 		private $base64_encode = false;
 
@@ -30,6 +32,7 @@
 			}
 
 			$this->set_file_type();
+			$this->set_content();
 		}
 
 
@@ -39,44 +42,44 @@
 				'basename' => $this->basename,
 				'extension' => $this->pathinfo['extension'],
 				'filesize' => $this->filesize,
-				'type' => $this->type
+				'type' => $this->type,
+                'content' => $this->content
 			);
-
-			if ($this->base64_encode) {
-				$data['content'] = base64_encode(file_get_contents($this->full_path));
-			} else {
-				$data['content'] = file_get_contents($this->full_path);
-			}
 
 			return $data;
 		}
 
 
 		private function set_file_type() {
+            $mimetype = mime_content_type($this->full_path);
+            preg_match("/(?<common>[a-z]+)\/(?<type>.*)/i", $mimetype, $this->mimetype);
+
 			if (!isset($this->pathinfo['extension'])) {
 				return;
 			}
 
-			if (in_array($this->pathinfo['extension'], array('md', 'markdown'))) {
+			if (in_array($this->pathinfo['extension'], array('md', 'markdown')) || ($this->mimetype['type'] === 'markdown') ) {
 				// Markdown.
 				$this->type = 'markdown';
-			} else if (in_array($this->pathinfo['extension'], array('jpg', 'jpeg', 'png', 'gif'))) {
+			} else if ($this->mimetype['common'] === 'image' && $this->mimetype['type'] !== 'svg+xml') {
 				// Image.
 				$this->type = 'image';
 				$this->base64_encode = true;
-			} else if (in_array($this->pathinfo['extension'], array('svg'))) {
+			} else if ($this->mimetype['common'] === 'image' && $this->mimetype['type'] === 'svg+xml') {
 				$this->type = 'svg';
 				$this->base64_encode = true;
-			} else if (in_array($this->pathinfo['extension'], array('mp3', 'ogg', 'flac', 'wav'))) {
+			} else if ($this->mimetype['common'] === 'audio') {
 				$this->type = 'audio';
 				$this->base64_encode = true;
-			} else if (in_array($this->pathinfo['extension'], array('mp4'))) {
+			} else if (in_array($this->pathinfo['extension'], array('mp4')) || $this->mimetype['type'] === 'mp4') {
 				$this->type = 'video';
 				$this->base64_encode = true;
 			} else if (in_array($this->pathinfo['extension'], array('css', 'php', 'js', 'xml', 'c', 'cpp', 'h', 'bat', 'sh', 'bash', 'scss', 'sql', 'yaml', 'yml', 'conf', 'ini', 'cf', 'pre'))) {
 				// Code.
 				$this->type = 'code';
 			}
+			
+			return $this->type;
 		}
 
 
@@ -90,5 +93,29 @@
 
 			return $basename;
 		}
+
+		private function set_content() {
+            $content = file_get_contents($this->full_path);
+
+            /*
+            * if we still didn't know type,
+            * better to check for unsafe content (which can broke json_encode) and set null.
+            * is_executable not work for all cases, .msi e.g. So we use mimetypes.
+            */
+            if ($this->type === null) {
+                if ($this->mimetype['common'] !== 'text') {
+                    $this->content = null;
+                    return false;
+                }
+            }
+
+            if ($this->base64_encode) {
+                $this->content = base64_encode($content);
+            } else {
+                $this->content = $content;
+            }
+
+            return $this->content;
+        }
 
 	}
