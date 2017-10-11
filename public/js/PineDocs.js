@@ -139,7 +139,7 @@ $(function() {
                 })
             }
 			if (data.content === null) {
-				console.log(self.render_download_link(data));
+				self.render_download_link(data);
 			}
 		}
 
@@ -393,7 +393,7 @@ $(function() {
 
 		div.classList.add('download');
 
-		link.setAttribute('href', '/?action=download&relative_path='+ file.relative_path);
+		link.setAttribute('href', 'index.php?action=download&relative_path='+ file.relative_path);
 		link.classList.add('download__link');
         link.innerText = 'Download file';
         link.setAttribute('target', '_blank');

@@ -21,8 +21,8 @@
 
 	// Load config.
 	PineDocs::load_config();
-	$param_action = isset($_GET['action']) ? $_GET['action'] : null;
-	$param_relative_path = isset($_GET['relative_path']) ? $_GET['relative_path'] : null;
+	$param_action = $_GET['action'] ?? null;
+	$param_relative_path = $_GET['relative_path'] ?? null;
 
 
 	// Get file from ajax call.

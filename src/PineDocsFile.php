@@ -52,35 +52,33 @@
 
 		private function set_file_type() {
             $mimetype = mime_content_type($this->full_path);
-            preg_match("/(?<common>[a-z]+)\/(?<type>.*)/i", $mimetype, $mime_type_array);
+            preg_match("/(?<common>[a-z]+)\/(?<type>.*)/i", $mimetype, $this->mimetype);
 
 			if (!isset($this->pathinfo['extension'])) {
 				return;
 			}
 
-			if (in_array($this->pathinfo['extension'], array('md', 'markdown')) || ($mime_type_array['type'] === 'markdown') ) {
+			if (in_array($this->pathinfo['extension'], array('md', 'markdown')) || ($this->mimetype['type'] === 'markdown') ) {
 				// Markdown.
 				$this->type = 'markdown';
-			} else if ($mime_type_array['common'] === 'image' && $mime_type_array['type'] !== 'svg') {
+			} else if ($this->mimetype['common'] === 'image' && $this->mimetype['type'] !== 'svg+xml') {
 				// Image.
 				$this->type = 'image';
 				$this->base64_encode = true;
-			} else if ($mime_type_array['common'] === 'image' && $mime_type_array['type'] === 'svg') {
+			} else if ($this->mimetype['common'] === 'image' && $this->mimetype['type'] === 'svg+xml') {
 				$this->type = 'svg';
 				$this->base64_encode = true;
-			} else if ($mime_type_array['common'] === 'audio') {
+			} else if ($this->mimetype['common'] === 'audio') {
 				$this->type = 'audio';
 				$this->base64_encode = true;
-			} else if (in_array($this->pathinfo['extension'], array('mp4')) || $mime_type_array['type'] === 'mp4') {
+			} else if (in_array($this->pathinfo['extension'], array('mp4')) || $this->mimetype['type'] === 'mp4') {
 				$this->type = 'video';
 				$this->base64_encode = true;
 			} else if (in_array($this->pathinfo['extension'], array('css', 'php', 'js', 'xml', 'c', 'cpp', 'h', 'bat', 'sh', 'bash', 'scss', 'sql', 'yaml', 'yml', 'conf', 'ini', 'cf', 'pre'))) {
 				// Code.
 				$this->type = 'code';
 			}
-
-			$this->mimetype = $mime_type_array;
-
+			
 			return $this->type;
 		}
 
