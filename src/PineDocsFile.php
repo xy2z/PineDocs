@@ -21,6 +21,11 @@
 				exit;
 			}
 
+			// Validate file exists.
+			if (!file_exists($full_path)) {
+				exit;
+			}
+
 			$this->full_path = $full_path;
 			$this->relative_path = utf8_encode(str_replace(PineDocs::$config->content_dir, '', $this->full_path));
 			$this->basename = $this->get_basename();
@@ -78,7 +83,7 @@
 				// Code.
 				$this->type = 'code';
 			}
-			
+
 			return $this->type;
 		}
 
