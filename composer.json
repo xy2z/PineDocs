@@ -3,6 +3,9 @@
     "description": "A simple, fast, customizable and lightweight site for browsing files.",
     "type": "project",
     "license": "GPLv3",
+    "config": {
+        "vendor-dir": "src/vendor"
+    },
     "authors": [
         {
             "name": "xy"
