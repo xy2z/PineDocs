@@ -1,0 +1,12 @@
+{
+    "name": "xy2z/pinedocs",
+    "description": "A simple, fast, customizable and lightweight site for browsing files.",
+    "type": "project",
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "xy"
+        }
+    ],
+    "require": {}
+}
