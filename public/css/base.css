@@ -210,6 +210,10 @@ video {
 }
 
 #content_wrapper code.file {
+	display: block;
+	white-space: pre;
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 
 #content_wrapper code.nobg {
