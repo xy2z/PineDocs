@@ -11,6 +11,13 @@
 		exit('Error: Missing PHP YAML extension. Get it at https://pecl.php.net/package/yaml and https://github.com/xy2z/PineDocs/wiki/Install-YAML-extension-for-PHP-7.0-(Windows---Ubuntu)');
 	}
 
+	// Load composer
+	$composer_autoload_path = __DIR__ . '/../vendor/autoload.php';
+	if (!file_exists($composer_autoload_path)) {
+		exit('Error: Missing composer libraries. Try running "composer install" to complete the installation.');
+	}
+	require $composer_autoload_path;
+
 	// Autoloader
 	spl_autoload_register(function ($class_name) {
 		require_once '../src/' . $class_name . '.php';
@@ -85,25 +92,31 @@
 
 
 	// Prepare template.
-	$main = new xyTemplate('main');
-	$main->set_data(array(
-		'search_value' => '',
-		'search_placeholder' => 'Search here...',
-	));
+	$loader = new Twig_Loader_Filesystem('../src/templates');
+	$twig = new Twig_Environment($loader);
+	$template = $twig->load('main.html');
 
-
-	// Set HTML variables
-	$main->set_html(array(
+	// Set template replacements
+	$template_replacements = array(
 		'menu' => $tree->render_tree_return(),
+		'version' => PineDocs::version,
+		'search' => array(
+			'value' => '',
+			'placeholder' => 'Search here...',
+		),
 		'config' => array(
 			'title' => PineDocs::$config->title,
 			'code_transparent_bg' => PineDocs::$config->code_transparent_bg,
 			'open_dirs' => PineDocs::$config->open_dirs,
+			'theme' => basename(PineDocs::$config->theme),
+			'color_scheme' => basename(PineDocs::$config->color_scheme),
+			'highlight_theme' => PineDocs::$config->highlight_theme,
 			'index_data' => $index_data,
+			'logo' => PineDocs::$config->logo,
+			'render_footer' => PineDocs::$config->render_footer,
 		),
 		'errors' => PineDocs::$errors,
-	));
-
+	);
 
 	// Render main template.
-	$main->render();
+	echo $template->render($template_replacements);

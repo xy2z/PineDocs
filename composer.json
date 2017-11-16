@@ -8,5 +8,7 @@
             "name": "xy"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^2.4"
+    }
 }
