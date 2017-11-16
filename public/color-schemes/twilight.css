@@ -100,4 +100,9 @@ code {
 
 a {
 	color: #39d;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
 }
