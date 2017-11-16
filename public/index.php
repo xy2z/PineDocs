@@ -12,7 +12,7 @@
 	}
 
 	// Load composer
-	$composer_autoload_path = __DIR__ . '/../vendor/autoload.php';
+	$composer_autoload_path = __DIR__ . '/../src/vendor/autoload.php';
 	if (!file_exists($composer_autoload_path)) {
 		exit('Error: Missing composer libraries. Try running "composer install" to complete the installation.');
 	}
