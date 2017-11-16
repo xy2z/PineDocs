@@ -22,8 +22,9 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, SVG, audio and s
 
 
 ### Setup guide
-1. [Download the latest release](https://github.com/xy2z/PineDocs/releases) or `git clone`
-1. Setup the web server to the /public dir (use `php -S localhost:89` for testing)
+1. [Download the latest release](https://github.com/xy2z/PineDocs/releases) or run `git clone`
+1. Run `composer install` in the root to get dependencies.
+1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89` for testing)
 
 
 ## Configuration
