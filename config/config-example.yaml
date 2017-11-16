@@ -25,7 +25,7 @@ theme: Default
 # See available color schemes in public/color-schems/
 color_scheme: PineDocs
 
-# [string] Code highlighting themes: default, monokai, tomorrow, sunbust, darcula.
+# [string] Code highlighting themes: default, monokai, tomorrow, sunburst, darcula.
 # See available themes on https://highlightjs.org/static/demo/
 highlight_theme: darcula
 
