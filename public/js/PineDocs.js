@@ -41,6 +41,7 @@ $(function() {
 		// Properties
 		self.click_hashchange = false
 		self.loaded = {}
+		self.scroll_top = {}
 
 		// Init
 		self.set_events()
@@ -146,8 +147,12 @@ $(function() {
 		// Set title
 		$('title').text(config.title + ' | ' + data.basename)
 
-		// Scroll to top.
-		self.elements.file_content.scrollTop(0)
+		// Scroll to last position.
+		if (self.scroll_top[window.location.hash]) {
+			self.elements.file_content.scrollTop(self.scroll_top[window.location.hash])
+		} else {
+			self.elements.file_content.scrollTop(0)
+		}
 
 		// Hide menu on mobile.
 		if (self.elements.menu_close.is(':visible')) {
@@ -184,8 +189,12 @@ $(function() {
 			$('.active').removeClass('active')
 			link.addClass('active')
 
+			// Remember scroll position.
+			self.scroll_top[window.location.hash] = self.elements.file_content.scrollTop()
+
 			// Already loaded before?
 			if (self.loaded[href]) {
+				window.location.hash = href
 				self.render_file(self.loaded[href])
 				return
 			}
