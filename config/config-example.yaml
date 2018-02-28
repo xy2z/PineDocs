@@ -19,11 +19,11 @@ index: index.md
 # [string] Theme to use.
 # A theme is basically anything but the colors.
 # See a list of themes in public/themes/
-theme: Default
+theme: default
 
 # [string] The color-scheme to use.
 # See available color schemes in public/color-schems/
-color_scheme: PineDocs
+color_scheme: pinedocs
 
 # [string] Code highlighting themes: default, monokai, tomorrow, sunburst, darcula.
 # See available themes on https://highlightjs.org/static/demo/
