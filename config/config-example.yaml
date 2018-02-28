@@ -45,6 +45,7 @@ render_footer: true
 exclude_files:
   - .git
   - .db
+  - .swp
 
 # [bool] Show file extensions.
 show_file_extension: true
