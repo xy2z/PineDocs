@@ -1,4 +1,4 @@
-![PineDocs](https://i.imgur.com/sNOMpuK.png)
+![PineDocs](https://i.imgur.com/SYD43GK.png)
 
 PineDocs is a simple, fast, lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
 
