@@ -49,3 +49,7 @@ exclude_files:
 
 # [bool] Show file extensions.
 show_file_extension: true
+
+# [string] How to render links and dirs.
+# Values: default, ucfirst, ucwords, uppercase, lowercase.
+menu_link_format: default

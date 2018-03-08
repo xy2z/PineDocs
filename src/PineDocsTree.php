@@ -57,16 +57,35 @@
 			}
 
 			foreach ($tree->dirs as $dir => $content) {
-				$return .= '<li class="folder"><a href="#" class="link_dir alert"><i class="fa fa-folder" aria-hidden="true"></i>' . $dir . '</a></li>';
+				$return .= '<li class="folder"><a href="#" class="link_dir alert"><i class="fa fa-folder" aria-hidden="true"></i>' . format_menu_item($dir) . '</a></li>';
 				$return .= $this->render_tree_return($content);
 			}
 
 			foreach ($tree->files as $file) {
-				$return .= '<li class="link"><a href="#' . xy_format_path($file->relative_path) . '" class="link_file"><i class="fa fa-file-o alert" aria-hidden="true"></i>' . $file->basename . '</a></li>';
+				$return .= '<li class="link"><a href="#' . xy_format_path($file->relative_path) . '" class="link_file"><i class="fa fa-file-o alert" aria-hidden="true"></i>' . format_menu_item($file->basename) . '</a></li>';
 			}
 
 			$return .= '</ul>';
 			return $return;
+		}
+
+
+		static public function format_menu_item(string $item) {
+			if (PineDocs::$config->menu_link_format == 'ucfirst') {
+				return ucfirst($item);
+			}
+
+			if (PineDocs::$config->menu_link_format == 'uppercase') {
+				return strtoupper($item);
+			}
+
+			if (PineDocs::$config->menu_link_format == 'lowercase') {
+				return strtolower($item);
+			}
+
+			if (PineDocs::$config->menu_link_format == 'ucwords') {
+				return ucwords($item);
+			}
 		}
 
 

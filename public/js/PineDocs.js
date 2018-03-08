@@ -8,7 +8,7 @@ $(function() {
 	}
 
 
-	function format_bytes(bytes,decimals) {
+	function format_bytes(bytes, decimals) {
 		if (bytes == 0) {
 			return '0 Byte'
 		}
