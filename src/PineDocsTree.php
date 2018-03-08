@@ -86,6 +86,9 @@
 			if (PineDocs::$config->menu_link_format == 'ucwords') {
 				return ucwords($item);
 			}
+
+			// Default/unknown format.
+			return $item;
 		}
 
 
