@@ -30,6 +30,7 @@ $(function() {
 		self.elements = {
 			menu_wrapper: $('#menu_wrapper'),
 			menu_close: $('#menu_close'),
+			search: $('#search'),
 			menu: $('#menu'),
 			content_path: $('#content_path'),
 			file_content: $('#file_content'),
@@ -40,9 +41,12 @@ $(function() {
 		// Properties
 		self.click_hashchange = false
 		self.loaded = {}
+		self.scroll_top = {}
 
 		// Init
 		self.set_events()
+
+		self.render_errors()
 
 		// Autoload file from URL anchor tag.
 		if (window.location.hash.length >= 2) {
@@ -127,21 +131,28 @@ $(function() {
 				hljs.highlightBlock(block)
 			})
 		} else {
-			if (typeof data.content == 'string') {
-				self.elements.file_content.html(nl2br(data.content))
+            if (typeof data.content == 'string') {
+                self.elements.file_content.html(nl2br(data.content))
 
-				// Syntax highlighting
-				self.elements.file_content.find('code').each(function(i, block) {
-					hljs.highlightBlock(block)
-				})
+                // Syntax highlighting
+                self.elements.file_content.find('code').each(function(i, block) {
+                    hljs.highlightBlock(block)
+                })
+            }
+			if (data.content === null) {
+				self.render_download_link(data);
 			}
 		}
 
 		// Set title
 		$('title').text(config.title + ' | ' + data.basename)
 
-		// Scroll to top.
-		self.elements.file_content.scrollTop(0)
+		// Scroll to last position.
+		if (self.scroll_top[window.location.hash]) {
+			self.elements.file_content.scrollTop(self.scroll_top[window.location.hash])
+		} else {
+			self.elements.file_content.scrollTop(0)
+		}
 
 		// Hide menu on mobile.
 		if (self.elements.menu_close.is(':visible')) {
@@ -157,7 +168,7 @@ $(function() {
 		// Event for any external link, open in new window
 		$('body').on('click', 'a', function(event) {
 			var a = new RegExp('/' + window.location.host + '/')
-			if (!a.test(this.href)) {
+			if (this.href != '' && !a.test(this.href)) {
 				event.preventDefault()
 				event.stopPropagation()
 				window.open(this.href, '_blank')
@@ -178,8 +189,12 @@ $(function() {
 			$('.active').removeClass('active')
 			link.addClass('active')
 
+			// Remember scroll position.
+			self.scroll_top[window.location.hash] = self.elements.file_content.scrollTop()
+
 			// Already loaded before?
 			if (self.loaded[href]) {
+				window.location.hash = href
 				self.render_file(self.loaded[href])
 				return
 			}
@@ -267,6 +282,27 @@ $(function() {
 			// self.elements.menu_wrapper.hide()
 			self.hide_mobile_menu()
 		})
+
+		window.addEventListener("keyup", function(e) {
+			if (e.keyCode == 70) {
+				// Focus on search bar.
+				self.elements.search.focus()
+			}
+
+			if (e.keyCode == 106) {
+				// * = Show all directories.
+				self.elements.menu_wrapper.find('.link_dir').not('.link_dir_open').click()
+			}
+		})
+
+		self.elements.search.on('keyup', function(e) {
+			if (e.keyCode == 27) {
+				// ESC on search bar.
+				$(this).val('')
+			}
+
+			self.filter_items($(this))
+		})
 	}
 
 
@@ -318,15 +354,79 @@ $(function() {
 
 	PineDocs.prototype.show_mobile_menu = function() {
 		var self = this
+		self.elements.mobile_nav_icon.attr('aria-expanded', 'true');
 		self.elements.menu_wrapper.hide().removeClass('hidden').slideDown('fast')
 	}
 
 
 	PineDocs.prototype.hide_mobile_menu = function() {
 		var self = this
+		self.elements.mobile_nav_icon.attr('aria-expanded', 'false');
 		self.elements.menu_wrapper.addClass('hidden')
 	}
 
+
+	PineDocs.prototype.filter_items = function(input) {
+		var self = this
+			filter = input.val().toUpperCase(),
+			li = self.elements.menu.find('li')
+
+		if (filter == '') {
+			li.show()
+			return
+		}
+
+		li.css('display', 'none')
+
+		for (var i = 0; i < li.length; i++) {
+			var list = $(li[i]),
+				item = list.find("a")
+
+			if (!list.hasClass('folder') && item.text().toUpperCase().indexOf(filter) > -1) {
+				list.css('display', 'block')
+				list.parents('ul').css('display', 'block')
+
+				var folderLi = list.siblings('li.folder')
+				folderLi.css('display', 'block')
+				folderLi.find('i').addClass('fa-folder-open')
+			}
+		}
+	}
+
+	/** @arg file json object with response */
+	PineDocs.prototype.render_download_link = function (file) {
+		var self = this,
+			div = document.createElement('div'),
+			link = document.createElement('a'),
+			p = document.createElement('p')
+
+		div.classList.add('download');
+
+		link.setAttribute('href', 'index.php?action=download&relative_path='+ file.relative_path);
+		link.classList.add('download__link');
+        link.innerText = 'Download file';
+        link.setAttribute('target', '_blank');
+
+		p.innerText = 'Unable to render requested file.';
+
+		div.appendChild(p);
+		div.appendChild(link);
+
+		self.elements.file_content.append(div);
+
+		return div.length;
+    }
+
+
+	PineDocs.prototype.render_errors = function() {
+		var self = this
+
+		alertify.set('notifier','position', 'top-right');
+
+		$.each(errors, function(key, error_message) {
+			alertify.error(error_message);
+		})
+	}
 
 	// Init
 	new PineDocs()

@@ -1,16 +1,7 @@
-/* Color Scheme: Twilight */
-
-/* Twilight colors
-Dark brown: #9B703F
-Orange/brown (keyword): #CDA869
-Green (strings): #8F9D6A
-Blue (variable): #7587A6
-Red (constant): #CF6A4C
-Yellow (storage): #F9EE98
-*/
+/* Color Scheme: simplistic-dark */
 
 body {
-	background: #000;
+	background: #222;
 	color: #eee;
 }
 
@@ -21,8 +12,10 @@ body {
 
 
 /*** MENU ***/
+#menu_wrapper {
+	border-right: 1px solid #111;
+}
 #menu {
-	background: #292929;
 }
 
 #menu ul {
@@ -35,18 +28,17 @@ body {
 }
 
 #menu ul li a {
-	color: #8295b5;
+	color: #f83;
 }
 
 #menu ul li a:hover {
 	background: rgba(0, 0, 0, 0.3);
-	color: #fff;
 }
 
 #menu ul li a.active:hover,
 #menu ul li a.active,
 #menu ul li a.active i.fa {
-	color: #F9EE98;
+	color: #fff;
 }
 
 
@@ -54,14 +46,13 @@ body {
 /*** MENU FOOTER ***/
 #menu footer,
 #menu footer a {
-	color: #666;
 }
 
 
 
 /* MENU ICONS */
 #menu i.fa {
-	color: #9B703F;
+	color: #999;
 }
 
 #menu a.link_dir_open i.fa {
@@ -71,30 +62,34 @@ body {
 
 /*** CONTENT PATH ***/
 #content_top {
-	background: #CDA869;
-	color: #333;
+	background: #333;
 }
 
 #content_top .filesize {
-	color: rgba(0, 0, 0, 0.5);
+	color: #999;
 }
 
 
 
 /*** CONTENT ***/
 #content_wrapper {
-	background: #222;
 }
 
 code {
 	background: rgba(100, 100, 0, 0.1);
-	color: #080;
 }
 
 h1 {
-	border-color: #444;
+	border-color: #000;
 }
 
 a {
-	color: #09f;
+	color: #f83;
+}
+
+
+
+/*** SEARCH ***/
+#search {
+	background: rgba(255, 255, 255, 0.6);
 }

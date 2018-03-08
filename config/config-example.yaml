@@ -4,36 +4,28 @@
 # https://github.com/xy2z/PineDocs/tree/master#configuration
 
 
-###########################################################
-# Required settings:
-###########################################################
-
 # [string] The title.
 title: PineDocs
 
 # [string] The full path of the content directory to show.
-content_dir: /data/pinedocs/content
+#content_dir: /data/pinedocs/content
 
 # [string] Path to the logo inside the public/ dir.
-logo: PineDocs.png
-
-
-###########################################################
-# Optional settings:
-###########################################################
+#logo: PineDocs.png
 
 # [string] Filename of the index file inside content_dir.
 index: index.md
 
 # [string] Theme to use.
-# See a list of themes in the public/themes/ dir.
-theme: Default
+# A theme is basically anything but the colors.
+# See a list of themes in public/themes/
+theme: default
 
 # [string] The color-scheme to use.
-# See available color schemes in the public/themes/color-schems/ dir.
-color_scheme: PineDocs
+# See available color schemes in public/color-schems/
+color_scheme: pinedocs
 
-# [string] Code highlighting themes: default, monokai, tomorrow, sunbust, darcula.
+# [string] Code highlighting themes: default, monokai, tomorrow, sunburst, darcula.
 # See available themes on https://highlightjs.org/static/demo/
 highlight_theme: darcula
 
@@ -53,3 +45,7 @@ render_footer: true
 exclude_files:
   - .git
   - .db
+  - .swp
+
+# [bool] Show file extensions.
+show_file_extension: true

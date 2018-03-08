@@ -6,12 +6,8 @@ body {
 }
 
 #main {
-	width: 1200px;
 	margin: 0 auto;
-
 }
-
-
 
 /*** MENU ***/
 #menu {
@@ -51,14 +47,10 @@ body {
 #menu ul li a.active i.fa {
 }
 
-
-
 /*** MENU FOOTER ***/
 #menu footer,
 #menu footer a {
 }
-
-
 
 /* MENU ICONS */
 #menu i.fa {
@@ -67,8 +59,6 @@ body {
 
 #menu a.link_dir_open i.fa {
 }
-
-
 
 /*** CONTENT PATH ***/
 #content_top {
@@ -79,8 +69,6 @@ body {
 
 #content_top .filesize {
 }
-
-
 
 /*** CONTENT ***/
 #content_wrapper {

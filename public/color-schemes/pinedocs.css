@@ -1,8 +1,7 @@
-/* Color Scheme: simplistic-dark */
+/* Color Scheme: Default */
 
 body {
-	background: #222;
-	color: #eee;
+	background: #333;
 }
 
 #main {
@@ -12,10 +11,8 @@ body {
 
 
 /*** MENU ***/
-#menu_wrapper {
-	border-right: 1px solid #111;
-}
 #menu {
+	background: #456;
 }
 
 #menu ul {
@@ -28,11 +25,12 @@ body {
 }
 
 #menu ul li a {
-	color: #f83;
+	color: #dd9;
 }
 
 #menu ul li a:hover {
-	background: rgba(0, 0, 0, 0.3);
+	background: rgba(255, 255, 255, 0.1);
+	color: #fff;
 }
 
 #menu ul li a.active:hover,
@@ -46,13 +44,16 @@ body {
 /*** MENU FOOTER ***/
 #menu footer,
 #menu footer a {
+	color: #999;
 }
 
 
 
 /* MENU ICONS */
 #menu i.fa {
-	color: #999;
+	color: #09d;
+	color: #fff;
+	color: rgba(255, 255, 255, 0.5);
 }
 
 #menu a.link_dir_open i.fa {
@@ -62,27 +63,33 @@ body {
 
 /*** CONTENT PATH ***/
 #content_top {
-	background: #333;
+	color: #999;
+	background: #ffd;
 }
 
 #content_top .filesize {
-	color: #999;
 }
 
 
 
 /*** CONTENT ***/
 #content_wrapper {
+	background: #fff;
 }
 
 code {
 	background: rgba(100, 100, 0, 0.1);
-}
-
-h1 {
-	border-color: #000;
+	color: #080;
 }
 
 a {
-	color: #f83;
+	color: #09f;
+}
+
+
+
+/*** SEARCH ***/
+#search {
+	background: rgba(255, 255, 255, 0.8);
+	border: 0;
 }

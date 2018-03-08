@@ -1,0 +1,17 @@
+{
+    "name": "xy2z/pinedocs",
+    "description": "A simple, fast, customizable and lightweight site for browsing files.",
+    "type": "project",
+    "license": "GPLv3",
+    "config": {
+        "vendor-dir": "src/vendor"
+    },
+    "authors": [
+        {
+            "name": "xy"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.4"
+    }
+}

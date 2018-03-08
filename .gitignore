@@ -1,2 +1,3 @@
-config/config.yaml
-content/*
+/config/config.yaml
+/content/*
+/src/vendor/
