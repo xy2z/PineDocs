@@ -16,6 +16,7 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, SVG, audio and s
 
 ## Setup
 ### Docker
+`docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs:1.0.2`
 See documentation at https://hub.docker.com/r/xy2z/pinedocs/
 
 ### Manual Setup
