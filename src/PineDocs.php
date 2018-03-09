@@ -2,7 +2,7 @@
 
 	class PineDocs {
 
-		const version = '1.0.1';
+		const version = '1.0.2';
 
 		static public $config;
 
