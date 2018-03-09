@@ -15,13 +15,17 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, SVG, audio and s
 
 
 ## Setup
-### Requirements
+### Docker
+See documentation at https://hub.docker.com/r/xy2z/pinedocs/
+
+### Manual Setup
+#### Requirements
 - PHP 7.0 or above
 	- YAML extension for PHP (https://pecl.php.net/package/yaml)
 - Web server: Apache2, nginx, etc.
 
 
-### Setup guide
+#### Setup guide
 1. [Download the latest release](https://github.com/xy2z/PineDocs/releases) or run `git clone`
 1. Run `composer install` in the root to get dependencies.
 1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89` for testing)
@@ -53,6 +57,8 @@ Feel free to edit the `config.yaml` file to fit your needs.
 - **`exclude_files`** (array) List of files to exclude. Supports regex if the format is /regex/i.
 
 - **`show_file_extension`** (bool) Show file extensions. Default is true.
+
+- **`menu_link_format`** (string) Values: default, ucfirst, ucwords, uppercase, lowercase.
 
 
 ## License
