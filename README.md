@@ -46,7 +46,9 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 - **`index`** (string) Relative path to the index file. Default is array of `index.md`, `index.html`, `index.txt`, `index`.
 
-- **`theme`** (string) Available themes: `default`, `default-dark`, `wiki`, `wiki-dark`.
+- **`theme`** (string) Available themes: `default`, `wiki`.
+
+- **`color_scheme`** (string) Available color schemes: `pinedocs`, `simplistic`, `simplistic-dark`, `twilight`.
 
 - **`highlight_theme`** (string) The theme to use for code. See a list at https://highlightjs.org/static/demo/
 
