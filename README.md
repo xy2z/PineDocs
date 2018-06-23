@@ -1,13 +1,13 @@
 ![PineDocs](https://i.imgur.com/SYD43GK.png)
 
-PineDocs is a simple, fast, lightweight tool for viewing files in a browser. Great for documentation, wiki, notes, etc.
+A fast and lightweight site for viewing files.
 
-Renders Markdown, HTML, syntax highlighting code, images, GIFs, SVG, audio and small videos.
+Great for documentation, wiki, notes, etc.
 
 ## Features
 - Cross-platform (currently tested on Ubuntu and Windows).
 - No database needed.
-- Supports Markdown, text, HTML, images, GIFs, audio and videos.
+- Supports Markdown, text, HTML, code, images, SVG, GIFs, audio and small videos.
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Multiple responsive themes and color schemes.
 - YAML Config file to change the settings.
@@ -18,7 +18,7 @@ Renders Markdown, HTML, syntax highlighting code, images, GIFs, SVG, audio and s
 ### Docker
 `docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs:1.0.2`
 
-See documentation at https://hub.docker.com/r/xy2z/pinedocs/
+See more at https://hub.docker.com/r/xy2z/pinedocs/
 
 ### Manual Setup
 #### Requirements
