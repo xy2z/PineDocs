@@ -5,7 +5,6 @@ A fast and lightweight site for viewing files.
 Great for documentation, wiki, notes, etc.
 
 ## Features
-- Cross-platform (currently tested on Ubuntu and Windows).
 - No database needed.
 - Supports Markdown, text, HTML, code, images, SVG, GIFs, audio and small videos.
 - Syntax highlighting for over 169 languages with over 77 themes.
