@@ -2,3 +2,6 @@
 /content/*
 /src/vendor/
 Thumbs.db
+/data/
+/docker-compose.yml
+
