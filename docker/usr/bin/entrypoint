@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Config
+if [ ! -f /data/pinedocs/config/config.yaml ]; then
+        mkdir -p /data/pinedocs/config
+        cp /app/pinedocs/config/config-example.yaml /data/pinedocs/config/config.yaml
+        echo 'Created config file.'
+fi
+
+# Content
+if [ ! -f /data/pinedocs/files ]; then
+        mkdir -p /data/pinedocs/files
+        cp -a /app/pinedocs/content/. /data/pinedocs/files
+        echo 'Created content directory.'
+fi
+
+# Setup symlinks
+rm -rf /app/pinedocs/config /app/pinedocs/content
+ln -sfn /data/pinedocs/config /app/pinedocs/config
+ln -sfn /data/pinedocs/files /app/pinedocs/content
+
+# Run parent entrypoint
+exec /usr/local/bin/docker-php-entrypoint "$@"
