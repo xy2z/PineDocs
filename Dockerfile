@@ -16,11 +16,10 @@ RUN apt-get install -y --no-install-recommends git zip unzip
 VOLUME /data
 COPY docker /
 COPY . /app/pinedocs
-# RUN mv /app/pinedocs/docker /
-WORKDIR /app/
+WORKDIR /app/pinedocs
 
 # Install Composer dependencies
-RUN composer install -d=/app/pinedocs
+RUN composer install
 
 # Override entrypoint
 # To make sure data directory exists and symlinks are set when containers are being run.
