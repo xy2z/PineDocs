@@ -8,8 +8,8 @@ Great for documentation, wiki, notes, etc.
 - No database needed.
 - Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos.
 - Syntax highlighting for over 169 languages with over 77 themes.
-- Multiple responsive themes and color schemes.
-- YAML Config file to change the settings.
+- Responsive themes and color schemes.
+- Configurations
 - Quick filtering in files
 
 
