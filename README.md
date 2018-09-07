@@ -1,5 +1,5 @@
 ![Pinedocs Screenshot](https://i.imgur.com/yi1QIrZ.png)
-See more screenshots at https://imgur.com/a/15Gq67X
+_See more screenshots at https://imgur.com/a/15Gq67X_
 
 A fast and lightweight site for viewing files.
 
