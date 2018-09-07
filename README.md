@@ -1,11 +1,9 @@
-![PineDocs](https://i.imgur.com/SYD43GK.png)
+![Pinedocs Screenshot](https://i.imgur.com/yi1QIrZ.png)
+See more screenshots at https://imgur.com/a/15Gq67X
 
 A fast and lightweight site for viewing files.
 
 Great for documentation, wiki, notes, etc.
-
-![Pinedocs Screenshot](https://i.imgur.com/yi1QIrZ.png)
-See more screenshots at https://imgur.com/a/15Gq67X
 
 ## Features
 - No database needed.
