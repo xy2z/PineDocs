@@ -1,4 +1,5 @@
-![PineDocs](https://i.imgur.com/SYD43GK.png)
+![Pinedocs Screenshot](https://i.imgur.com/yi1QIrZ.png)
+_See more screenshots at https://imgur.com/a/15Gq67X_
 
 A fast and lightweight site for viewing files.
 
@@ -6,11 +7,12 @@ Great for documentation, wiki, notes, etc.
 
 ## Features
 - No database needed.
-- Supports Markdown, text, HTML, code, images, SVG, GIFs, audio and small videos.
+- Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos.
 - Syntax highlighting for over 169 languages with over 77 themes.
-- Multiple responsive themes and color schemes.
-- YAML Config file to change the settings.
+- Responsive themes and color schemes.
+- Configuration
 - Quick filtering in files
+- Use your existing files
 
 
 ## Setup
