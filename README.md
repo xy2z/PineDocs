@@ -4,6 +4,9 @@ A fast and lightweight site for viewing files.
 
 Great for documentation, wiki, notes, etc.
 
+![Pinedocs Screenshot](https://i.imgur.com/yi1QIrZ.png)
+See more screenshots at https://imgur.com/a/15Gq67X
+
 ## Features
 - No database needed.
 - Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos.
@@ -11,6 +14,7 @@ Great for documentation, wiki, notes, etc.
 - Responsive themes and color schemes.
 - Configuration
 - Quick filtering in files
+- Use your existing files
 
 
 ## Setup
