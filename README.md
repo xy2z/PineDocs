@@ -9,7 +9,7 @@ Great for documentation, wiki, notes, etc.
 - Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos.
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Responsive themes and color schemes.
-- Configurations
+- Configuration
 - Quick filtering in files
 
 
