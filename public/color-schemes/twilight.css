@@ -106,3 +106,8 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+
+blockquote {
+	border-color: #CDA869;
+	color: #888;
+}

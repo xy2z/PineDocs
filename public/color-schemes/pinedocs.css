@@ -86,6 +86,10 @@ a {
 	color: #09f;
 }
 
+blockquote {
+	border-color: #eee;
+	color: #888;
+}
 
 
 /*** SEARCH ***/

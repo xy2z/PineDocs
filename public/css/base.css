@@ -196,6 +196,12 @@ video {
 	width: 100%;
 }
 
+blockquote {
+	margin: 1em 0;
+	padding: 0 10px;
+	border-left: 6px solid;
+}
+
 #content_wrapper code {
 	display: inline;
 	padding: 2px 4px;
