@@ -9,7 +9,7 @@ Great for documentation, wiki, notes, etc.
 
 - No database needed.
 - Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos.
-- Syntax highlighting for over 169 languages with over 77 layouts.
+- Syntax highlighting for over 169 languages with over 77 themes.
 - Responsive layouts and color schemes.
 - Configuration
 - Quick filtering in files
@@ -54,9 +54,9 @@ Feel free to edit the `config.yaml` file to fit your needs.
 
 - **`color_scheme`** (string) Available color schemes: `pinedocs`, `simplistic`, `simplistic-dark`, `twilight`.
 
-- **`highlight_theme`** (string) The layout to use for code. See a list at https://highlightjs.org/static/demo/
+- **`highlight_theme`** (string) The theme to use for code. See a list at https://highlightjs.org/static/demo/
 
-- **`code_transparent_bg`** (bool) If `true`, all will use the highlight layout. If `false`, the background will be transparent.
+- **`code_transparent_bg`** (bool) If `true`, all will use the highlight theme. If `false`, the background will be transparent.
 
 - **`open_dirs`** (int|string) The number of levels of dirs that should be opnened on page load. Use `all` to open all dirs.
 

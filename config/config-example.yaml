@@ -24,8 +24,8 @@ layout: default
 # See available color schemes in public/color-schems/
 color_scheme: pinedocs
 
-# [string] Code highlighting layouts: default, monokai, tomorrow, sunburst, darcula.
-# See available layouts on https://highlightjs.org/static/demo/
+# [string] Code highlighting themes: default, monokai, tomorrow, sunburst, darcula.
+# See available themes on https://highlightjs.org/static/demo/
 highlight_theme: darcula
 
 # [bool] Use transparent bacground on code blocks?
