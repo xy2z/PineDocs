@@ -1,62 +1,65 @@
 <!-- PineDocs - https://github.com/xy2z/PineDocs -->
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{{ config.title }}</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="themes/{{ config.theme | lower }}.css">
-		<link rel="stylesheet" type="text/css" href="color-schemes/{{ config.color_scheme | lower }}.css">
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
 
-		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
-		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css"/>
-		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css"/>
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ config.title }}</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="layouts/{{ config.layout | lower }}.css">
+	<link rel="stylesheet" type="text/css" href="color-schemes/{{ config.color_scheme | lower }}.css">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 
-	<body>
-		<div id="main" class="container">
+	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css" />
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/layouts/default.min.css" />
+</head>
 
-				<div id="menu_wrapper" class="">
-					<div id="menu" class="navbar-default">
-						<div id="menu_top">
-							<a href="."><img id="logo" src="{{ config.logo }}" /></a>
-							<input type="text" id="search" name="search" value="{{ search.value }}" placeholder="{{ search.placeholder }}" autofocus>
-						</div>
+<body>
+	<div id="main" class="container">
 
-						{{ menu | raw }}
-						{% if config.render_footer %}
-							<footer>
-								PineDocs {{ version }} (<a target="_blank" href="https://github.com/xy2z/PineDocs/releases">Check for updates</a>)
-							</footer>
-						{% endif %}
-					</div>
-					<button aria-label="Close navigation" type="button" id="menu_close">X</button>
+		<div id="menu_wrapper" class="">
+			<div id="menu" class="navbar-default">
+				<div id="menu_top">
+					<a href="."><img id="logo" src="{{ config.logo }}" /></a>
+					<input type="text" id="search" name="search" value="{{ search.value }}" placeholder="{{ search.placeholder }}"
+					 autofocus>
 				</div>
 
-				<div id="content_wrapper">
-					<div id="content_top">
-						<button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menu_wrapper" aria-label="Navigation" id="mobile_nav_icon"><i class="fa fa-bars" aria-hidden="true"></i></button>
-						<span id="content_path"></span>
-					</div>
-					<div id="loading"></div>
-					<div id="file_content"></div>
-				</div>
-
+				{{ menu | raw }}
+				{% if config.render_footer %}
+				<footer>
+					PineDocs {{ version }} (<a target="_blank" href="https://github.com/xy2z/PineDocs/releases">Check for updates</a>)
+				</footer>
+				{% endif %}
+			</div>
+			<button aria-label="Close navigation" type="button" id="menu_close">X</button>
 		</div>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
-		<script src="js/PineDocs.js"></script>
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/{{ config.highlight_theme }}.min.css">
-		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-		<script>
-			var config = {{ config | json_encode() | raw }}
-			var errors = {{ errors | json_encode() | raw }}
-		</script>
-	</body>
+		<div id="content_wrapper">
+			<div id="content_top">
+				<button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="menu_wrapper" aria-label="Navigation"
+				 id="mobile_nav_icon"><i class="fa fa-bars" aria-hidden="true"></i></button>
+				<span id="content_path"></span>
+			</div>
+			<div id="loading"></div>
+			<div id="file_content"></div>
+		</div>
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+	<script src="js/PineDocs.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/{{ config.highlight_theme }}.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<script>
+		var config = {{ config | json_encode() | raw }}
+		var errors = {{ errors | json_encode() | raw }}
+	</script>
+</body>
 
 </html>
