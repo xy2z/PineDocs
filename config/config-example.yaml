@@ -3,7 +3,6 @@
 # See a detailed list of all settings here:
 # https://github.com/xy2z/PineDocs/tree/master#configuration
 
-
 # [string] The title.
 title: PineDocs
 
@@ -16,10 +15,10 @@ title: PineDocs
 # [string] Filename of the index file inside content_dir.
 index: index.md
 
-# [string] Theme to use.
-# A theme is basically anything but the colors.
-# See a list of themes in public/themes/
-theme: default
+# [string] Layout to use.
+# A layout is basically anything but the colors.
+# See a list of layouts in public/layouts/
+layout: default
 
 # [string] The color-scheme to use.
 # See available color schemes in public/color-schems/
