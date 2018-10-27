@@ -35,12 +35,12 @@
 				self::$config->title = 'PineDocs';
 			}
 
-			// Make sure $theme is set.
-			if (!isset(self::$config->theme) || (empty(self::$config->theme))) {
-				self::$config->theme = 'default';
-			} else if (!file_exists('../public/themes/' . basename(self::$config->theme) . '.css')) {
-				self::$errors[] = 'Theme not found: "' . self::$config->theme . '". Using default.';
-				self::$config->theme = 'default';
+			// Make sure $layout is set.
+			if (!isset(self::$config->layout) || (empty(self::$config->layout))) {
+				self::$config->layout = 'default';
+			} else if (!file_exists('../public/layouts/' . basename(self::$config->layout) . '.css')) {
+				self::$errors[] = 'Layout not found: "' . self::$config->layout . '". Using default.';
+				self::$config->layout = 'default';
 			}
 
 			// Make sure $color_scheme is set.

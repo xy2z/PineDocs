@@ -108,7 +108,7 @@
 			'title' => PineDocs::$config->title,
 			'code_transparent_bg' => PineDocs::$config->code_transparent_bg,
 			'open_dirs' => PineDocs::$config->open_dirs,
-			'theme' => strtolower(basename(PineDocs::$config->theme)),
+			'layout' => strtolower(basename(PineDocs::$config->layout)),
 			'color_scheme' => strtolower(basename(PineDocs::$config->color_scheme)),
 			'highlight_theme' => PineDocs::$config->highlight_theme,
 			'index_data' => $index_data,
