@@ -75,6 +75,10 @@
 				# Set default value.
 				self::$config->show_file_extension = true;
 			}
+
+			if (!isset(self::$config->menu_link_format)) {
+				self::$config->menu_link_format = 'default';
+			}
 		}
 
 
