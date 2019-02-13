@@ -16,7 +16,7 @@
 				// Create config.yaml by copying config-example.yaml.
 				$create = copy('../config/config-example.yaml', '../config/config.yaml');
 				if (!$create) {
-					exit('Error: Could not automatically create config/config.yaml. You can manually copy config/config-example.yaml to config/config.yaml');
+					exit('Error: Could not automatically create config/config.yaml. You need to manually copy config/config-example.yaml to config/config.yaml');
 				}
 			}
 
