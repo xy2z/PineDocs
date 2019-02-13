@@ -35,13 +35,13 @@
 			if (isset($this->pathinfo['extension'])) {
 				$this->pathinfo['extension'] = strtolower($this->pathinfo['extension']);
 			}
-
-			$this->set_file_type();
-			$this->set_content();
 		}
 
 
 		public function get_data() {
+			$this->set_file_type();
+			$this->set_content();
+
 			$data = array(
 				'relative_path' => $this->relative_path,
 				'basename' => $this->basename,
@@ -89,7 +89,6 @@
 
 
 		private function get_basename() {
-
 			if (PineDocs::$config->show_file_extension) {
 				return utf8_encode(basename($this->full_path));
 			} else {
