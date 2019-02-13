@@ -1,5 +1,7 @@
 <?php
 
+	use Symfony\Component\Yaml\Yaml;
+
 	class PineDocs {
 
 		const version = '1.0.3';
@@ -19,7 +21,7 @@
 			}
 
 			// Load config
-			$config = yaml_parse_file($config_path);
+			$config = Yaml::parseFile($config_path);
 
 			if (!$config) {
 				exit('Error: Could not parse/read config.yaml.');

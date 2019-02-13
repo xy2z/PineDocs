@@ -6,11 +6,6 @@
 		exit('Error: This PHP version (' . phpversion() . ') is not supported. Please use PHP 7+');
 	}
 
-	// Check if yaml extension is installed
-	if (!extension_loaded('yaml')) {
-		exit('Error: Missing PHP YAML extension. Get it at https://pecl.php.net/package/yaml and https://github.com/xy2z/PineDocs/wiki/Install-YAML-extension-for-PHP-7.0-(Windows---Ubuntu)');
-	}
-
 	// Load composer
 	$composer_autoload_path = __DIR__ . '/../src/vendor/autoload.php';
 	if (!file_exists($composer_autoload_path)) {
