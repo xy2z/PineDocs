@@ -28,7 +28,7 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 
 #### Requirements
 
-- PHP 7.0 or above - YAML extension for PHP (https://pecl.php.net/package/yaml)
+- PHP 7.0 or above.
 - Composer for dependencies.
 - Web server: Apache2, nginx, etc.
 
