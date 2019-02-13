@@ -20,6 +20,29 @@ Great for documentation, wiki, notes, etc.
 
 ### Docker
 
+Docker is the easiest way to setup PineDocs.
+
+#### Docker-compose.yml
+```yaml
+version: '3'
+
+services:
+  web:
+    image: xy2z/pinedocs
+    ports:
+      - 3000:80
+    volumes:
+      - ./data:/data/pinedocs
+```
+
+After running `docker-compose up -d` you can change the config in `./data/config/config.yaml`, and add your files (or git clone your documentation) in the `./data/files` dir.
+
+Changes will take affect when you reload the page - no need to restart the container.
+
+#### Docker
+
+Altough docker-compose is recommended, you can also use pure Docker:
+
 `docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs:1.0.3`
 
 See more at https://hub.docker.com/r/xy2z/pinedocs/
@@ -30,7 +53,7 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 
 - PHP 7.0 or above.
 - Composer for dependencies.
-- Web server: Apache2, nginx, etc.
+- A web server (apache2, nginx, etc.)
 
 #### Setup guide
 
@@ -40,7 +63,7 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 
 ## Configuration
 
-Feel free to edit the `config.yaml` file to fit your needs.
+Feel free to edit the `config/config.yaml` file to fit your needs.
 
 #### Settings
 
