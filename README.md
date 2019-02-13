@@ -8,12 +8,13 @@ Great for documentation, wiki, notes, etc.
 ## Features
 
 - No database needed.
+- No manually building.
 - Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos.
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Responsive layouts and color schemes.
-- Configuration
-- Quick filtering in files
-- Use your existing files
+- Configuration.
+- Quick filtering in files.
+- Use your existing files or existing git repos.
 
 ## Setup
 
@@ -28,6 +29,7 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 #### Requirements
 
 - PHP 7.0 or above - YAML extension for PHP (https://pecl.php.net/package/yaml)
+- Composer for dependencies.
 - Web server: Apache2, nginx, etc.
 
 #### Setup guide
