@@ -8,16 +8,40 @@ Great for documentation, wiki, notes, etc.
 ## Features
 
 - No database needed.
+- No manually building.
 - Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos.
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Responsive layouts and color schemes.
-- Configuration
-- Quick filtering in files
-- Use your existing files
+- Configuration.
+- Quick filtering in files.
+- Use your existing files or existing git repos.
 
 ## Setup
 
 ### Docker
+
+Docker is the easiest way to setup PineDocs.
+
+#### Docker-compose.yml
+```yaml
+version: '3'
+
+services:
+  web:
+    image: xy2z/pinedocs
+    ports:
+      - 3000:80
+    volumes:
+      - ./data:/data/pinedocs
+```
+
+After running `docker-compose up -d` you can change the config in `./data/config/config.yaml`, and add your files (or git clone your documentation) in the `./data/files` dir.
+
+Changes will take affect when you reload the page - no need to restart the container.
+
+#### Docker
+
+Altough docker-compose is recommended, you can also use pure Docker:
 
 `docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs:1.0.3`
 
@@ -27,8 +51,9 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 
 #### Requirements
 
-- PHP 7.0 or above - YAML extension for PHP (https://pecl.php.net/package/yaml)
-- Web server: Apache2, nginx, etc.
+- PHP 7.0 or above.
+- Composer for dependencies.
+- A web server (apache2, nginx, etc.)
 
 #### Setup guide
 
@@ -36,9 +61,11 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 1. Run `composer install` in the root to get dependencies.
 1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89 -t public` for testing)
 
+
 ## Configuration
 
-Feel free to edit the `config.yaml` file to fit your needs.
+Feel free to edit the `config/config.yaml` file to fit your needs.
+
 
 #### Settings
 
@@ -67,6 +94,9 @@ Feel free to edit the `config.yaml` file to fit your needs.
 - **`show_file_extension`** (bool) Show file extensions. Default is true.
 
 - **`menu_link_format`** (string) Values: default, ucfirst, ucwords, uppercase, lowercase.
+
+- **`render_max_file_size`** (float) Max file size (in MB) to render. If file is larger, a download link will be shown. Default is `50`.
+
 
 ## License
 

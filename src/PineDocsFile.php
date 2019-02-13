@@ -13,6 +13,7 @@
 		private $content;
 		private $type;
 		private $base64_encode = false;
+		private $download_link = false;
 
 
 		public function __construct(string $full_path) {
@@ -35,20 +36,21 @@
 			if (isset($this->pathinfo['extension'])) {
 				$this->pathinfo['extension'] = strtolower($this->pathinfo['extension']);
 			}
-
-			$this->set_file_type();
-			$this->set_content();
 		}
 
 
 		public function get_data() {
+			$this->set_file_type();
+			$this->set_content();
+
 			$data = array(
 				'relative_path' => $this->relative_path,
 				'basename' => $this->basename,
 				'extension' => $this->pathinfo['extension'],
 				'filesize' => $this->filesize,
 				'type' => $this->type,
-                'content' => $this->content
+                'content' => $this->content,
+                'download_link' => $this->download_link,
 			);
 
 			return $data;
@@ -83,13 +85,10 @@
 				// Code.
 				$this->type = 'code';
 			}
-
-			return $this->type;
 		}
 
 
 		private function get_basename() {
-
 			if (PineDocs::$config->show_file_extension) {
 				return utf8_encode(basename($this->full_path));
 			} else {
@@ -100,6 +99,16 @@
 		}
 
 		private function set_content() {
+			$filesize_mb = filesize($this->full_path) / 1024 / 1024;
+
+			if ($filesize_mb >= PineDocs::$config->render_max_file_size) {
+				// Filesize is too big to render.
+				// Render a donload link instead.
+				$this->download_link = true;
+				return;
+			}
+
+			// Get content
             $content = file_get_contents($this->full_path);
 
             /*
@@ -119,8 +128,6 @@
             } else {
                 $this->content = $content;
             }
-
-            return $this->content;
         }
 
 	}
