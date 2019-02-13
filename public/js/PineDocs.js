@@ -89,7 +89,10 @@ $(function() {
 
 
 		// Render content
-		if (data.extension == 'md' || data.extension == 'markdown') {
+		if (data.download_link === true) {
+			// File size is too large to render.
+			self.render_download_link(data);
+		} else if (data.extension == 'md' || data.extension == 'markdown') {
 			// Markdown
 			self.elements.file_content.html(marked(data.content))
 
@@ -131,14 +134,14 @@ $(function() {
 				hljs.highlightBlock(block)
 			})
 		} else {
-            if (typeof data.content == 'string') {
-                self.elements.file_content.html(nl2br(data.content))
+			if (typeof data.content == 'string') {
+				self.elements.file_content.html(nl2br(data.content))
 
-                // Syntax highlighting
-                self.elements.file_content.find('code').each(function(i, block) {
-                    hljs.highlightBlock(block)
-                })
-            }
+				// Syntax highlighting
+				self.elements.file_content.find('code').each(function(i, block) {
+					hljs.highlightBlock(block)
+				})
+			}
 			if (data.content === null) {
 				self.render_download_link(data);
 			}
@@ -404,10 +407,14 @@ $(function() {
 
 		link.setAttribute('href', 'index.php?action=download&relative_path='+ file.relative_path);
 		link.classList.add('download__link');
-        link.innerText = 'Download file';
-        link.setAttribute('target', '_blank');
+		link.innerText = 'Download file';
+		link.setAttribute('target', '_blank');
 
-		p.innerText = 'Unable to render requested file.';
+		if (file.download_link) {
+			p.innerText = 'File size is too large to render (max ' + config.render_max_file_size + ' MB)';
+		} else {
+			p.innerText = 'Unable to render requested file.';
+		}
 
 		div.appendChild(p);
 		div.appendChild(link);
@@ -415,7 +422,7 @@ $(function() {
 		self.elements.file_content.append(div);
 
 		return div.length;
-    }
+	}
 
 
 	PineDocs.prototype.render_errors = function() {

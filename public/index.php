@@ -109,6 +109,7 @@
 			'index_data' => $index_data,
 			'logo' => PineDocs::$config->logo,
 			'render_footer' => PineDocs::$config->render_footer,
+			'render_max_file_size' => PineDocs::$config->render_max_file_size,
 		),
 		'errors' => PineDocs::$errors,
 	);

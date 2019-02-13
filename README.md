@@ -61,9 +61,11 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 1. Run `composer install` in the root to get dependencies.
 1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89` for testing)
 
+
 ## Configuration
 
 Feel free to edit the `config/config.yaml` file to fit your needs.
+
 
 #### Settings
 
@@ -92,6 +94,9 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 - **`show_file_extension`** (bool) Show file extensions. Default is true.
 
 - **`menu_link_format`** (string) Values: default, ucfirst, ucwords, uppercase, lowercase.
+
+- **`render_max_file_size`** (float) Max file size (in MB) to render. If file is larger, a download link will be shown. Default is `50`.
+
 
 ## License
 

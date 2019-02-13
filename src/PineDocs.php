@@ -79,6 +79,10 @@
 			if (!isset(self::$config->menu_link_format)) {
 				self::$config->menu_link_format = 'default';
 			}
+
+			if (!isset(self::$config->render_max_file_size)) {
+				self::$config->render_max_file_size = 50;
+			}
 		}
 
 
