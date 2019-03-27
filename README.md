@@ -59,7 +59,7 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 
 1. [Download the latest release](https://github.com/xy2z/PineDocs/releases) or run `git clone`
 1. Run `composer install` in the root to get dependencies.
-1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89` for testing)
+1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89 -t public` for testing)
 
 
 ## Configuration
