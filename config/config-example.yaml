@@ -9,9 +9,6 @@ title: PineDocs
 # [string] The full path of the content directory to show.
 #content_dir: /data/pinedocs/content
 
-# [string] Path to the logo inside the public/ dir.
-#logo: PineDocs.png
-
 # [string] Filename of the index file inside content_dir.
 index: index.md
 

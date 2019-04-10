@@ -54,11 +54,6 @@
 				self::$config->color_scheme = 'PineDocs';
 			}
 
-			if (!isset(self::$config->logo) || empty(self::$config->logo)) {
-				// Use default logo.
-				self::$config->logo = 'PineDocs.png';
-			}
-
 			if (!isset(self::$config->highlight_theme) || (empty(self::$config->highlight_theme))) {
 				self::$config->highlight_theme = 'default';
 			}

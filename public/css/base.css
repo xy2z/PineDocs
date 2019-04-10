@@ -24,6 +24,13 @@ body {
 	height: 100%;
 }
 
+.pinedocs-logo {
+	font-family: 'Fugaz One', cursive;
+	font-size: 54px;
+	letter-spacing: -0.08em;
+	color: #eee;
+}
+
 
 
 /*** MENU ***/
@@ -82,7 +89,6 @@ body {
 	font-size: 0.8em;
 }
 
-#logo,
 #search {
 	width: 100%;
 	border: 0;

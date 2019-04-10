@@ -73,8 +73,6 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 
 - **`content_dir`** (string) Path to the dir you want to use. Default is the PineDocs/content/ dir.
 
-- **`logo`** (string) Path to the logo. If nothing is set, the PineDocs logo will be used.
-
 - **`index`** (string) Relative path to the index file. Default is array of `index.md`, `index.html`, `index.txt`, `index`.
 
 - **`layout`** (string) Available layouts: `default`, `wiki`.

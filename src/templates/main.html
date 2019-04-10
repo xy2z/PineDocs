@@ -16,6 +16,7 @@
 	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css" />
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
 </head>
 
 <body>
@@ -24,7 +25,9 @@
 		<div id="menu_wrapper" class="">
 			<div id="menu" class="navbar-default">
 				<div id="menu_top">
-					<a href="."><img id="logo" src="{{ config.logo }}" /></a>
+					<a href="." style="text-decoration: none;">
+						<span class="pinedocs-logo">PineDocs</span>
+					</a>
 					<input type="text" id="search" name="search" value="{{ search.value }}" placeholder="{{ search.placeholder }}"
 					 autofocus>
 				</div>
