@@ -83,6 +83,10 @@
 			if (!isset(self::$config->render_max_file_size)) {
 				self::$config->render_max_file_size = 50;
 			}
+
+			if (!isset(self::$config->font_family)) {
+				self::$config->font_family = '';
+			}
 		}
 
 

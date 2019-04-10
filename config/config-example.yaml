@@ -55,3 +55,6 @@ menu_link_format: default
 
 # [float] Max file size (in MB) to render. If file is larger, a download link will be shown.
 render_max_file_size: 50
+
+# [string] Overwrite the font
+# font_family: 'Arial'

@@ -110,6 +110,7 @@
 			'logo' => PineDocs::$config->logo,
 			'render_footer' => PineDocs::$config->render_footer,
 			'render_max_file_size' => PineDocs::$config->render_max_file_size,
+			'font_family' => PineDocs::$config->font_family,
 		),
 		'errors' => PineDocs::$errors,
 	);

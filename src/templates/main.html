@@ -19,7 +19,7 @@
 </head>
 
 <body>
-	<div id="main" class="container">
+	<div id="main" class="container" style="font-family: {{ config.font_family ? ("'" ~ config.font_family ~ "'")|raw : 'inherit' }}">
 
 		<div id="menu_wrapper" class="">
 			<div id="menu" class="navbar-default">
