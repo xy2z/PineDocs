@@ -1,7 +1,7 @@
 /* Color Scheme: Default */
 
 body {
-	background: #333;
+	background: #222;
 }
 
 #main {
@@ -13,6 +13,7 @@ body {
 /*** MENU ***/
 #menu {
 	background: #456;
+	background: #2c4156;
 }
 
 #menu ul {
@@ -44,7 +45,7 @@ body {
 /*** MENU FOOTER ***/
 #menu footer,
 #menu footer a {
-	color: #999;
+	color: rgba(255, 255, 255, 0.3);
 }
 
 
