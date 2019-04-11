@@ -4,7 +4,7 @@ RUN a2dissite 000-default.conf
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-RUN apt-get install -y --no-install-recommends git zip unzip
+RUN apt-get update && apt-get install -y --no-install-recommends git zip unzip
 
 # Data
 VOLUME /data
