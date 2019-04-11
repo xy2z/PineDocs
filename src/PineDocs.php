@@ -82,6 +82,10 @@
 			if (!isset(self::$config->font_family)) {
 				self::$config->font_family = '';
 			}
+
+			if (!isset(self::$config->font_size)) {
+				self::$config->font_size = '';
+			}
 		}
 
 

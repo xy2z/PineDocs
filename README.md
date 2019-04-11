@@ -95,6 +95,10 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 
 - **`render_max_file_size`** (float) Max file size (in MB) to render. If file is larger, a download link will be shown. Default is `50`.
 
+- **`font_family`** (string) The font used for menu and content. Default is `Tahoma`.
+
+- **`font_size`** (string) The font size in menu and content. Default is `15px`.
+
 
 ## License
 

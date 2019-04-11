@@ -55,3 +55,6 @@ render_max_file_size: 50
 
 # [string] Overwrite the font
 # font_family: 'Arial'
+
+# [string] Overwrite the font size
+# font_family: '15px'
