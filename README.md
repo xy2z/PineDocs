@@ -43,7 +43,7 @@ Changes will take affect when you reload the page - no need to restart the conta
 
 Altough docker-compose is recommended, you can also use pure Docker:
 
-`docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs:1.0.3`
+`docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs:1.0.5`
 
 See more at https://hub.docker.com/r/xy2z/pinedocs/
 
