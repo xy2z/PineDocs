@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7.4.0-apache
 
 RUN a2dissite 000-default.conf
 
