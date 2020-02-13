@@ -1,7 +1,7 @@
-/* Color Scheme: Default */
+/* Color Scheme: pro */
 
 body {
-	background: #222;
+	background: #ddd;
 }
 
 #main {
@@ -9,11 +9,20 @@ body {
 }
 
 
+.pinedocs-logo {
+	color: rgba(255, 120, 0, 1);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	color: #555;
+}
 
 /*** MENU ***/
 #menu {
-	background: #456;
-	background: #2c4156;
+	background: #F4F5F4;
 }
 
 #menu ul {
@@ -26,7 +35,7 @@ body {
 }
 
 #menu ul li a {
-	color: #dd9;
+	color: #2C342C;
 }
 
 #menu ul li.folder a {
@@ -34,14 +43,14 @@ body {
 }
 
 #menu ul li a:hover {
-	background: rgba(255, 255, 255, 0.1);
-	color: #fff;
+	background: rgba(0, 0, 0, 0.05);
+	/*color: #fff;*/
 }
 
 #menu ul li a.active:hover,
-#menu ul li a.active,
-#menu ul li a.active i.fa {
-	color: #fff;
+#menu ul li a.active {
+	/*color: #000;*/
+	background: rgba(0, 0, 0, 0.1);
 }
 
 
@@ -56,9 +65,7 @@ body {
 
 /* MENU ICONS */
 #menu i.fa {
-	color: #09d;
-	color: #fff;
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 120, 0, 0.9);
 }
 
 #menu a.link_dir_open i.fa {
@@ -69,7 +76,8 @@ body {
 /*** CONTENT PATH ***/
 #content_top {
 	color: rgba(0, 0, 0, 0.5);
-	background: #eaeae1;
+	/*border-bottom: 4px solid #F4F5F4;*/
+	background: #fafafa;
 }
 
 #content_top .filesize {

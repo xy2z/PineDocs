@@ -19,7 +19,7 @@ layout: default
 
 # [string] The color-scheme to use.
 # See available color schemes in public/color-schems/
-color_scheme: pinedocs
+# color_scheme: pinedocs
 
 # [string] Code highlighting themes: default, monokai, tomorrow, sunburst, darcula.
 # See available themes on https://highlightjs.org/static/demo/
@@ -57,4 +57,7 @@ render_max_file_size: 50
 # font_family: 'Arial'
 
 # [string] Overwrite the font size
-# font_family: '15px'
+# font_size: '15px'
+
+# [bool] Render files with no extension as markdown, eg. `README`
+# no_extension_markdown: true

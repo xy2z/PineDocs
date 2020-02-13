@@ -46,7 +46,7 @@
 			$data = array(
 				'relative_path' => $this->relative_path,
 				'basename' => $this->basename,
-				'extension' => $this->pathinfo['extension'],
+				'extension' => $this->pathinfo['extension'] ?? '',
 				'filesize' => $this->filesize,
 				'type' => $this->type,
                 'content' => $this->content,
@@ -61,11 +61,13 @@
             $mimetype = mime_content_type($this->full_path);
             preg_match("/(?<common>[a-z]+)\/(?<type>.*)/i", $mimetype, $this->mimetype);
 
-			if (!isset($this->pathinfo['extension'])) {
-				return;
-			}
-
-			if (in_array($this->pathinfo['extension'], array('md', 'markdown')) || ($this->mimetype['type'] === 'markdown') ) {
+			if (!isset($this->pathinfo['extension']) || empty($this->pathinfo['extension'])) {
+				// No extension.
+				if (PineDocs::$config->no_extension_markdown) {
+					$this->pathinfo['extension'] = 'md';
+					$this->type = 'markdown';
+				}
+			} else if (in_array($this->pathinfo['extension'], array('md', 'mdown', 'markdown')) || ($this->mimetype['type'] === 'markdown') ) {
 				// Markdown.
 				$this->type = 'markdown';
 			} else if ($this->mimetype['common'] === 'image' && $this->mimetype['type'] !== 'svg+xml') {
@@ -81,7 +83,12 @@
 			} else if (in_array($this->pathinfo['extension'], array('mp4')) || $this->mimetype['type'] === 'mp4') {
 				$this->type = 'video';
 				$this->base64_encode = true;
-			} else if (in_array($this->pathinfo['extension'], array('css', 'php', 'js', 'xml', 'c', 'cpp', 'h', 'bat', 'sh', 'bash', 'scss', 'sql', 'yaml', 'yml', 'conf', 'ini', 'cf', 'pre'))) {
+			} else if (in_array($this->pathinfo['extension'], array(
+					'css', 'php', 'js', 'xml', 'c', 'cpp', 'h',
+					'bat', 'sh', 'bash', 'scss', 'sql', 'yaml',
+					'yml', 'conf', 'ini', 'cf', 'pre',
+					'json', 'jsn', 'py', 'py3'
+				))) {
 				// Code.
 				$this->type = 'code';
 			}

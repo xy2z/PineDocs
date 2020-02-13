@@ -87,9 +87,8 @@
 
 
 	// Prepare template.
-	$loader = new Twig_Loader_Filesystem('../src/templates');
-	$twig = new Twig_Environment($loader);
-	$template = $twig->load('main.html');
+	$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../src/templates');
+	$twig = new \Twig\Environment($loader);
 
 	// Set template replacements
 	$template_replacements = array(
@@ -97,7 +96,7 @@
 		'version' => PineDocs::version,
 		'search' => array(
 			'value' => '',
-			'placeholder' => 'Search here...',
+			'placeholder' => 'Filter...',
 		),
 		'config' => array(
 			'title' => PineDocs::$config->title,
@@ -117,4 +116,4 @@
 	);
 
 	// Render main template.
-	echo $template->render($template_replacements);
+	echo $twig->render('main.html', $template_replacements);

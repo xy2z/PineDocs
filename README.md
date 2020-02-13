@@ -7,14 +7,16 @@ Great for documentation, wiki, notes, etc.
 
 ## Features
 
-- No database needed.
-- No manually building.
-- Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos.
+- No database.
+- No building.
+- Fast - using ajax and cache.
+- Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos. Basically anything you can render in a browser.
+- Responsive layouts and different color schemes.
 - Syntax highlighting for over 169 languages with over 77 themes.
-- Responsive layouts and color schemes.
-- Configuration.
+- Configuration (see below).
 - Quick filtering in files.
 - Use your existing files or existing git repos.
+
 
 ## Setup
 
@@ -69,7 +71,7 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 
 #### Settings
 
-- **`title`** (string) The title of the site, used in tabs and bookmarks.
+- **`title`** (string) The title of the site, used in logo, tabs and bookmarks.
 
 - **`content_dir`** (string) Path to the dir you want to use. Default is the PineDocs/content/ dir.
 
@@ -99,6 +101,7 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 
 - **`font_size`** (string) The font size in menu and content. Default is `15px`.
 
+- **`no_extension_markdown`** (bool) Render files with no extension as markdown, eg `README`. Default `true`.
 
 ## License
 
