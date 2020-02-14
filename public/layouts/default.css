@@ -1,8 +1,8 @@
 /* Layout: Default */
 
 body {
-	font-family: Tahoma;
-	font-size: 15px;
+	font-family: 'Open Sans', arial, sans-serif;
+	font-size: 16px;
 }
 
 #main {
@@ -11,6 +11,7 @@ body {
 
 /*** MENU ***/
 #menu {
+	font-size: 0.85em;
 }
 
 #search {
@@ -36,7 +37,7 @@ body {
 #menu ul li a {
 	text-decoration: none;
 	display: block;
-	padding: 5px;
+	padding: 4px;
 }
 
 #menu ul li a:hover {

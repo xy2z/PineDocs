@@ -4,7 +4,7 @@
 
 	class PineDocs {
 
-		const version = '1.0.5';
+		const version = '1.1.0';
 
 		static public $config;
 
@@ -85,6 +85,10 @@
 
 			if (!isset(self::$config->font_size)) {
 				self::$config->font_size = '';
+			}
+
+			if (!isset(self::$config->no_extension_markdown)) {
+				self::$config->no_extension_markdown = true;
 			}
 		}
 
