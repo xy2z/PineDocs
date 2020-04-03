@@ -111,6 +111,7 @@
 			'render_max_file_size' => PineDocs::$config->render_max_file_size,
 			'font_family' => PineDocs::$config->font_family,
 			'font_size' => PineDocs::$config->font_size,
+			'break_code_blocks' => PineDocs::$config->break_code_blocks,
 		),
 		'errors' => PineDocs::$errors,
 	);

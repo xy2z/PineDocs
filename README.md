@@ -103,6 +103,9 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 
 - **`no_extension_markdown`** (bool) Render files with no extension as markdown, eg `README`. Default `true`.
 
+- **`break_code_blocks`** (bool) Break code blocks in multiple lines instead of horizontally scrolling. Default `false`.
+
+
 ## License
 
 GNU GPLv3. See LICENSE.txt

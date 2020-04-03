@@ -61,3 +61,6 @@ render_max_file_size: 50
 
 # [bool] Render files with no extension as markdown, eg. `README`
 # no_extension_markdown: true
+
+# [bool] Break code blocks in multiple lines instead of horizontally scrolling
+# break_code_blocks: false
