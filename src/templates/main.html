@@ -22,9 +22,9 @@
 	<meta name="msapplication-config" content="/icons/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
 
-	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css">
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css">
+	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Fugaz+One|Open+Sans&display=swap" rel="stylesheet">
 	<style>
 		#content_wrapper pre code {
@@ -68,11 +68,11 @@
 
 	</div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.8.2/marked.min.js"></script>
 	<script src="js/PineDocs.js"></script>
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/{{ config.highlight_theme }}.min.css">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/{{ config.highlight_theme }}.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 	<script>
 		var config = {{ config | json_encode() | raw }}
 		var errors = {{ errors | json_encode() | raw }}
