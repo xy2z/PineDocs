@@ -45,7 +45,7 @@ Changes will take affect when you reload the page - no need to restart the conta
 
 Altough docker-compose is recommended, you can also use pure Docker:
 
-`docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs:1.0.3`
+`docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs:1.0.5`
 
 See more at https://hub.docker.com/r/xy2z/pinedocs/
 
@@ -102,6 +102,9 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 - **`font_size`** (string) The font size in menu and content. Default is `15px`.
 
 - **`no_extension_markdown`** (bool) Render files with no extension as markdown, eg `README`. Default `true`.
+
+- **`break_code_blocks`** (bool) Break code blocks in multiple lines instead of horizontally scrolling. Default `false`.
+
 
 ## License
 

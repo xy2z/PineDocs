@@ -90,6 +90,10 @@
 			if (!isset(self::$config->no_extension_markdown)) {
 				self::$config->no_extension_markdown = true;
 			}
+
+			if (!isset(self::$config->break_code_blocks)) {
+				self::$config->break_code_blocks = false;
+			}
 		}
 
 
