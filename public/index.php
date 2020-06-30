@@ -106,12 +106,12 @@
 			'color_scheme' => strtolower(basename(PineDocs::$config->color_scheme)),
 			'highlight_theme' => PineDocs::$config->highlight_theme,
 			'index_data' => $index_data,
-			'logo' => PineDocs::$config->logo,
 			'render_footer' => PineDocs::$config->render_footer,
 			'render_max_file_size' => PineDocs::$config->render_max_file_size,
 			'font_family' => PineDocs::$config->font_family,
 			'font_size' => PineDocs::$config->font_size,
 			'break_code_blocks' => PineDocs::$config->break_code_blocks,
+			// 'hide_folders_in_navigation' => PineDOcs::$config->hide_folders_in_navigation,
 		),
 		'errors' => PineDocs::$errors,
 	);
