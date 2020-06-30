@@ -57,6 +57,11 @@
 			}
 
 			foreach ($tree->dirs as $dir => $content) {
+				if (in_array(strtolower($dir), PineDocs::$config->hide_folders_in_navigation)) {
+					continue;
+				}
+
+
 				$return .= '<li class="folder"><a href="#" class="link_dir alert"><i class="fa fa-folder" aria-hidden="true"></i>' . self::format_menu_item($dir) . '</a></li>';
 				$return .= $this->render_tree_return($content);
 			}

@@ -57,6 +57,7 @@ $(function() {
 				$('a.link_file[href="' + window.location.hash + '"]').click()
 			} else {
 				// File does not exist.
+				console.log('notfound. try doing a ajax to see if its hidden.')
 				self.render_error_message('404: File not found.')
 			}
 		} else {
