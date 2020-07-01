@@ -4,7 +4,7 @@
 
 	class PineDocs {
 
-		const version = '1.1.3';
+		const version = '1.1.4';
 
 		static public $config;
 
@@ -93,6 +93,15 @@
 
 			if (!isset(self::$config->break_code_blocks)) {
 				self::$config->break_code_blocks = false;
+			}
+
+			if (!isset(self::$config->hide_folders_in_navigation)) {
+				self::$config->hide_folders_in_navigation = [];
+			} else {
+				// Format all values as lowercase.
+				foreach (self::$config->hide_folders_in_navigation as $key => $value) {
+					self::$config->hide_folders_in_navigation[$key] = strtolower($value);
+				}
 			}
 		}
 

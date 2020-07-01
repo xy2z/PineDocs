@@ -3,7 +3,7 @@ _See more screenshots at https://imgur.com/a/15Gq67X_
 
 A fast and lightweight site for viewing files.
 
-Great for documentation, wiki, notes, etc.
+Great for documentation, wiki, examples, notes, documents, galleries, storage, etc.
 
 ## Features
 
@@ -11,11 +11,14 @@ Great for documentation, wiki, notes, etc.
 - No building.
 - Fast - using ajax and cache.
 - Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos. Basically anything you can render in a browser.
-- Responsive layouts and different color schemes.
+- Responsive layouts and different color schemes (see screenshots [here](https://imgur.com/a/15Gq67X_))
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Configuration (see below).
 - Quick filtering in files.
 - Use your existing files or existing git repos.
+- Files are cached client-side, so files loads instantly.
+- Hidden folders, only accessible via direct links.
+- Remembers scroll position per page.
 
 
 ## Setup
@@ -37,7 +40,7 @@ services:
       - ./data:/data/pinedocs
 ```
 
-After running `docker-compose up -d` you can change the config in `./data/config/config.yaml`, and add your files (or git clone your documentation) in the `./data/files` dir.
+After running `docker-compose up -d` you can change the config in `./data/config/config.yaml`, and add your files (or git clone your repository) in the `./data/files` dir.
 
 Changes will take affect when you reload the page - no need to restart the container.
 
@@ -45,7 +48,7 @@ Changes will take affect when you reload the page - no need to restart the conta
 
 Altough docker-compose is recommended, you can also use pure Docker:
 
-`docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs:1.0.5`
+`docker run -itd -v "$PWD"/data:/data/pinedocs -p 3000:80 xy2z/pinedocs`
 
 See more at https://hub.docker.com/r/xy2z/pinedocs/
 
@@ -62,6 +65,7 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 1. [Download the latest release](https://github.com/xy2z/PineDocs/releases) or run `git clone`
 1. Run `composer install` in the root to get dependencies.
 1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89 -t public` for testing)
+1. (Optional) Rename the file `config/config-example.yaml` to `config/config.yaml` for changing settings (see below)
 
 
 ## Configuration
@@ -104,6 +108,8 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 - **`no_extension_markdown`** (bool) Render files with no extension as markdown, eg `README`. Default `true`.
 
 - **`break_code_blocks`** (bool) Break code blocks in multiple lines instead of horizontally scrolling. Default `false`.
+
+- **`hide_folders_in_navigation`** (array) A list of folders to hide from frontend navigation. Case-insensitive. Default is none.
 
 
 ## License
