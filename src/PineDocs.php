@@ -97,6 +97,11 @@
 
 			if (!isset(self::$config->hide_folders_in_navigation)) {
 				self::$config->hide_folders_in_navigation = [];
+			} else {
+				// Format all values as lowercase.
+				foreach (self::$config->hide_folders_in_navigation as $key => $value) {
+					self::$config->hide_folders_in_navigation[$key] = strtolower($value);
+				}
 			}
 		}
 

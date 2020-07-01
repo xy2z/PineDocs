@@ -57,8 +57,7 @@ $(function() {
 				$('a.link_file[href="' + window.location.hash + '"]').click()
 			} else {
 				// File does not exist.
-				console.log('notfound. try doing a ajax to see if its hidden.')
-				self.render_error_message('404: File not found.')
+				self.render_hidden_file(window.location.hash.substr(1));
 			}
 		} else {
 			// Load index file.
@@ -218,7 +217,7 @@ $(function() {
 				},
 			})
 			.done(function(response) {
-				self.loaded[href] = response // testing.
+				self.loaded[href] = response
 				self.render_file(response)
 			})
 			.fail(function(response) {
@@ -255,7 +254,13 @@ $(function() {
 
 			if ($(this).attr('href').substr(0,1) == '#') {
 				// Find the link in the menu and trigger a click on it.
-				self.elements.menu.find('a[href="' + $(this).attr('href') + '"]').click()
+				var link = self.elements.menu.find('a[href="' + $(this).attr('href') + '"]')
+				if (link.length) {
+					link.click()
+				} else {
+					// Try loading a hidden file.
+					self.render_hidden_file($(this).attr('href').substr(1));
+				}
 			}
 		})
 
@@ -267,7 +272,13 @@ $(function() {
 				return
 			}
 			// Click on the menu link if it exists.
-			self.elements.menu.find('a[href="' + document.location.hash + '"]').click()
+			var link = self.elements.menu.find('a[href="' + document.location.hash + '"]')
+			if (link.length) {
+				link.click()
+			} else {
+				// Try loading from a "hidden" folder.
+				self.render_hidden_file(document.location.hash.substr(1))
+			}
 		})
 
 
@@ -434,6 +445,34 @@ $(function() {
 		$.each(errors, function(key, error_message) {
 			alertify.error(error_message);
 		})
+	}
+
+	PineDocs.prototype.render_hidden_file = function(path) {
+		var self = this
+
+		// Already loaded before?
+		if (self.loaded[path]) {
+			window.location.hash = path
+			self.render_file(self.loaded[path])
+			$('.active').removeClass('active')
+			return
+		}
+
+		$.ajax({
+			url: '?',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				action: 'get_file_data',
+				relative_path: path
+			},
+		}).done(function(response) {
+			self.loaded[path] = response
+			self.render_file(response)
+			$('.active').removeClass('active')
+		}).fail(function(response) {
+			self.render_error_message('Error: could not load file: <u>' + path + '</u><br />File not found.')
+		});
 	}
 
 	// Init

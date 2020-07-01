@@ -57,6 +57,7 @@
 			}
 
 			foreach ($tree->dirs as $dir => $content) {
+				// Hide this folder from frontend tree.
 				if (in_array(strtolower($dir), PineDocs::$config->hide_folders_in_navigation)) {
 					continue;
 				}
