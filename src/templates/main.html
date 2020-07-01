@@ -7,10 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{ config.title }}</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
-	<link rel="stylesheet" type="text/css" href="css/print.css" media="print">
-	<link rel="stylesheet" type="text/css" href="layouts/{{ config.layout | lower }}.css">
-	<link rel="stylesheet" type="text/css" href="color-schemes/{{ config.color_scheme | lower }}.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css?{{ version }}">
+	<link rel="stylesheet" type="text/css" href="css/print.css?{{ version }}" media="print">
+	<link rel="stylesheet" type="text/css" href="layouts/{{ config.layout | lower }}.css?{{ version }}">
+	<link rel="stylesheet" type="text/css" href="color-schemes/{{ config.color_scheme | lower }}.css?{{ version }}">
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
@@ -70,7 +70,7 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.8.2/marked.min.js"></script>
-	<script src="js/PineDocs.js"></script>
+	<script src="js/PineDocs.js?{{ version }}"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/{{ config.highlight_theme }}.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 	<script>
