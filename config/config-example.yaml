@@ -64,3 +64,7 @@ render_max_file_size: 50
 
 # [bool] Break code blocks in multiple lines instead of horizontally scrolling
 # break_code_blocks: false
+
+# [array] A list of folders to hide from frontend navigation. Case-insensitive.
+# hide_folders_in_navigation:
+#  - hide-this
