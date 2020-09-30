@@ -30,14 +30,14 @@
 	// Get file from ajax call.
 	if (isset($param_action) && $param_action === 'get_file_data' && isset($param_relative_path)) {
 		header('Content-Type: application/json');
-		$relative_path = utf8_decode($param_relative_path);
+		$relative_path = urldecode($param_relative_path);
 		$PineDocsFile = new PineDocsFile(xy_format_path(PineDocs::$config->content_dir . $relative_path));
 		echo json_encode($PineDocsFile->get_data(), JSON_PRETTY_PRINT);
 		exit;
 	}
 
     if (isset($param_action) && $param_action === 'download' && isset($param_relative_path)) {
-        $relative_path = utf8_decode($param_relative_path);
+        $relative_path = urldecode($param_relative_path);
 
         $PineDocsFile = new PineDocsFile(xy_format_path(PineDocs::$config->content_dir . $relative_path));
         $quoted_name = sprintf('"%s"', addcslashes($PineDocsFile->basename, '"\\'));
