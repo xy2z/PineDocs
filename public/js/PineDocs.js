@@ -51,10 +51,10 @@ $(function() {
 		// Autoload file from URL anchor tag.
 		if (window.location.hash.length >= 2) {
 			// Check if file exists.
-			var file = $('a.link_file[href="' + window.location.hash + '"]')
+			var file = $('a.link_file[href="' + decodeURIComponent(window.location.hash) + '"]')
 			if (file.length) {
 				// File exists
-				$('a.link_file[href="' + window.location.hash + '"]').click()
+				$('a.link_file[href="' + decodeURIComponent(window.location.hash) + '"]').click()
 			} else {
 				// File does not exist.
 				self.render_hidden_file(window.location.hash.substr(1));
@@ -471,7 +471,7 @@ $(function() {
 			self.render_file(response)
 			$('.active').removeClass('active')
 		}).fail(function(response) {
-			self.render_error_message('Error: could not load file: <u>' + path + '</u><br />File not found.')
+			self.render_error_message('Error: could not load file: <u>' + decodeURIComponent(path) + '</u><br />File not found.')
 		});
 	}
 
