@@ -93,7 +93,7 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 
 - **`render_footer`** (bool) Render the menu footer?
 
-- **`exclude_files`** (array) List of files to exclude. Supports regex if the format is /regex/i.
+- **`exclude_files`** (array) List of files or dirs to exclude. Supports regex if the format is /regex/i.
 
 - **`show_file_extension`** (bool) Show file extensions. Default is true.
 
