@@ -37,7 +37,7 @@ open_dirs: 0
 # [bool] Render the menu footer.
 render_footer: true
 
-# [array] Exclude files. To use regex start and end with '/', like this: /regex/
+# [array] Exclude files or dirs. To use regex start and end with '/', like this: /regex/
 exclude_files:
   - .git
   - .db

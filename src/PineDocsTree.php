@@ -31,16 +31,15 @@
 				// $full_path = str_replace('\\', '/', $dir . '/' . $item);
 				$full_path = xy_format_path($dir . '/' . $item);
 
+				// Exclude item?
+				if (PineDocs::exclude_file($full_path)) {
+					continue;
+				}
+
 				if (is_dir($full_path)) {
 					$tree->dirs[$item] = $this->get_tree($full_path);
 				} else {
-					// Exclude item?
-					if (PineDocs::exclude_file($full_path)) {
-						continue;
-					}
-
 					$tree->files[] = new PineDocsFile($full_path);
-
 				}
 			}
 
