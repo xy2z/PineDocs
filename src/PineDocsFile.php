@@ -28,7 +28,7 @@
 			}
 
 			$this->full_path = $full_path;
-			$this->relative_path = utf8_encode(str_replace(PineDocs::$config->content_dir, '', $this->full_path));
+			$this->relative_path = mb_convert_encoding(str_replace(PineDocs::$config->content_dir, '', $this->full_path), "UTF-8");
 			$this->basename = $this->get_basename();
 			$this->pathinfo = pathinfo($this->full_path);
 			$this->filesize = filesize($this->full_path);
@@ -96,12 +96,12 @@
 
 
 		private function get_basename() {
-			if (PineDocs::$config->show_file_extension) {
-				return utf8_encode(basename($this->full_path));
-			} else {
-				$basename = utf8_encode(pathinfo($this->full_path, PATHINFO_FILENAME));
-			}
+			$path_arr = array_values(preg_split('/\//', $this->full_path));
+			$basename = end($path_arr);
 
+			if (!PineDocs::$config->show_file_extension) {
+				$basename = array_values(preg_split('/\./', $basename))[0];
+			}
 			return $basename;
 		}
 
