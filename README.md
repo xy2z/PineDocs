@@ -11,7 +11,7 @@ Great for documentation, wiki, examples, notes, documents, galleries, storage, e
 - No building.
 - Fast - using ajax and cache.
 - Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, audio and small videos. Basically anything you can render in a browser.
-- Responsive layouts and different color schemes (see screenshots [here](https://imgur.com/a/15Gq67X_))
+- Responsive layouts and different color schemes (see screenshots [here](https://imgur.com/a/15Gq67X))
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Configuration (see below).
 - Quick filtering in files.
