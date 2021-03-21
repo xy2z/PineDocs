@@ -56,7 +56,7 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 
 #### Requirements
 
-- PHP 7.0 or above.
+- PHP 8.0 (mininum required php version is PHP 7.2.5)
 - Composer for dependencies.
 - A web server (apache2, nginx, etc.)
 
