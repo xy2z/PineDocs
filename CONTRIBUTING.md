@@ -22,7 +22,7 @@ Feature requests are welcome. But take a moment to find out whether your idea fi
 
 Pull requests are a great help. They should remain focused in scope and avoid containing unrelated commits.
 
-Any pull request should be based on the `develop` branch. We will not consider pull requests made to master.
+Any pull request should be based on the `master` branch.
 
 
 ## Coding style
