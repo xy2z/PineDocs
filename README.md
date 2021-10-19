@@ -1,9 +1,35 @@
+<div align="center">
+
+# PineDocs
+
+**A fast and lightweight site for viewing files.**
+
+Great for documentation, wiki, examples, notes, documents, galleries, storage, etc.
+
+---
+
+[Docker Hub](https://hub.docker.com/r/xy2z/pinedocs/) | [Screenshots](https://imgur.com/a/15Gq67X) | [Setup](#setup) | [Configuration](#configuration) | [Sponsor](https://github.com/sponsors/xy2z)
+
+<p align="center">
+  <a href="https://github.com/xy2z/PineDocs/releases"><img src="https://img.shields.io/github/v/release/xy2z/pinedocs?style=flat-square&include_prereleases&sort=semver"></a>
+  <a href="https://hub.docker.com/r/xy2z/pinedocs"><img src="https://img.shields.io/docker/pulls/xy2z/pinedocs?style=flat-square"></a>
+  <a href="https://hub.docker.com/r/xy2z/pinedocs"><img src="https://img.shields.io/docker/cloud/build/xy2z/pinedocs?style=flat-square"></a>
+  <a href="https://github.com/xy2z/PineDocs/blob/master/LICENSE.txt"><img src="https://img.shields.io/github/license/xy2z/pinedocs?style=flat-square&color=blue"></a>
+  <a href="https://github.com/xy2z/PineDocs/graphs/contributors"><img src="https://img.shields.io/github/contributors/xy2z/pinedocs?style=flat-square"></a>
+  <a href="https://github.com/xy2z/PineDocs/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22"><img src="https://img.shields.io/github/issues/xy2z/pinedocs/help%20wanted?label=help%20wanted%20issues&style=flat-square&color=f26222"></a>
+</p>
+
+---
+
+</div>
+
 ![Pinedocs Screenshot](https://i.imgur.com/m0EC4U6.png)
 _See more screenshots at https://imgur.com/a/15Gq67X_
 
-A fast and lightweight site for viewing files.
 
-Great for documentation, wiki, examples, notes, documents, galleries, storage, etc.
+## Sponsor
+💚 Please considor sponsoring or donating to keep this project active - https://github.com/sponsors/xy2z
+
 
 ## Features
 
@@ -15,10 +41,14 @@ Great for documentation, wiki, examples, notes, documents, galleries, storage, e
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Configuration (see below).
 - Quick filtering in files.
-- Use your existing files or existing git repos.
-- Files are cached client-side, so files loads instantly.
-- Hidden folders, only accessible via direct links.
+- Use your existing files or existing git repos as content.
+- Files are cached client-side after first view, so it loads instantly.
+- Hidden folders - only accessible via direct links.
 - Remembers scroll position per page.
+
+
+## Read-Only Site
+PineDocs is read-only, meaning you can only view files and not edit them via PineDocs. This is not a wiki replacement with user login, revisions etc. This is basically a simple site that renders everything in your content dir. So you need to edit the files on your server/PC in order to change the content.
 
 
 ## Setup
