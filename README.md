@@ -28,7 +28,7 @@ _See more screenshots at https://imgur.com/a/15Gq67X_
 
 
 ## Sponsor
-💚 Please considor sponsoring or donating to keep this project active - https://github.com/sponsors/xy2z
+💚 Please consider sponsoring or donating to keep this project active - https://github.com/sponsors/xy2z
 
 
 ## Features
