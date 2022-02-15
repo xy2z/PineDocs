@@ -4,7 +4,6 @@
 	class PineDocsTree {
 
 		private $tree;
-		private $files;
 
 
 		public function __construct() {

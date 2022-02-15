@@ -15,5 +15,8 @@
     "require": {
         "twig/twig": "^3.0",
         "symfony/yaml": "^5.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.4"
     }
 }

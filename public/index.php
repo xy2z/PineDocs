@@ -69,20 +69,12 @@
 	}
 
 	$index_data = 'Hello. No index file found.';
-	$index_found = false;
 	foreach ($indexes as $index) {
 		$path = PineDocs::$config->content_dir . $index;
 		if (file_exists($path)) {
 			$PineDocsFile = new PineDocsFile($path);
 			$index_data = $PineDocsFile->get_data();
 		}
-	}
-
-	if (!$index_found) {
-		// No index file added.
-		// Use the first file found?
-		$content = 'No index file found. Create a file called index.md in the content_dir.';
-		$content_path = '';
 	}
 
 
