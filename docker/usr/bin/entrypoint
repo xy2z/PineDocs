@@ -8,7 +8,7 @@ if [ ! -f /data/pinedocs/config/config.yaml ]; then
 fi
 
 # Content
-if [ ! -f /data/pinedocs/files ]; then
+if [ ! -d /data/pinedocs/files ]; then
         mkdir -p /data/pinedocs/files
         cp -a /app/pinedocs/content/. /data/pinedocs/files
         echo 'Created content directory.'
