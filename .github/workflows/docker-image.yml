@@ -43,4 +43,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: xy2z/pinedocs-test:${{ github.event.release.tag_name }}
+          tags: xy2z/pinedocs:${{ github.event.release.tag_name }}
