@@ -63,7 +63,7 @@ version: '3'
 
 services:
   web:
-    image: xy2z/pinedocs
+    image: xy2z/pinedocs:1.2.3
     ports:
       - 3000:80
     volumes:
