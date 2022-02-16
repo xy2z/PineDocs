@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         # Push to master branch - push "latest" tag
-        name: Build and push
+        name: Build and Push (latest)
         if: github.event_name == 'push'
         uses: docker/build-push-action@v2
         with:
@@ -37,7 +37,7 @@ jobs:
           tags: xy2z/pinedocs:latest
       - 
         # Push the new release
-        name: Build and push
+        name: Build and Push New Release
         if: github.event_name == 'release'
         uses: docker/build-push-action@v2
         with:
