@@ -83,6 +83,9 @@
 			} else if (in_array($this->pathinfo['extension'], array('mp4')) || $this->mimetype['type'] === 'mp4') {
 				$this->type = 'video';
 				$this->base64_encode = true;
+			} else if (in_array($this->pathinfo['extension'], array('pdf')) || $this->mimetype['type'] === 'pdf') {
+				$this->type = 'pdf';
+				$this->base64_encode = true;
 			} else if (in_array($this->pathinfo['extension'], array(
 					'css', 'php', 'js', 'xml', 'c', 'cpp', 'h',
 					'bat', 'sh', 'bash', 'scss', 'sql', 'yaml',

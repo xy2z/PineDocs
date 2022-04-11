@@ -111,6 +111,11 @@ $(function() {
 		} else if (data.type == 'svg') {
 			var svg = $('<img>').attr('src', 'data:image/svg+xml;base64,' + data.content)
 			self.elements.file_content.append(svg)
+		} else if (data.type == 'pdf') {
+			var pdf = $('<embed>').attr('src', 'data:application/pdf;base64,' + data.content)
+			pdf.attr('width', '100%')
+			pdf.attr('height', '100%')
+			self.elements.file_content.append(pdf)
 		} else if (data.type == 'audio') {
 			// Audio.
 			var audio = $('<audio>').prop('controls', true).attr('src', 'data:audio/mp3;base64,' + data.content)
