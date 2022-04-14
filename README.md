@@ -141,6 +141,8 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 
 - **`hide_folders_in_navigation`** (array) A list of folders to hide from frontend navigation. Case-insensitive. Default is none.
 
+- **`latex_macros`** (array of array) A list of macro for LaTeX. Default is none.
+
 
 ## License
 

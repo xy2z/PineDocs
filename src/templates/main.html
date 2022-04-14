@@ -31,6 +31,15 @@
 			white-space: {{ config.break_code_blocks ? 'pre-wrap' : 'pre' }};
 		}
 	</style>
+
+	<script>
+		MathJax = {
+			tex: {
+				inlineMath: [['$', '$']],
+				macros: {{ config.latex_macros|raw }}
+			}
+		};
+	</script>
 </head>
 
 <body>

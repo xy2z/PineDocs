@@ -104,6 +104,7 @@
 			'font_size' => PineDocs::$config->font_size,
 			'break_code_blocks' => PineDocs::$config->break_code_blocks,
 			// 'hide_folders_in_navigation' => PineDOcs::$config->hide_folders_in_navigation,
+			'latex_macros' => PineDocs::$config->latex_macros,
 		),
 		'errors' => PineDocs::$errors,
 	);

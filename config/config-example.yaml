@@ -68,3 +68,7 @@ render_max_file_size: 50
 # [array] A list of folders to hide from frontend navigation. Case-insensitive.
 # hide_folders_in_navigation:
 #  - hide-this
+
+# [array] Array of arrays that link a macro to what it stands for.
+# latex_macros:
+#   N: \mathbb{N}

@@ -103,6 +103,16 @@
 					self::$config->hide_folders_in_navigation[$key] = strtolower($value);
 				}
 			}
+
+			if (!isset(self::$config->latex_macros)) {
+				self::$config->latex_macros = '{}';
+			} else {
+				$temp = '{';
+				foreach (self::$config->latex_macros as $key => $value) {
+					$temp .= "" . $key . ": '\\" . $value . "',";
+				}
+				self::$config->latex_macros = $temp . "}";
+			}
 		}
 
 
