@@ -104,14 +104,18 @@
 				}
 			}
 
-			if (!isset(self::$config->latex_macros)) {
-				self::$config->latex_macros = '{}';
+			if (!isset(self::$config->enable_mathjax)) {
+				self::$config->enable_mathjax = false;
+			}
+
+			if (!isset(self::$config->mathjax_macros) || !self::$config->enable_mathjax) {
+				self::$config->mathjax_macros = '{}';
 			} else {
 				$temp = '{';
-				foreach (self::$config->latex_macros as $key => $value) {
+				foreach (self::$config->mathjax_macros as $key => $value) {
 					$temp .= "" . $key . ": '\\" . $value . "',";
 				}
-				self::$config->latex_macros = $temp . "}";
+				self::$config->mathjax_macros = $temp . "}";
 			}
 		}
 

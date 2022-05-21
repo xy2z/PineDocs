@@ -104,10 +104,12 @@ $(function() {
 				hljs.highlightBlock(block)
 			})
 
-			// LaTeX
-			var script = document.createElement('script');
-			script.append("MathJax.typeset();");
-			document.head.appendChild(script);
+			// MathJax
+			if (config.enable_mathjax) {
+				var script = document.createElement('script');
+				script.append("MathJax.typeset();");
+				document.head.appendChild(script);
+			}
 
 		} else if (data.type == 'image') {
 			// Image.

@@ -69,6 +69,9 @@ render_max_file_size: 50
 # hide_folders_in_navigation:
 #  - hide-this
 
+# [bool] Enable MathJax if true.
+# enable_mathjax: false
+
 # [array] Array of arrays that link a macro to what it stands for.
-# latex_macros:
+# mathjax_macros:
 #   N: \mathbb{N}

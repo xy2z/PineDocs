@@ -104,7 +104,8 @@
 			'font_size' => PineDocs::$config->font_size,
 			'break_code_blocks' => PineDocs::$config->break_code_blocks,
 			// 'hide_folders_in_navigation' => PineDOcs::$config->hide_folders_in_navigation,
-			'latex_macros' => PineDocs::$config->latex_macros,
+			'enable_mathjax' => PineDocs::$config->enable_mathjax,
+			'mathjax_macros' => PineDocs::$config->mathjax_macros,
 		),
 		'errors' => PineDocs::$errors,
 	);
