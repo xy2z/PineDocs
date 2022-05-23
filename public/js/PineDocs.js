@@ -106,9 +106,7 @@ $(function() {
 
 			// MathJax
 			if (config.enable_mathjax) {
-				var script = document.createElement('script');
-				script.append("MathJax.typeset();");
-				document.head.appendChild(script);
+				MathJax.typeset();
 			}
 
 		} else if (data.type == 'image') {

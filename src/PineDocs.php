@@ -168,6 +168,7 @@
 
 			// Check if json is ok
 			if (!json_decode($data_mathjax)) {
+				self::$errors[] = 'Invalid json in mathjax.json. Using default.';
 				$data_mathjax = '{}';
 			}
 
