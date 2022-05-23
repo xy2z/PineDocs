@@ -102,6 +102,8 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 
 Feel free to edit the `config/config.yaml` file to fit your needs.
 
+You can [configure Mathjax](https://docs.mathjax.org/en/latest/options/index.html#configuring-mathjax-1) by editing the `config/mathjax.json` file.
+
 
 #### Settings
 
@@ -142,8 +144,6 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 - **`hide_folders_in_navigation`** (array) A list of folders to hide from frontend navigation. Case-insensitive. Default is none.
 
 - **`enable_mathjax`** (bool) Enable MathJax. Default is `false`.
-
-- **`mathjax_macros`** (array of array) A list of macro for LaTeX. Default is none.
 
 
 ## License

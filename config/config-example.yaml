@@ -71,7 +71,3 @@ render_max_file_size: 50
 
 # [bool] Enable MathJax if true.
 # enable_mathjax: false
-
-# [array] Array of arrays that link a macro to what it stands for.
-# mathjax_macros:
-#   N: \mathbb{N}

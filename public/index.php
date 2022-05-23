@@ -105,7 +105,7 @@
 			'break_code_blocks' => PineDocs::$config->break_code_blocks,
 			// 'hide_folders_in_navigation' => PineDOcs::$config->hide_folders_in_navigation,
 			'enable_mathjax' => PineDocs::$config->enable_mathjax,
-			'mathjax_macros' => PineDocs::$config->mathjax_macros,
+			'mathjax_configuration' => PineDocs::$config->mathjax_configuration,
 		),
 		'errors' => PineDocs::$errors,
 	);
