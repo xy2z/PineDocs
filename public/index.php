@@ -106,6 +106,7 @@
 			// 'hide_folders_in_navigation' => PineDOcs::$config->hide_folders_in_navigation,
 			'enable_mathjax' => PineDocs::$config->enable_mathjax,
 			'mathjax_configuration' => PineDocs::$config->mathjax_configuration,
+			'enable_mermaidjs' => PineDocs::$config->enable_mermaidjs,
 		),
 		'errors' => PineDocs::$errors,
 	);

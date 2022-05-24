@@ -96,17 +96,30 @@ $(function() {
 			// Markdown
 			self.elements.file_content.html(marked(data.content))
 
-			// Syntax highlighting
 			self.elements.file_content.find('code').each(function(i, block) {
-				if (config.code_transparent_bg) {
-					$(this).addClass('nobg')
+				// Mermaid block
+				if (config.enable_mermaidjs && block.classList.contains('language-mermaid')) {
+					var new_block = document.createElement('div');
+					new_block.classList.add('mermaid');
+					new_block.innerHTML = block.innerHTML;
+					block.parentNode.replaceChild(new_block, block);
+				} else {
+					// Syntax highlighting
+					if (config.code_transparent_bg) {
+						$(this).addClass('nobg')
+					}
+					hljs.highlightBlock(block)
 				}
-				hljs.highlightBlock(block)
 			})
 
 			// MathJax
 			if (config.enable_mathjax) {
 				MathJax.typeset();
+			}
+
+			// MermaidJS
+			if (config.enable_mermaidjs) {
+				mermaid.initialize();
 			}
 
 		} else if (data.type == 'image') {

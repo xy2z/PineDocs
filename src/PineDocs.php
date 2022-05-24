@@ -113,6 +113,10 @@
 			} else {
 				self::$config->mathjax_configuration = '';
 			}
+
+			if (!isset(self::$config->enable_mermaidjs)) {
+				self::$config->enable_mermaidjs = false;
+			}
 		}
 
 

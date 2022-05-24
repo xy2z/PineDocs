@@ -146,6 +146,7 @@ You can [configure Mathjax](https://docs.mathjax.org/en/latest/options/index.htm
 
 - **`enable_mathjax`** (bool) Enable MathJax. Must be enabled for `mathjax.js` to work. Default is `false`.
 
+- **`enable_mermaidjs`** (bool) Enable MermaidJS. Default is `false`.
 
 ## License
 

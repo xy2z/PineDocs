@@ -79,6 +79,11 @@
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	{% endif %}
 
+	{% if config.enable_mermaidjs %}
+		<!-- MermaidJS enabled. -->
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+	{% endif %}
+
 	<script src="js/PineDocs.js?{{ version }}"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/{{ config.highlight_theme }}.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>

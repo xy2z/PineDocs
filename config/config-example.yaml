@@ -71,3 +71,6 @@ render_max_file_size: 50
 
 # [bool] Enable MathJax if true.
 # enable_mathjax: false
+
+# [bool] Enable MermaidJS
+# enable_mermaidjs: false
