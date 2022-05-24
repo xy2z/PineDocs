@@ -68,3 +68,6 @@ render_max_file_size: 50
 # [array] A list of folders to hide from frontend navigation. Case-insensitive.
 # hide_folders_in_navigation:
 #  - hide-this
+
+# [bool] Enable MathJax if true.
+# enable_mathjax: false

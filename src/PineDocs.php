@@ -103,6 +103,16 @@
 					self::$config->hide_folders_in_navigation[$key] = strtolower($value);
 				}
 			}
+
+			if (!isset(self::$config->enable_mathjax)) {
+				self::$config->enable_mathjax = false;
+			}
+
+			if (self::$config->enable_mathjax) {
+				self::$config->mathjax_configuration = self::load_config_mathjax();
+			} else {
+				self::$config->mathjax_configuration = '';
+			}
 		}
 
 
@@ -139,5 +149,24 @@
 			self::$config->content_dir = xy_format_path(self::$config->content_dir, true);
 		}
 
+		static private function load_config_mathjax() {
+			$config_mathjax_path = '../config/mathjax.js';
+			if (!file_exists($config_mathjax_path)) {
+				// Create mathjax.js by copying mathjax-example.js.
+				$create = copy('../config/mathjax-example.js', '../config/mathjax.js');
+				if (!$create) {
+					exit('Error: Could not automatically create config/mathjax.js. You need to manually copy config/mathjax-example.js to config/mathjax.js');
+				}
+			}
+
+			// Read data
+			$data_mathjax = file_get_contents($config_mathjax_path);
+
+			if (!$data_mathjax) {
+				exit('Error: Could not read config/mathjax.js.');
+			}
+
+			return $data_mathjax;
+		}
 
 	}
