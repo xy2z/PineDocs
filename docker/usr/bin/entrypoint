@@ -7,6 +7,13 @@ if [ ! -f /data/pinedocs/config/config.yaml ]; then
         echo 'Created config file.'
 fi
 
+# Mathjax config
+if [ ! -f /data/pinedocs/config/mathjax.js ]; then
+        mkdir -p /data/pinedocs/config
+        cp /app/pinedocs/config/mathjax-example.js /data/pinedocs/config/mathjax.js
+        echo 'Created mathjax.js config file.'
+fi
+
 # Content
 if [ ! -d /data/pinedocs/files ]; then
         mkdir -p /data/pinedocs/files
