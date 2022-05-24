@@ -111,7 +111,7 @@
 			if (self::$config->enable_mathjax) {
 				self::$config->mathjax_configuration = self::load_config_mathjax();
 			} else {
-				self::$config->mathjax_configuration = '{}';
+				self::$config->mathjax_configuration = '';
 			}
 		}
 
@@ -150,12 +150,12 @@
 		}
 
 		static private function load_config_mathjax() {
-			$config_mathjax_path = '../config/mathjax.json';
+			$config_mathjax_path = '../config/mathjax.js';
 			if (!file_exists($config_mathjax_path)) {
-				// Create mathjax.json by copying mathjax-example.json.
-				$create = copy('../config/mathjax-example.json', '../config/mathjax.json');
+				// Create mathjax.js by copying mathjax-example.js.
+				$create = copy('../config/mathjax-example.js', '../config/mathjax.js');
 				if (!$create) {
-					exit('Error: Could not automatically create config/mathjax.json. You need to manually copy config/mathjax-example.json to config/mathjax.json');
+					exit('Error: Could not automatically create config/mathjax.js. You need to manually copy config/mathjax-example.js to config/mathjax.js');
 				}
 			}
 
@@ -163,13 +163,7 @@
 			$data_mathjax = file_get_contents($config_mathjax_path);
 
 			if (!$data_mathjax) {
-				exit('Error: Could not read mathjax.json.');
-			}
-
-			// Check if json is ok
-			if (!json_decode($data_mathjax)) {
-				self::$errors[] = 'Invalid json in mathjax.json. Using default.';
-				$data_mathjax = '{}';
+				exit('Error: Could not read config/mathjax.js.');
 			}
 
 			return $data_mathjax;

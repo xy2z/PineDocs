@@ -1,5 +1,5 @@
 /config/config.yaml
-/config/mathjax.json
+/config/mathjax.js
 /content/*
 /src/vendor/
 Thumbs.db
