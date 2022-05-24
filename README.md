@@ -96,11 +96,14 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 1. Run `composer install` in the root to get dependencies.
 1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89 -t public` for testing)
 1. (Optional) Rename the file `config/config-example.yaml` to `config/config.yaml` for changing settings (see below)
+1. (Optional) Rename the file `config/mathjax-example.json` to `config/mathjax.json` for changing settings of Mathjax (see below)
 
 
 ## Configuration
 
 Feel free to edit the `config/config.yaml` file to fit your needs.
+
+You can [configure Mathjax](https://docs.mathjax.org/en/latest/options/index.html#configuring-mathjax-1) by editing the `config/mathjax.json` file.
 
 
 #### Settings
@@ -140,6 +143,8 @@ Feel free to edit the `config/config.yaml` file to fit your needs.
 - **`break_code_blocks`** (bool) Break code blocks in multiple lines instead of horizontally scrolling. Default `false`.
 
 - **`hide_folders_in_navigation`** (array) A list of folders to hide from frontend navigation. Case-insensitive. Default is none.
+
+- **`enable_mathjax`** (bool) Enable MathJax. Must be enabled for `mathjax.json` to work. Default is `false`.
 
 
 ## License

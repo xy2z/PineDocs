@@ -103,6 +103,16 @@
 					self::$config->hide_folders_in_navigation[$key] = strtolower($value);
 				}
 			}
+
+			if (!isset(self::$config->enable_mathjax)) {
+				self::$config->enable_mathjax = false;
+			}
+
+			if (self::$config->enable_mathjax) {
+				self::$config->mathjax_configuration = self::load_config_mathjax();
+			} else {
+				self::$config->mathjax_configuration = '{}';
+			}
 		}
 
 
@@ -139,5 +149,30 @@
 			self::$config->content_dir = xy_format_path(self::$config->content_dir, true);
 		}
 
+		static private function load_config_mathjax() {
+			$config_mathjax_path = '../config/mathjax.json';
+			if (!file_exists($config_mathjax_path)) {
+				// Create mathjax.json by copying mathjax-example.json.
+				$create = copy('../config/mathjax-example.json', '../config/mathjax.json');
+				if (!$create) {
+					exit('Error: Could not automatically create config/mathjax.json. You need to manually copy config/mathjax-example.json to config/mathjax.json');
+				}
+			}
+
+			// Read data
+			$data_mathjax = file_get_contents($config_mathjax_path);
+
+			if (!$data_mathjax) {
+				exit('Error: Could not read mathjax.json.');
+			}
+
+			// Check if json is ok
+			if (!json_decode($data_mathjax)) {
+				self::$errors[] = 'Invalid json in mathjax.json. Using default.';
+				$data_mathjax = '{}';
+			}
+
+			return $data_mathjax;
+		}
 
 	}

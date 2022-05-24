@@ -104,6 +104,11 @@ $(function() {
 				hljs.highlightBlock(block)
 			})
 
+			// MathJax
+			if (config.enable_mathjax) {
+				MathJax.typeset();
+			}
+
 		} else if (data.type == 'image') {
 			// Image.
 			var img = $('<img>').attr('src', 'data:image/gif;base64,' + data.content)
