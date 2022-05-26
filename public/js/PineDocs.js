@@ -112,14 +112,16 @@ $(function() {
 				}
 			})
 
+			// MermaidJS
+			if (config.enable_mermaidjs) {
+				mermaid.initialize({
+					theme: config.mermaidjs_theme
+				});
+			}
+
 			// MathJax
 			if (config.enable_mathjax) {
 				MathJax.typeset();
-			}
-
-			// MermaidJS
-			if (config.enable_mermaidjs) {
-				mermaid.initialize();
 			}
 
 		} else if (data.type == 'image') {
