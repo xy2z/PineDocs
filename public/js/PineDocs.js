@@ -96,20 +96,12 @@ $(function() {
 			// Markdown
 			self.elements.file_content.html(marked(data.content))
 
+			// Syntax highlighting
 			self.elements.file_content.find('code').each(function(i, block) {
-				// Mermaid block
-				if (config.enable_mermaidjs && block.classList.contains('language-mermaid')) {
-					var new_block = document.createElement('div');
-					new_block.classList.add('mermaid');
-					new_block.innerHTML = block.innerHTML;
-					block.parentNode.replaceChild(new_block, block);
-				} else {
-					// Syntax highlighting
-					if (config.code_transparent_bg) {
-						$(this).addClass('nobg')
-					}
-					hljs.highlightBlock(block)
+				if (config.code_transparent_bg) {
+					$(this).addClass('nobg')
 				}
+				hljs.highlightBlock(block)
 			})
 
 			// MermaidJS
@@ -117,6 +109,7 @@ $(function() {
 				mermaid.initialize({
 					theme: config.mermaidjs_theme
 				});
+				mermaid.init(undefined, ".language-mermaid");
 			}
 
 			// MathJax
