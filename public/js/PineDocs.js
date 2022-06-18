@@ -109,6 +109,27 @@ $(function() {
 				MathJax.typeset();
 			}
 
+			self.elements.file_content.find('img').each(function(i, block) {
+				let url = new URL(block.src)
+				url = /(.*\/)/g.exec(data.relative_path)[0] + url.pathname.slice(1)
+				$.ajax({
+					url: '?',
+					type: 'GET',
+					dataType: 'json',
+					data: {
+						action: 'get_file_data',
+						relative_path: url
+					},
+				})
+				.done(function(response) {
+					if (response.extension == 'svg') {
+						block.src = 'data:image/svg+xml;base64,' + response.content
+					} else {
+						block.src = 'data:image/gif;base64,' + response.content
+					}
+				})
+			})
+
 		} else if (data.type == 'image') {
 			// Image.
 			var img = $('<img>').attr('src', 'data:image/gif;base64,' + data.content)
