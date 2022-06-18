@@ -107,7 +107,8 @@ $(function() {
 			// MermaidJS
 			if (config.enable_mermaidjs) {
 				mermaid.initialize({
-					theme: config.mermaidjs_theme
+					theme: config.mermaidjs_theme,
+					fontFamily: config.font_family
 				});
 				mermaid.init(undefined, ".language-mermaid");
 			}
