@@ -109,54 +109,73 @@ $(function() {
 				MathJax.typeset();
 			}
 
-			self.elements.file_content.find('img').each(function(i, block) {
-				let url = new URL(block.src)
-				url = /(.*\/)/g.exec(data.relative_path)[0] + url.pathname.slice(1)
-				$.ajax({
-					url: '?',
-					type: 'GET',
-					dataType: 'json',
-					data: {
-						action: 'get_file_data',
-						relative_path: url
-					},
-				})
-				.done(function(response) {
-					if (response.extension == 'svg') {
-						block.src = 'data:image/svg+xml;base64,' + response.content
-					} else {
-						block.src = 'data:image/gif;base64,' + response.content
+			// Assets
+			const block_types = ['img', 'audio', 'video']
+			block_types.forEach(block_type => {
+				self.elements.file_content.find(block_type).each(function(_, block) {
+					if (block.src.length) {
+						const url = self.get_asset_path(data.relative_path, block.src)
+						if (self.loaded[url]) {
+							if(block_type == 'img') {
+								if (self.loaded[url].extension == 'svg') {
+									block.src = self.readable_data(self.loaded[url], 'svg')
+								} else {
+									block.src = self.readable_data(self.loaded[url], 'image')
+								}
+							} else {
+								block.src = self.readable_data(self.loaded[url], block_type)
+							}
+						} else {
+							$.ajax({
+								url: '?',
+								type: 'GET',
+								dataType: 'json',
+								data: {
+									action: 'get_file_data',
+									relative_path: url
+								},
+							})
+							.done(function(response) {
+								if(response.content !== null) {
+									if(block_type == 'img') {
+										if (response.extension == 'svg') {
+											block.src = self.readable_data(response, 'svg')
+										} else {
+											block.src = self.readable_data(response, 'image')
+										}
+									} else {
+										block.src = self.readable_data(response, block_type)
+									}
+									self.loaded[url] = response
+								}
+							})
+						}
 					}
 				})
 			})
 
+
 		} else if (data.type == 'image') {
 			// Image.
-			var img = $('<img>').attr('src', 'data:image/gif;base64,' + data.content)
+			var img = $('<img>').attr('src', self.readable_data(data, 'image'))
 			self.elements.file_content.append(img)
 		} else if (data.type == 'svg') {
-			var svg = $('<img>').attr('src', 'data:image/svg+xml;base64,' + data.content)
+			var svg = $('<img>').attr('src', self.readable_data(data, 'svg'))
 			self.elements.file_content.append(svg)
 		} else if (data.type == 'pdf') {
 			// PDF.
-			var binary = atob(data.content)
-			var bytes = new Uint8Array(binary.length)
-			for (var i = 0; i < binary.length; i++) {
-				bytes[i] = binary.charCodeAt(i)
-			}
-
-			var pdf = $('<embed>').attr('src', window.URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' })))
+			var pdf = $('<embed>').attr('src', self.readable_data(data, 'pdf'))
 			pdf.attr('width', '100%')
 			pdf.attr('height', '100%')
 			self.elements.file_content.append(pdf)
 		} else if (data.type == 'audio') {
 			// Audio.
-			var audio = $('<audio>').prop('controls', true).attr('src', 'data:audio/mp3;base64,' + data.content)
+			var audio = $('<audio>').prop('controls', true).attr('src', self.readable_data(data, 'audio'))
 			self.elements.file_content.append(audio)
 		} else if (data.type == 'video') {
 			// Video.
 			var video = $('<video>').prop('controls', true)
-			var source = $('<source>').attr('src', 'data:video/mp4;base64,' + data.content)
+			var source = $('<source>').attr('src', self.readable_data(data, 'video'))
 			source.attr('type', 'video/mp4')
 			video.append(source)
 			self.elements.file_content.append(video)
@@ -511,6 +530,47 @@ $(function() {
 		}).fail(function(response) {
 			self.render_error_message('Error: could not load file: <u>' + decodeURIComponent(path) + '</u><br />File not found.')
 		});
+	}
+
+	// Make data readable by the browser
+	PineDocs.prototype.readable_data = function(data, type) {
+		switch (type) {
+			case 'image':
+				return 'data:image/gif;base64,' + data.content
+
+			case 'svg':
+				return 'data:image/svg+xml;base64,' + data.content
+
+			case 'pdf':
+				var binary = atob(data.content)
+				var bytes = new Uint8Array(binary.length)
+				for (var i = 0; i < binary.length; i++) {
+					bytes[i] = binary.charCodeAt(i)
+				}
+
+				return window.URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }))
+
+			case 'audio':
+				return 'data:audio/mp3;base64,' + data.content
+
+			case 'video':
+				return 'data:video/mp4;base64,' + data.content
+
+			default:
+				break;
+		}
+	}
+
+	// Get asset path
+	PineDocs.prototype.get_asset_path = function(file_path, asset_path) {
+		const base = /(.*\/)/g.exec(file_path)
+		let url = new URL(asset_path)
+		url = url.pathname.slice(1)
+		if (base !== null) {
+			url = base[0] + url
+		}
+
+		return url
 	}
 
 	// Init
