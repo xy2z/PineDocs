@@ -158,9 +158,11 @@ $(function() {
 		} else if (data.type == 'image') {
 			// Image.
 			var img = $('<img>').attr('src', self.readable_data(data, 'image'))
+			img.attr('alt', data.basename)
 			self.elements.file_content.append(img)
 		} else if (data.type == 'svg') {
 			var svg = $('<img>').attr('src', self.readable_data(data, 'svg'))
+			svg.attr('alt', data.basename)
 			self.elements.file_content.append(svg)
 		} else if (data.type == 'pdf') {
 			// PDF.
