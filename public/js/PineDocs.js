@@ -41,6 +41,7 @@ $(function() {
 		// Properties
 		self.click_hashchange = false
 		self.loaded = {}
+		self.black_list = {}
 		self.scroll_top = {}
 
 		// Init
@@ -115,40 +116,44 @@ $(function() {
 				self.elements.file_content.find(block_type).each(function(_, block) {
 					if (block.src.length) {
 						const url = self.get_asset_path(data.relative_path, block.src)
-						if (self.loaded[url]) {
-							if(block_type == 'img') {
-								if (self.loaded[url].extension == 'svg') {
-									block.src = self.readable_data(self.loaded[url], 'svg')
+						if(!self.black_list[url]) {
+							if (self.loaded[url]) {
+								if(block_type == 'img') {
+									if (self.loaded[url].extension == 'svg') {
+										block.src = self.readable_data(self.loaded[url], 'svg')
+									} else {
+										block.src = self.readable_data(self.loaded[url], 'image')
+									}
 								} else {
-									block.src = self.readable_data(self.loaded[url], 'image')
+									block.src = self.readable_data(self.loaded[url], block_type)
 								}
 							} else {
-								block.src = self.readable_data(self.loaded[url], block_type)
-							}
-						} else {
-							$.ajax({
-								url: '?',
-								type: 'GET',
-								dataType: 'json',
-								data: {
-									action: 'get_file_data',
-									relative_path: url
-								},
-							})
-							.done(function(response) {
-								if(response.content !== null) {
-									if(block_type == 'img') {
-										if (response.extension == 'svg') {
-											block.src = self.readable_data(response, 'svg')
+								$.ajax({
+									url: '?',
+									type: 'GET',
+									dataType: 'json',
+									data: {
+										action: 'get_file_data',
+										relative_path: url
+									},
+								})
+								.done(function(response) {
+									if(response.content !== null) {
+										if(block_type == 'img') {
+											if (response.extension == 'svg') {
+												block.src = self.readable_data(response, 'svg')
+											} else {
+												block.src = self.readable_data(response, 'image')
+											}
 										} else {
-											block.src = self.readable_data(response, 'image')
+											block.src = self.readable_data(response, block_type)
 										}
-									} else {
-										block.src = self.readable_data(response, block_type)
+										self.loaded[url] = response
 									}
-									self.loaded[url] = response
-								}
-							})
+								}).fail(function() {
+									self.black_list[url] = true
+								})
+							}
 						}
 					}
 				})
@@ -559,7 +564,7 @@ $(function() {
 				return 'data:video/mp4;base64,' + data.content
 
 			default:
-				break;
+				break
 		}
 	}
 
