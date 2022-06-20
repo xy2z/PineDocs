@@ -105,84 +105,88 @@ $(function() {
 				hljs.highlightBlock(block)
 			})
 
+			// Assets
+			const block_types = ['img', 'audio', 'video', 'embed', 'source']
+			block_types.forEach(block_type => {
+				self.elements.file_content.find(block_type).each(function(_, block) {
+					if ($(block).attr('src') === undefined || $(block).attr('src').length === 0) {
+						// "src" attribute is empty.
+						return // continue.
+					}
+
+					const url = self.get_asset_path(data.relative_path, block.src)
+					if (self.black_list[url]) {
+						// URL already called and we know it doesn't exists.
+						return // continue.
+					}
+
+					if (self.loaded[url]) {
+						block.src = self.readable_data(self.loaded[url])
+						return // continue.
+					}
+
+					// Reset the "src" so the browser doesn't try to load the file, and ignore the file after ajax.
+					block.src= '#'
+
+					// URL is neither loaded or blacklisted.
+					$.ajax({
+						url: '?',
+						type: 'GET',
+						dataType: 'json',
+						data: {
+							action: 'get_file_data',
+							relative_path: url
+						},
+					})
+					.done(function(response) {
+						if (response.content === null) {
+							self.black_list[url] = true
+							return
+						}
+
+						block.src = self.readable_data(response)
+						self.loaded[url] = response
+
+						if (block.nodeName == 'SOURCE') {
+							// Apparently "<source>" elements has to call "load" on
+							// their parents (eg. <audio> or <video>).
+							block.parentElement.load()
+						}
+
+					}).fail(function() {
+						self.black_list[url] = true
+					})
+				})
+			})
+
 			// MathJax
 			if (config.enable_mathjax) {
 				MathJax.typeset();
 			}
 
-			// Assets
-			const block_types = ['img', 'audio', 'video']
-			block_types.forEach(block_type => {
-				self.elements.file_content.find(block_type).each(function(_, block) {
-					if (block.src.length) {
-						const url = self.get_asset_path(data.relative_path, block.src)
-						if(!self.black_list[url]) {
-							if (self.loaded[url]) {
-								if(block_type == 'img') {
-									if (self.loaded[url].extension == 'svg') {
-										block.src = self.readable_data(self.loaded[url], 'svg')
-									} else {
-										block.src = self.readable_data(self.loaded[url], 'image')
-									}
-								} else {
-									block.src = self.readable_data(self.loaded[url], block_type)
-								}
-							} else {
-								$.ajax({
-									url: '?',
-									type: 'GET',
-									dataType: 'json',
-									data: {
-										action: 'get_file_data',
-										relative_path: url
-									},
-								})
-								.done(function(response) {
-									if(response.content !== null) {
-										if(block_type == 'img') {
-											if (response.extension == 'svg') {
-												block.src = self.readable_data(response, 'svg')
-											} else {
-												block.src = self.readable_data(response, 'image')
-											}
-										} else {
-											block.src = self.readable_data(response, block_type)
-										}
-										self.loaded[url] = response
-									}
-								}).fail(function() {
-									self.black_list[url] = true
-								})
-							}
-						}
-					}
-				})
-			})
-
-
 		} else if (data.type == 'image') {
 			// Image.
-			var img = $('<img>').attr('src', self.readable_data(data, 'image'))
+			var img = $('<img>').attr('src', self.readable_data(data))
 			img.attr('alt', data.basename)
 			self.elements.file_content.append(img)
 		} else if (data.type == 'svg') {
-			var svg = $('<img>').attr('src', self.readable_data(data, 'svg'))
+			var svg = $('<img>').attr('src', self.readable_data(data))
 			svg.attr('alt', data.basename)
 			self.elements.file_content.append(svg)
 		} else if (data.type == 'pdf') {
 			// PDF.
-			var pdf = $('<embed>').attr('src', self.readable_data(data, 'pdf'))
+			var pdf = $('<embed>').attr('src', self.readable_data(data))
 			pdf.attr('width', '100%')
 			pdf.attr('height', '100%')
 			self.elements.file_content.append(pdf)
 		} else if (data.type == 'audio') {
 			// Audio.
-			var audio = $('<audio>').prop('controls', true).attr('src', self.readable_data(data, 'audio'))
+			var audio = $('<audio>').prop('controls', true).attr('src', self.readable_data(data))
 			self.elements.file_content.append(audio)
 		} else if (data.type == 'video') {
 			// Video.
 			var video = $('<video>').prop('controls', true)
-			var source = $('<source>').attr('src', self.readable_data(data, 'video'))
+			var source = $('<source>').attr('src', self.readable_data(data))
 			source.attr('type', 'video/mp4')
 			video.append(source)
 			self.elements.file_content.append(video)
@@ -540,13 +544,14 @@ $(function() {
 	}
 
 	// Make data readable by the browser
-	PineDocs.prototype.readable_data = function(data, type) {
-		switch (type) {
+	PineDocs.prototype.readable_data = function(data) {
+		if ((data.type == 'svg') || (data.type == 'image' && data.extension == 'svg')) {
+			return 'data:image/svg+xml;base64,' + data.content
+		}
+
+		switch (data.type) {
 			case 'image':
 				return 'data:image/gif;base64,' + data.content
-
-			case 'svg':
-				return 'data:image/svg+xml;base64,' + data.content
 
 			case 'pdf':
 				var binary = atob(data.content)
