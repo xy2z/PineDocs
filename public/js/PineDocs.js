@@ -87,6 +87,8 @@ $(function() {
 		filesize.text(format_bytes(data.filesize))
 		self.elements.content_path.append(filesize)
 
+		// Copy button
+		hljs.addPlugin(new CopyButtonPlugin())
 
 		// Render content
 		if (data.download_link === true) {
@@ -97,12 +99,12 @@ $(function() {
 			self.elements.file_content.html(marked(data.content))
 
 			// Syntax highlighting
-			self.elements.file_content.find('code').each(function(i, block) {
+			self.elements.file_content.find('code').each(function() {
 				if (config.code_transparent_bg) {
 					$(this).addClass('nobg')
 				}
-				hljs.highlightBlock(block)
 			})
+			hljs.highlightAll()
 
 			// MathJax
 			if (config.enable_mathjax) {
@@ -148,7 +150,7 @@ $(function() {
 
 			// Syntax highlighting
 			self.elements.file_content.find('code').each(function(i, block) {
-				hljs.highlightBlock(block)
+				hljs.highlightElement(block)
 			})
 		} else {
 			if (typeof data.content == 'string') {
@@ -156,7 +158,7 @@ $(function() {
 
 				// Syntax highlighting
 				self.elements.file_content.find('code').each(function(i, block) {
-					hljs.highlightBlock(block)
+					hljs.highlightElement(block)
 				})
 			}
 			if (data.content === null) {
