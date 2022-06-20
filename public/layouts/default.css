@@ -66,6 +66,7 @@ body {
 	font-size: 0.9em;
 	font-family: monospace;
 	font-weight: bold;
+	z-index: 1;
 }
 
 #content_top .filesize {
