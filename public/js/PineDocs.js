@@ -41,6 +41,7 @@ $(function() {
 		// Properties
 		self.click_hashchange = false
 		self.loaded = {}
+		self.black_list = {}
 		self.scroll_top = {}
 
 		// Init
@@ -112,6 +113,59 @@ $(function() {
 				});
 				mermaid.init(undefined, ".language-mermaid");
 			}
+			// Assets
+			const block_types = ['img', 'audio', 'video', 'embed', 'source']
+			block_types.forEach(block_type => {
+				self.elements.file_content.find(block_type).each(function(_, block) {
+					if ($(block).attr('src') === undefined || $(block).attr('src').length === 0) {
+						// "src" attribute is empty.
+						return // continue.
+					}
+
+					const url = self.get_asset_path(data.relative_path, block.src)
+					if (self.black_list[url]) {
+						// URL already called and we know it doesn't exists.
+						return // continue.
+					}
+
+					if (self.loaded[url]) {
+						block.src = self.readable_data(self.loaded[url])
+						return // continue.
+					}
+
+					// Reset the "src" so the browser doesn't try to load the file, and ignore the file after ajax.
+					block.src= '#'
+
+					// URL is neither loaded or blacklisted.
+					$.ajax({
+						url: '?',
+						type: 'GET',
+						dataType: 'json',
+						data: {
+							action: 'get_file_data',
+							relative_path: url
+						},
+					})
+					.done(function(response) {
+						if (response.content === null) {
+							self.black_list[url] = true
+							return
+						}
+
+						block.src = self.readable_data(response)
+						self.loaded[url] = response
+
+						if (block.nodeName == 'SOURCE') {
+							// Apparently "<source>" elements has to call "load" on
+							// their parents (eg. <audio> or <video>).
+							block.parentElement.load()
+						}
+
+					}).fail(function() {
+						self.black_list[url] = true
+					})
+				})
+			})
 
 			// MathJax
 			if (config.enable_mathjax) {
@@ -120,31 +174,27 @@ $(function() {
 
 		} else if (data.type == 'image') {
 			// Image.
-			var img = $('<img>').attr('src', 'data:image/gif;base64,' + data.content)
+			var img = $('<img>').attr('src', self.readable_data(data))
+			img.attr('alt', data.basename)
 			self.elements.file_content.append(img)
 		} else if (data.type == 'svg') {
-			var svg = $('<img>').attr('src', 'data:image/svg+xml;base64,' + data.content)
+			var svg = $('<img>').attr('src', self.readable_data(data))
+			svg.attr('alt', data.basename)
 			self.elements.file_content.append(svg)
 		} else if (data.type == 'pdf') {
 			// PDF.
-			var binary = atob(data.content)
-			var bytes = new Uint8Array(binary.length)
-			for (var i = 0; i < binary.length; i++) {
-				bytes[i] = binary.charCodeAt(i)
-			}
-
-			var pdf = $('<embed>').attr('src', window.URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' })))
+			var pdf = $('<embed>').attr('src', self.readable_data(data))
 			pdf.attr('width', '100%')
 			pdf.attr('height', '100%')
 			self.elements.file_content.append(pdf)
 		} else if (data.type == 'audio') {
 			// Audio.
-			var audio = $('<audio>').prop('controls', true).attr('src', 'data:audio/mp3;base64,' + data.content)
+			var audio = $('<audio>').prop('controls', true).attr('src', self.readable_data(data))
 			self.elements.file_content.append(audio)
 		} else if (data.type == 'video') {
 			// Video.
 			var video = $('<video>').prop('controls', true)
-			var source = $('<source>').attr('src', 'data:video/mp4;base64,' + data.content)
+			var source = $('<source>').attr('src', self.readable_data(data))
 			source.attr('type', 'video/mp4')
 			video.append(source)
 			self.elements.file_content.append(video)
@@ -499,6 +549,48 @@ $(function() {
 		}).fail(function(response) {
 			self.render_error_message('Error: could not load file: <u>' + decodeURIComponent(path) + '</u><br />File not found.')
 		});
+	}
+
+	// Make data readable by the browser
+	PineDocs.prototype.readable_data = function(data) {
+		if ((data.type == 'svg') || (data.type == 'image' && data.extension == 'svg')) {
+			return 'data:image/svg+xml;base64,' + data.content
+		}
+
+		switch (data.type) {
+			case 'image':
+				return 'data:image/gif;base64,' + data.content
+
+			case 'pdf':
+				var binary = atob(data.content)
+				var bytes = new Uint8Array(binary.length)
+				for (var i = 0; i < binary.length; i++) {
+					bytes[i] = binary.charCodeAt(i)
+				}
+
+				return window.URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }))
+
+			case 'audio':
+				return 'data:audio/mp3;base64,' + data.content
+
+			case 'video':
+				return 'data:video/mp4;base64,' + data.content
+
+			default:
+				break
+		}
+	}
+
+	// Get asset path
+	PineDocs.prototype.get_asset_path = function(file_path, asset_path) {
+		const base = /(.*\/)/g.exec(file_path)
+		let url = new URL(asset_path)
+		url = url.pathname.slice(1)
+		if (base !== null) {
+			url = base[0] + url
+		}
+
+		return url
 	}
 
 	// Init
