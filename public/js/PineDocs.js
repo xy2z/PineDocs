@@ -99,9 +99,12 @@ $(function() {
 			self.elements.file_content.html(marked(data.content))
 
 			// Syntax highlighting
-			self.elements.file_content.find('code').each(function() {
+			self.elements.file_content.find('code').each(function(_, block) {
 				if (config.code_transparent_bg) {
 					$(this).addClass('nobg')
+				}
+				if(block.className === 'language-c++') {
+					block.className = 'language-cpp'
 				}
 			})
 			hljs.highlightAll()
