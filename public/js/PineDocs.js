@@ -98,11 +98,14 @@ $(function() {
 			self.elements.file_content.html(marked(data.content))
 
 			// Syntax highlighting
+			const ignore_languages = ['language-mermaid']
 			self.elements.file_content.find('code').each(function(i, block) {
-				if (config.code_transparent_bg) {
-					$(this).addClass('nobg')
+				if(!ignore_languages.includes(block.className)) {
+					if (config.code_transparent_bg) {
+						$(this).addClass('nobg')
+					}
+					hljs.highlightBlock(block)
 				}
-				hljs.highlightBlock(block)
 			})
 
 			// MermaidJS
@@ -113,6 +116,7 @@ $(function() {
 				});
 				mermaid.init(undefined, ".language-mermaid");
 			}
+
 			// Assets
 			const block_types = ['img', 'audio', 'video', 'embed', 'source']
 			block_types.forEach(block_type => {
