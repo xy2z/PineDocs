@@ -189,7 +189,7 @@ $(function() {
 			// PDF.
 			var pdf = $('<embed>').attr('src', self.readable_data(data))
 			pdf.attr('width', '100%')
-			pdf.attr('height', '100%')
+			pdf.attr('height', '99%')
 			self.elements.file_content.append(pdf)
 		} else if (data.type == 'audio') {
 			// Audio.
