@@ -113,6 +113,9 @@
 			} else {
 				self::$config->mathjax_configuration = '';
 			}
+
+			// Load Marked configuration
+			self::$config->marked_configuration = self::load_config_marked();
 		}
 
 
@@ -167,6 +170,27 @@
 			}
 
 			return $data_mathjax;
+		}
+
+		static private function load_config_marked() {
+			$config_marked_path = '../config/marked.js';
+
+			if (!file_exists($config_marked_path)) {
+				// Create marked.js by copying marked-example.js.
+				$create = copy('../config/marked-example.js', '../config/marked.js');
+				if (!$create) {
+					exit('Error: Could not automatically create config/marked.js. You need to manually copy config/marked-example.js to config/marked.js');
+				}
+			}
+
+			// Read data
+			$data_marked = file_get_contents($config_marked_path);
+
+			if (!$data_marked) {
+				exit('Error: Could not read config/marked.js.');
+			}
+
+			return $data_marked;
 		}
 
 	}
