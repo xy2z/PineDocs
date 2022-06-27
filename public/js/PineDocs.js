@@ -592,7 +592,7 @@ $(function() {
 		let url = "#"
 
 		// Count the number of available parent files
-		let available_parents = base.split('/').length
+		const available_parents = base.split('/').length
 
 		// Count the number of times we have to go to the parent folder to find the file
 		let requested_parents = asset_path.split('../').length - 1
