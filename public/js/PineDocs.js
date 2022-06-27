@@ -115,6 +115,11 @@ $(function() {
 					}
 
 					const url = self.get_asset_path(data.relative_path, block.attributes.src.value)
+					if (url == "#") {
+						// URL asks for an inaccessible path
+						return // continue.
+					}
+
 					if (self.black_list[url]) {
 						// URL already called and we know it doesn't exists.
 						return // continue.
@@ -126,7 +131,7 @@ $(function() {
 					}
 
 					// Reset the "src" so the browser doesn't try to load the file, and ignore the file after ajax.
-					block.src= '#'
+					block.src = '#'
 
 					// URL is neither loaded or blacklisted.
 					$.ajax({
