@@ -592,7 +592,7 @@ $(function() {
 		let url = "#"
 
 		// Count the number of available parent files
-		let available_parents = base.split('/').length - 1
+		let available_parents = base.split('/').length
 
 		// Count the number of times we have to go to the parent folder to find the file
 		let requested_parents = asset_path.split('../').length - 1
@@ -602,7 +602,7 @@ $(function() {
 			if (available_parents == requested_parents) {
 				// If file is at the root of content_dir
 				base = ""
-				asset_path = asset_path.replace('../', '')
+				asset_path = asset_path.replaceAll('../', '')
 			} else {
 				// Goes up the directories
 				while (requested_parents > 0) {
