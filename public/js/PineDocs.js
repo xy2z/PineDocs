@@ -575,12 +575,41 @@ $(function() {
 
 	// Get asset path
 	PineDocs.prototype.get_asset_path = function(file_path, asset_path) {
-		const base = /(.*\/)/g.exec(file_path)
-		if (base !== null) {
-			asset_path = base[0] + asset_path
+		// Path to file
+		let base = /(.*\/)/g.exec(file_path)[0].slice(0, -1)
+
+		// Final URL
+		let url = "#"
+
+		// Count the number of available parent files
+		let available_parents = base.split('/').length - 1
+
+		// Count the number of times we have to go to the parent folder to find the file
+		let requested_parents = asset_path.split('../').length - 1
+
+		// Check if file is available
+		if (available_parents >= requested_parents) {
+			if (available_parents == requested_parents) {
+				// If file is at the root of content_dir
+				base = ""
+				asset_path = asset_path.replace('../', '')
+			} else {
+				// Goes up the directories
+				while (requested_parents > 0) {
+					base = base.split('/')
+					base.pop()
+					base = base.join('/')
+					asset_path = asset_path.split("../").join("")
+					requested_parents--
+				}
+			}
+
+			if (base !== null) {
+				url = base + "/" + asset_path
+			}
 		}
 
-		return asset_path
+		return url
 	}
 
 	// Init
