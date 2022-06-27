@@ -114,7 +114,7 @@ $(function() {
 						return // continue.
 					}
 
-					const url = self.get_asset_path(data.relative_path, block.src)
+					const url = self.get_asset_path(data.relative_path, block.attributes.src.value)
 					if (self.black_list[url]) {
 						// URL already called and we know it doesn't exists.
 						return // continue.
@@ -576,13 +576,11 @@ $(function() {
 	// Get asset path
 	PineDocs.prototype.get_asset_path = function(file_path, asset_path) {
 		const base = /(.*\/)/g.exec(file_path)
-		let url = new URL(asset_path)
-		url = url.pathname.slice(1)
 		if (base !== null) {
-			url = base[0] + url
+			asset_path = base[0] + asset_path
 		}
 
-		return url
+		return asset_path
 	}
 
 	// Init
