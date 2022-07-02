@@ -148,6 +148,8 @@ You can [configure Mathjax](https://docs.mathjax.org/en/latest/options/index.htm
 
 - **`enable_mermaidjs`** (bool) Enable MermaidJS. Default is `false`.
 
+- **`theme_mermaidjs`** (string) The theme of MermaidJS to use by default. Default is `default`.
+
 ## License
 
 GNU GPLv3. See LICENSE.txt
