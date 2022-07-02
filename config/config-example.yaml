@@ -75,6 +75,6 @@ render_max_file_size: 50
 # [bool] Enable MermaidJS
 # enable_mermaidjs: false
 
-# [string] The theme of MermaidJS to use.
+# [string] The theme of MermaidJS to use by default
 # See available color schemes at https://mermaid-js.github.io/mermaid/#/theming?id=deployable-themes
-# mermaidjs_theme: default
+# theme_mermaidjs: default

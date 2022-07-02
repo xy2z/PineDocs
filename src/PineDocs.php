@@ -118,8 +118,8 @@
 				self::$config->enable_mermaidjs = false;
 			}
 
-			if (!isset(self::$config->mermaidjs_theme) || (empty(self::$config->highlight_theme))) {
-				self::$config->mermaidjs_theme = 'default';
+			if (!isset(self::$config->theme_mermaidjs) || (empty(self::$config->highlight_theme))) {
+				self::$config->theme_mermaidjs = 'default';
 			}
 
 		}
