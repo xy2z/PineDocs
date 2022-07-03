@@ -114,6 +114,11 @@ $(function() {
 						return // continue.
 					}
 
+					if(block.attributes.src.value.includes("http")) {
+						// asset isn't local
+						return // continue.
+					}
+
 					const url = self.get_asset_path(data.relative_path, block.attributes.src.value)
 					if (url == "#") {
 						// URL asks for an inaccessible path
