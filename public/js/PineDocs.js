@@ -115,6 +115,11 @@ $(function() {
 							return // continue.
 						}
 
+						if (block.attributes.href.value.startsWith('mailto:')) {
+							// URL is a link to a mail
+							return // continue.
+						}
+
 						// Check if link refer to a header
 						if (block.attributes.href.value.startsWith('#')) {
 							// If header exists
