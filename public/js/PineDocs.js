@@ -115,13 +115,25 @@ $(function() {
 							return // continue.
 						}
 
-						// Add the correct link if needed
-						const url = self.get_asset_path(data.relative_path, block.attributes.href.value)
-						if (url != '#') {
-							block.href = '#' + self.get_asset_path(data.relative_path, block.attributes.href.value)
+						// Check if link refer to a header
+						if (block.attributes.href.value.startsWith('#')) {
+							// If header exists
+							const header = document.getElementById(decodeURIComponent(block.attributes.href.value.slice(1)))
+							if (header != null) {
+								block.addEventListener("click", function (e) {
+									e.preventDefault()
+									header.scrollIntoView({ behavior: 'smooth' })
+								})
+							}
+						} else {
+							// Add the correct link if internal
+							const url = self.get_asset_path(data.relative_path, block.attributes.href.value)
+							if (url != '#') {
+								block.href = '#' + self.get_asset_path(data.relative_path, block.attributes.href.value)
+							}
 						}
 
-						return // continue
+						return // continue.
 					}
 
 					if ($(block).attr('src') === undefined || $(block).attr('src').length === 0) {
@@ -333,23 +345,6 @@ $(function() {
 			$(this).parent().next().toggle('fast')
 			$(this).toggleClass('link_dir_open')
 			$(this).find('i.fa').toggleClass('fa-folder-open')
-		})
-
-
-		// Click on internal link. (links to other files)
-		self.elements.file_content.on('click', 'a', function(event) {
-			self.click_hashchange = true
-
-			if ($(this).attr('href').substr(0,1) == '#') {
-				// Find the link in the menu and trigger a click on it.
-				var link = self.elements.menu.find('a[href="' + $(this).attr('href') + '"]')
-				if (link.length) {
-					link.click()
-				} else {
-					// Try loading a hidden file.
-					self.render_hidden_file($(this).attr('href').substr(1));
-				}
-			}
 		})
 
 		// URL Hashtag change (user probably went back or forward in browser history)
