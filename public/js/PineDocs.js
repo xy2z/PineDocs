@@ -114,7 +114,7 @@ $(function() {
 						return // continue.
 					}
 
-					if(block.attributes.src.value.includes("http")) {
+					if(block.attributes.src.value.includes("://")) {
 						// asset isn't local
 						return // continue.
 					}
