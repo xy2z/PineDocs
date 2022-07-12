@@ -106,16 +106,26 @@ $(function() {
 			})
 
 			// Assets
-			const block_types = ['img', 'audio', 'video', 'embed', 'source']
+			const block_types = ['img', 'audio', 'video', 'embed', 'source', 'a']
 			block_types.forEach(block_type => {
 				self.elements.file_content.find(block_type).each(function(_, block) {
-					if ($(block).attr('src') === undefined || $(block).attr('src').length === 0) {
-						// "src" attribute is empty.
-						return // continue.
+					if (block.nodeName == 'A') {
+						if ($(block).attr('href') === undefined || $(block).attr('href').length === 0) {
+							// "href" attribute is empty.
+							return // continue.
+						}
+
+						// Add the correct link if needed
+						const url = self.get_asset_path(data.relative_path, block.attributes.href.value)
+						if (url != '#') {
+							block.href = '#' + self.get_asset_path(data.relative_path, block.attributes.href.value)
+						}
+
+						return // continue
 					}
 
-					if(block.attributes.src.value.includes("://")) {
-						// asset isn't local
+					if ($(block).attr('src') === undefined || $(block).attr('src').length === 0) {
+						// "src" attribute is empty.
 						return // continue.
 					}
 
@@ -585,6 +595,15 @@ $(function() {
 
 	// Get asset path
 	PineDocs.prototype.get_asset_path = function(file_path, asset_path) {
+		// Final URL
+		let url = "#"
+
+		// Check if the file is local
+		if (asset_path.includes('://')) {
+			// asset isn't local
+			return url
+		}
+
 		// Path to file
 		let base = /(.*\/)/g.exec(file_path)
 		if (base !== null) {
@@ -592,9 +611,6 @@ $(function() {
 		} else {
 			base = ""
 		}
-
-		// Final URL
-		let url = "#"
 
 		// Count the number of available parent files
 		const available_parents = base.split('/').length
