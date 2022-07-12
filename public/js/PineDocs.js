@@ -120,8 +120,8 @@ $(function() {
 							// If header exists
 							const header = document.getElementById(decodeURIComponent(block.attributes.href.value.slice(1)))
 							if (header != null) {
-								block.addEventListener("click", function (e) {
-									e.preventDefault()
+								block.addEventListener("click", function(event) {
+									event.preventDefault()
 									header.scrollIntoView({ behavior: 'smooth' })
 								})
 							}
