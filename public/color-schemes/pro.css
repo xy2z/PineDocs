@@ -8,7 +8,6 @@ body {
 
 }
 
-
 .pinedocs-logo {
 	color: rgba(255, 120, 0, 1);
 }
@@ -63,7 +62,7 @@ h4 {
 
 
 
-/* MENU ICONS */
+/*** MENU ICONS ***/
 #menu i.fa {
 	color: rgba(255, 120, 0, 0.9);
 }
@@ -103,6 +102,7 @@ blockquote {
 	border-color: #eee;
 	color: #888;
 }
+
 
 
 /*** SEARCH ***/
