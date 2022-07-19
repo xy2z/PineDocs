@@ -102,6 +102,11 @@ body {
 	height: 100%;
 }
 
+#content_top {
+	width: 850px;
+	position: fixed;
+}
+
 #content_top #mobile_nav_icon {
 	display: none;
 	cursor: pointer;
@@ -118,11 +123,16 @@ body {
 	padding: 20px;
 }
 
+#loading,
+#file_content {
+	padding-top: 80px;
+}
+
 #file_content {
 	overflow-y: auto;
-	/*width: 850px;*/
+	/* width: 850px; */
 	height: 100%;
-	/*height: 500px;*/
+	/* height: 500px; */
 }
 
 
@@ -252,7 +262,7 @@ blockquote {
 	#menu_wrapper {
 		position: fixed;
 		z-index: 2;
-		/*width: 100%;*/
+		/* width: 100%; */
 		display: none;
 		max-width: 100%;
 	}
@@ -266,19 +276,24 @@ blockquote {
 	}
 
 	#menu {
-		/*max-width: 100%;*/
+		/* max-width: 100%; */
 	}
 
 
 	#main,
 	#content_wrapper,
 	#content_top {
-		width: 100%;
+		width: 100% !important;
 	}
 
 	#content_top #mobile_nav_icon {
 		display: inline;
 		font-size: 1.2em;
 		color: #0645ad;
+	}
+
+	#loading,
+	#file_content {
+		padding-top: 30%;
 	}
 }
