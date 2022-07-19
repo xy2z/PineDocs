@@ -151,7 +151,7 @@ body {
 
 
 
-/*** Text/Markdown ***/
+/*** TEXT/MARKDOWN ***/
 #content_wrapper p,
 #content_wrapper ul,
 #content_wrapper ol,
@@ -230,11 +230,14 @@ blockquote {
 	background: none;
 }
 
-/** download file **/
+
+
+/** DOWNLOAD FILE **/
 .download {
 	text-align: center;
 	margin: 20% 0 0 0;
 }
+
 .download > p {
 	font-size: 1.2em;
 }
@@ -251,6 +254,8 @@ blockquote {
 .download > .download__link:hover {
 	opacity: 0.8;
 }
+
+
 
 /*** RESPONSIVE ***/
 @media (max-width: 1200px) {
