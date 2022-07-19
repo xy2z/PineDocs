@@ -115,8 +115,21 @@ $(function() {
 							return // continue.
 						}
 
-						if (block.attributes.href.value.startsWith('mailto:')) {
-							// URL is a link to a mail
+						// Hyperlink types (https://developer.mozilla.org/en-US/docs/Web/API/Navigator/registerProtocolHandler#permitted_schemes)
+						if ([
+							'mailto', 'magnet', 'ftp', 'tel',
+							'irc', 'geo', 'ftps', 'im', 'ircs',
+							'bitcoin', 'matrix', 'mms', 'news',
+							'nntp', 'openpgp4fpr', 'sftp', 'sip',
+							'sms', 'smsto', 'ssh', 'urn', 'webcal',
+							'wtai', 'xmpp'
+						].every(hyperlink_type => {
+							if (block.attributes.href.value.startsWith(hyperlink_type)) {
+								// URL is a link to a specific scheme
+								return false
+							}
+							return true
+						}) === false) {
 							return // continue.
 						}
 
