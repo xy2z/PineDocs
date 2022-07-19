@@ -102,11 +102,6 @@ body {
 	height: 100%;
 }
 
-#content_top {
-	width: 850px;
-	position: fixed;
-}
-
 #content_top #mobile_nav_icon {
 	display: none;
 	cursor: pointer;
@@ -121,11 +116,6 @@ body {
 #loading,
 #file_content {
 	padding: 20px;
-}
-
-#loading,
-#file_content {
-	padding-top: 80px;
 }
 
 #file_content {
@@ -283,7 +273,7 @@ blockquote {
 	#main,
 	#content_wrapper,
 	#content_top {
-		width: 100% !important;
+		width: 100%;
 	}
 
 	#content_top #mobile_nav_icon {
