@@ -12,6 +12,8 @@ body {
 	flex-direction: row;
 }
 
+
+
 /*** MENU ***/
 #menu_wrapper {
 	float: none;
@@ -64,6 +66,8 @@ body {
 #menu ul li a.active i.fa {
 }
 
+
+
 /*** MENU FOOTER ***/
 #menu footer {
 	border-top-width: 1px;
@@ -77,11 +81,15 @@ body {
 #menu footer a {
 }
 
-/* ICONS */
+
+
+/*** MENU ICONS ***/
 #menu i.fa {
 	font-size: 0.9em;
 	opacity: 0.6;
 }
+
+
 
 /*** CONTENT PATH ***/
 #content_top {
@@ -89,12 +97,14 @@ body {
 	font-weight: bold;
 	opacity: 0.95;
 	width: 100%;
-	border-bottom-width: 1px
+	border-bottom-width: 1px;
 	border-bottom-style: solid;
 }
 
 #content_top .filesize {
 }
+
+
 
 /*** CONTENT ***/
 #content_wrapper {
@@ -107,6 +117,8 @@ body {
 #file_content {
 	width: 100%;
 }
+
+
 
 /***  Text/markdown ***/
 h1,
