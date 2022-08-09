@@ -36,7 +36,7 @@ _See more screenshots at https://imgur.com/a/15Gq67X_
 - No database.
 - No building.
 - Fast - using ajax and cache.
-- Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, MathJax, PDFs, audio and small videos. Basically anything you can render in a browser.
+- Supports Markdown, plaintext, HTML, code, Mermaid diagrams, images, SVG, GIFs, MathJax, PDFs, audio and small videos. Basically anything you can render in a browser.
 - Responsive layouts and different color schemes (see screenshots [here](https://imgur.com/a/15Gq67X))
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Configuration (see below).
@@ -148,6 +148,9 @@ You can [configure Mathjax](https://docs.mathjax.org/en/latest/options/index.htm
 
 - **`enable_mathjax`** (bool) Enable MathJax. Must be enabled for `mathjax.js` to work. Default is `false`.
 
+- **`enable_mermaidjs`** (bool) Enable MermaidJS. Default is `false`.
+
+- **`theme_mermaidjs`** (string) The theme of MermaidJS to use by default. Default is `default`.
 
 ## License
 
