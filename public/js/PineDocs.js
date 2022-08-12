@@ -202,24 +202,23 @@ $(function() {
 			video.append(source)
 			self.elements.file_content.append(video)
 		} else if (data.type == 'code') {
+			// Source code file
+			var pre = $('<pre>')
 			var code = $('<code>').text(data.content).addClass('file')
 			if (config.code_transparent_bg) {
 				code.addClass('nobg')
 			}
-			self.elements.file_content.append(code)
+			pre.append(code)
+			self.elements.file_content.append(pre)
 
 			// Syntax highlighting
-			self.elements.file_content.find('code').each(function(i, block) {
-				hljs.highlightElement(block)
-			})
+			hljs.highlightAll()
 		} else {
 			if (typeof data.content == 'string') {
 				self.elements.file_content.html(nl2br(data.content))
 
 				// Syntax highlighting
-				self.elements.file_content.find('code').each(function(i, block) {
-					hljs.highlightElement(block)
-				})
+				hljs.highlightAll()
 			}
 			if (data.content === null) {
 				self.render_download_link(data);
