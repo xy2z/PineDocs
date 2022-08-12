@@ -6,3 +6,7 @@
 Thumbs.db
 /data/
 /docker-compose.yml
+
+/config/custom.*
+/public/css/custom.css
+/public/js/custom.js

@@ -15,7 +15,9 @@
 	border: 0;
 }
 
-#menu_wrapper, #content_top, #loading, .alertify-notifier {
+#menu_wrapper,
+#content_top,
+#loading, .alertify-notifier {
 	display: none;
 }
 

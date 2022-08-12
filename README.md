@@ -98,6 +98,8 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 1. (Optional) Rename the file `config/config-example.yaml` to `config/config.yaml` for changing settings (see below)
 1. (Optional) Rename the file `config/mathjax-example.js` to `config/mathjax.js` for changing settings of Mathjax (see below)
 1. (Optional) Rename the file `config/marked-example.js` to `config/marked.js` for changing settings of Marked (see below)
+1. (Optional) Change the file `config/custom.js` when using Docker to customize Javascript
+1. (Optional) Change the file `config/custom.css` when using Docker to customize CSS
 
 
 ## Configuration

@@ -19,6 +19,19 @@ if [ ! -f /data/pinedocs/config/marked.js ]; then
         mkdir -p /data/pinedocs/config
         cp /app/pinedocs/config/marked-example.js /data/pinedocs/config/marked.js
         echo 'Created marked.js config file.'
+
+# Custom.css config
+if [ ! -f /data/pinedocs/config/custom.css ]; then
+        mkdir -p /data/pinedocs/config
+        touch /data/pinedocs/config/custom.css
+        echo 'Created custom.css file.'
+fi
+
+# Custom.js config
+if [ ! -f /data/pinedocs/config/custom.js ]; then
+        mkdir -p /data/pinedocs/config
+        touch /data/pinedocs/config/custom.js
+        echo 'Created custom.js file.'
 fi
 
 # Content
@@ -29,9 +42,11 @@ if [ ! -d /data/pinedocs/files ]; then
 fi
 
 # Setup symlinks
-rm -rf /app/pinedocs/config /app/pinedocs/content
+rm -rf /app/pinedocs/config /app/pinedocs/content /app/pinedocs/public/js/custom.js /app/pinedocs/public/css/custom.css
 ln -sfn /data/pinedocs/config /app/pinedocs/config
 ln -sfn /data/pinedocs/files /app/pinedocs/content
+ln -sfn /data/pinedocs/config/custom.css /app/pinedocs/public/css/custom.css
+ln -sfn /data/pinedocs/config/custom.js /app/pinedocs/public/js/custom.js
 
 # Run parent entrypoint
 exec /usr/local/bin/docker-php-entrypoint "$@"
