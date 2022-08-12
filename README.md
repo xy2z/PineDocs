@@ -36,7 +36,7 @@ _See more screenshots at https://imgur.com/a/15Gq67X_
 - No database.
 - No building.
 - Fast - using ajax and cache.
-- Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, MathJax, audio and small videos. Basically anything you can render in a browser.
+- Supports Markdown, plaintext, HTML, code, images, SVG, GIFs, MathJax, PDFs, audio and small videos. Basically anything you can render in a browser.
 - Responsive layouts and different color schemes (see screenshots [here](https://imgur.com/a/15Gq67X))
 - Syntax highlighting for over 169 languages with over 77 themes.
 - Configuration (see below).
@@ -97,6 +97,8 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89 -t public` for testing)
 1. (Optional) Rename the file `config/config-example.yaml` to `config/config.yaml` for changing settings (see below)
 1. (Optional) Rename the file `config/mathjax-example.js` to `config/mathjax.js` for changing settings of Mathjax (see below)
+1. (Optional) Change the file `config/custom.js` when using Docker to customize Javascript
+1. (Optional) Change the file `config/custom.css` when using Docker to customize CSS
 
 
 ## Configuration

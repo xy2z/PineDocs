@@ -9,6 +9,8 @@ body {
 	margin: 0 auto;
 }
 
+
+
 /*** MENU ***/
 #menu {
 	font-size: 0.85em;
@@ -48,18 +50,24 @@ body {
 #menu ul li a.active i.fa {
 }
 
+
+
 /*** MENU FOOTER ***/
 #menu footer,
 #menu footer a {
 }
 
-/* MENU ICONS */
+
+
+/*** MENU ICONS ***/
 #menu i.fa {
 	font-size: 0.9em;
 }
 
 #menu a.link_dir_open i.fa {
 }
+
+
 
 /*** CONTENT PATH ***/
 #content_top {
@@ -71,6 +79,8 @@ body {
 
 #content_top .filesize {
 }
+
+
 
 /*** CONTENT ***/
 #content_wrapper {

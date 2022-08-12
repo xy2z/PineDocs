@@ -12,6 +12,8 @@ body {
 	flex-direction: row;
 }
 
+
+
 /*** MENU ***/
 #menu_wrapper {
 	float: none;
@@ -64,6 +66,8 @@ body {
 #menu ul li a.active i.fa {
 }
 
+
+
 /*** MENU FOOTER ***/
 #menu footer {
 	border-top-width: 1px;
@@ -77,11 +81,15 @@ body {
 #menu footer a {
 }
 
-/* ICONS */
+
+
+/*** MENU ICONS ***/
 #menu i.fa {
 	font-size: 0.9em;
 	opacity: 0.6;
 }
+
+
 
 /*** CONTENT PATH ***/
 #content_top {
@@ -97,6 +105,8 @@ body {
 #content_top .filesize {
 }
 
+
+
 /*** CONTENT ***/
 #content_wrapper {
 	width: 80%;
@@ -108,6 +118,8 @@ body {
 #file_content {
 	width: 100%;
 }
+
+
 
 /***  Text/markdown ***/
 h1,

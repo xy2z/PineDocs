@@ -130,9 +130,9 @@ body {
 
 #file_content {
 	overflow-y: auto;
-	/*width: 850px;*/
+	/* width: 850px; */
 	height: 100%;
-	/*height: 500px;*/
+	/* height: 500px; */
 }
 
 
@@ -151,7 +151,7 @@ body {
 
 
 
-/*** Text/Markdown ***/
+/*** TEXT/MARKDOWN ***/
 #content_wrapper p,
 #content_wrapper ul,
 #content_wrapper ol,
@@ -230,11 +230,14 @@ blockquote {
 	background: none;
 }
 
-/** download file **/
+
+
+/** DOWNLOAD FILE **/
 .download {
 	text-align: center;
 	margin: 20% 0 0 0;
 }
+
 .download > p {
 	font-size: 1.2em;
 }
@@ -252,12 +255,14 @@ blockquote {
 	opacity: 0.8;
 }
 
+
+
 /*** RESPONSIVE ***/
 @media (max-width: 1200px) {
 	#menu_wrapper {
 		position: fixed;
 		z-index: 2;
-		/*width: 100%;*/
+		/* width: 100%; */
 		display: none;
 		max-width: 100%;
 	}
@@ -271,7 +276,7 @@ blockquote {
 	}
 
 	#menu {
-		/*max-width: 100%;*/
+		/* max-width: 100%; */
 	}
 
 
@@ -285,5 +290,10 @@ blockquote {
 		display: inline;
 		font-size: 1.2em;
 		color: #0645ad;
+	}
+
+	#loading,
+	#file_content {
+		padding-top: 30%;
 	}
 }

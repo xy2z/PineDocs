@@ -14,6 +14,20 @@ if [ ! -f /data/pinedocs/config/mathjax.js ]; then
         echo 'Created mathjax.js config file.'
 fi
 
+# Custom.css config
+if [ ! -f /data/pinedocs/config/custom.css ]; then
+        mkdir -p /data/pinedocs/config
+        touch /data/pinedocs/config/custom.css
+        echo 'Created custom.css file.'
+fi
+
+# Custom.js config
+if [ ! -f /data/pinedocs/config/custom.js ]; then
+        mkdir -p /data/pinedocs/config
+        touch /data/pinedocs/config/custom.js
+        echo 'Created custom.js file.'
+fi
+
 # Content
 if [ ! -d /data/pinedocs/files ]; then
         mkdir -p /data/pinedocs/files
@@ -22,9 +36,11 @@ if [ ! -d /data/pinedocs/files ]; then
 fi
 
 # Setup symlinks
-rm -rf /app/pinedocs/config /app/pinedocs/content
+rm -rf /app/pinedocs/config /app/pinedocs/content /app/pinedocs/public/js/custom.js /app/pinedocs/public/css/custom.css
 ln -sfn /data/pinedocs/config /app/pinedocs/config
 ln -sfn /data/pinedocs/files /app/pinedocs/content
+ln -sfn /data/pinedocs/config/custom.css /app/pinedocs/public/css/custom.css
+ln -sfn /data/pinedocs/config/custom.js /app/pinedocs/public/js/custom.js
 
 # Run parent entrypoint
 exec /usr/local/bin/docker-php-entrypoint "$@"
