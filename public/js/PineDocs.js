@@ -43,6 +43,7 @@ $(function() {
 		self.loaded = {}
 		self.black_list = {}
 		self.scroll_top = {}
+		self.hljs_plugin_loaded = false
 
 		// Init
 		self.set_events()
@@ -88,6 +89,13 @@ $(function() {
 		filesize.text(format_bytes(data.filesize))
 		self.elements.content_path.append(filesize)
 
+		// HLJS Plugins
+		if (!self.hljs_plugin_loaded) {
+			self.hljs_plugin_loaded = true
+
+			// Copy button in codeblocks
+			hljs.addPlugin(new CopyButtonPlugin())
+		}
 
 		// Render content
 		if (data.download_link === true) {
@@ -98,12 +106,15 @@ $(function() {
 			self.elements.file_content.html(marked(data.content))
 
 			// Syntax highlighting
-			self.elements.file_content.find('code').each(function(i, block) {
+			self.elements.file_content.find('code').each(function(_, block) {
 				if (config.code_transparent_bg) {
 					$(this).addClass('nobg')
 				}
-				hljs.highlightBlock(block)
+				if(block.className === 'language-c++') {
+					block.className = 'language-cpp'
+				}
 			})
+			hljs.highlightAll()
 
 			// Assets
 			const block_types = ['img', 'audio', 'video', 'embed', 'source']
@@ -191,24 +202,23 @@ $(function() {
 			video.append(source)
 			self.elements.file_content.append(video)
 		} else if (data.type == 'code') {
+			// Source code file
+			var pre = $('<pre>')
 			var code = $('<code>').text(data.content).addClass('file')
 			if (config.code_transparent_bg) {
 				code.addClass('nobg')
 			}
-			self.elements.file_content.append(code)
+			pre.append(code)
+			self.elements.file_content.append(pre)
 
 			// Syntax highlighting
-			self.elements.file_content.find('code').each(function(i, block) {
-				hljs.highlightBlock(block)
-			})
+			hljs.highlightAll()
 		} else {
 			if (typeof data.content == 'string') {
 				self.elements.file_content.html(nl2br(data.content))
 
 				// Syntax highlighting
-				self.elements.file_content.find('code').each(function(i, block) {
-					hljs.highlightBlock(block)
-				})
+				hljs.highlightAll()
 			}
 			if (data.content === null) {
 				self.render_download_link(data);
