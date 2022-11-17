@@ -38,7 +38,9 @@
 				if (is_dir($full_path)) {
 					$tree->dirs[$item] = $this->get_tree($full_path);
 				} else {
-					$tree->files[] = new PineDocsFile($full_path);
+					if (realpath($full_path)) {
+						$tree->files[] = new PineDocsFile($full_path);
+					}
 				}
 			}
 
