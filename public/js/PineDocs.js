@@ -117,15 +117,65 @@ $(function() {
 			hljs.highlightAll()
 
 			// Assets
-			const block_types = ['img', 'audio', 'video', 'embed', 'source']
+			const block_types = ['img', 'audio', 'video', 'embed', 'source', 'a']
 			block_types.forEach(block_type => {
 				self.elements.file_content.find(block_type).each(function(_, block) {
+					if (block.nodeName == 'A') {
+						if ($(block).attr('href') === undefined || $(block).attr('href').length === 0) {
+							// "href" attribute is empty.
+							return // continue.
+						}
+
+						// Hyperlink types (https://developer.mozilla.org/en-US/docs/Web/API/Navigator/registerProtocolHandler#permitted_schemes)
+						if ([
+							'mailto', 'magnet', 'ftp', 'tel',
+							'irc', 'geo', 'ftps', 'im', 'ircs',
+							'bitcoin', 'matrix', 'mms', 'news',
+							'nntp', 'openpgp4fpr', 'sftp', 'sip',
+							'sms', 'smsto', 'ssh', 'urn', 'webcal',
+							'wtai', 'xmpp'
+						].every(hyperlink_type => {
+							if (block.attributes.href.value.startsWith(hyperlink_type)) {
+								// URL is a link to a specific scheme
+								return false
+							}
+							return true
+						}) === false) {
+							return // continue.
+						}
+
+						// Check if link refer to a header
+						if (block.attributes.href.value.startsWith('#')) {
+							// If header exists
+							const header = document.getElementById(decodeURIComponent(block.attributes.href.value.slice(1)))
+							if (header != null) {
+								block.addEventListener("click", function(event) {
+									event.preventDefault()
+									header.scrollIntoView({ behavior: 'smooth' })
+								})
+							}
+						} else {
+							// Add the correct link if internal
+							const url = self.get_asset_path(data.relative_path, block.attributes.href.value)
+							if (url != '#') {
+								block.href = '#' + self.get_asset_path(data.relative_path, block.attributes.href.value)
+							}
+						}
+
+						return // continue.
+					}
+
 					if ($(block).attr('src') === undefined || $(block).attr('src').length === 0) {
 						// "src" attribute is empty.
 						return // continue.
 					}
 
-					const url = self.get_asset_path(data.relative_path, block.src)
+					const url = self.get_asset_path(data.relative_path, block.attributes.src.value)
+					if (url == "#") {
+						// URL asks for an inaccessible path
+						return // continue.
+					}
+
 					if (self.black_list[url]) {
 						// URL already called and we know it doesn't exists.
 						return // continue.
@@ -137,7 +187,7 @@ $(function() {
 					}
 
 					// Reset the "src" so the browser doesn't try to load the file, and ignore the file after ajax.
-					block.src= '#'
+					block.src = '#'
 
 					// URL is neither loaded or blacklisted.
 					$.ajax({
@@ -323,23 +373,6 @@ $(function() {
 			$(this).parent().next().toggle('fast')
 			$(this).toggleClass('link_dir_open')
 			$(this).find('i.fa').toggleClass('fa-folder-open')
-		})
-
-
-		// Click on internal link. (links to other files)
-		self.elements.file_content.on('click', 'a', function(event) {
-			self.click_hashchange = true
-
-			if ($(this).attr('href').substr(0,1) == '#') {
-				// Find the link in the menu and trigger a click on it.
-				var link = self.elements.menu.find('a[href="' + $(this).attr('href') + '"]')
-				if (link.length) {
-					link.click()
-				} else {
-					// Try loading a hidden file.
-					self.render_hidden_file($(this).attr('href').substr(1));
-				}
-			}
 		})
 
 		// URL Hashtag change (user probably went back or forward in browser history)
@@ -585,11 +618,47 @@ $(function() {
 
 	// Get asset path
 	PineDocs.prototype.get_asset_path = function(file_path, asset_path) {
-		const base = /(.*\/)/g.exec(file_path)
-		let url = new URL(asset_path)
-		url = url.pathname.slice(1)
+		// Final URL
+		let url = "#"
+
+		// Check if the file is local
+		if (asset_path.includes('://')) {
+			// asset isn't local
+			return url
+		}
+
+		// Path to file
+		let base = /(.*\/)/g.exec(file_path)
 		if (base !== null) {
-			url = base[0] + url
+			base = base[0].slice(0, -1)
+		} else {
+			base = ""
+		}
+
+		// Count the number of available parent files
+		const available_parents = base.split('/').length
+
+		// Count the number of times we have to go to the parent folder to find the file
+		let requested_parents = asset_path.split('../').length - 1
+
+		// Check if file is available
+		if (available_parents >= requested_parents) {
+			if (available_parents == requested_parents) {
+				// If file is at the root of content_dir
+				base = ""
+				asset_path = asset_path.replaceAll('../', '')
+			} else {
+				// Goes up the directories
+				while (requested_parents > 0) {
+					base = base.split('/')
+					base.pop()
+					base = base.join('/')
+					asset_path = asset_path.split("../").join("")
+					requested_parents--
+				}
+			}
+
+			url = base + "/" + asset_path
 		}
 
 		return url
