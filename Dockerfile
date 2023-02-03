@@ -1,4 +1,4 @@
-FROM php:8.1.9-apache
+FROM php:8.2.2-apache
 
 RUN a2dissite 000-default.conf
 
