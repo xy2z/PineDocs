@@ -14,6 +14,12 @@ if [ ! -f /data/pinedocs/config/mathjax.js ]; then
         echo 'Created mathjax.js config file.'
 fi
 
+# Marked config
+if [ ! -f /data/pinedocs/config/marked.js ]; then
+        mkdir -p /data/pinedocs/config
+        cp /app/pinedocs/config/marked-example.js /data/pinedocs/config/marked.js
+        echo 'Created marked.js config file.'
+
 # Custom.css config
 if [ ! -f /data/pinedocs/config/custom.css ]; then
         mkdir -p /data/pinedocs/config

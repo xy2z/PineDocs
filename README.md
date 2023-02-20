@@ -97,6 +97,7 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 1. Setup the web server to the `PineDocs/public` dir (use `php -S localhost:89 -t public` for testing)
 1. (Optional) Rename the file `config/config-example.yaml` to `config/config.yaml` for changing settings (see below)
 1. (Optional) Rename the file `config/mathjax-example.js` to `config/mathjax.js` for changing settings of Mathjax (see below)
+1. (Optional) Rename the file `config/marked-example.js` to `config/marked.js` for changing settings of Marked (see below)
 1. (Optional) Change the file `config/custom.js` when using Docker to customize Javascript
 1. (Optional) Change the file `config/custom.css` when using Docker to customize CSS
 
@@ -105,8 +106,9 @@ See more at https://hub.docker.com/r/xy2z/pinedocs/
 
 Feel free to edit the `config/config.yaml` file to fit your needs.
 
-You can [configure Mathjax](https://docs.mathjax.org/en/latest/options/index.html#configuring-mathjax-1) by editing the `config/mathjax.js` file.
-
+You can :
+- [configure Mathjax](https://docs.mathjax.org/en/latest/options/index.html#configuring-mathjax-1) by editing the `config/mathjax.js` file
+- [configure Marked](https://marked.js.org/using_advanced#options) by editing the `config/marked.js` file
 
 #### Settings
 

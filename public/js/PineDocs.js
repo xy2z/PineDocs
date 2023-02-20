@@ -102,7 +102,10 @@ $(function() {
 			// File size is too large to render.
 			self.render_download_link(data);
 		} else if (data.extension == 'md' || data.extension == 'markdown') {
-			// Markdown
+			// Markdown configuration
+			eval(config.marked_configuration);
+
+			// Render Markdown
 			self.elements.file_content.html(marked(data.content))
 
 			// Syntax highlighting
